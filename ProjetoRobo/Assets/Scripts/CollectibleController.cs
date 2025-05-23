@@ -5,6 +5,7 @@ using UnityEngine;
 public class CollectibleController : MonoBehaviour
 {
     private Transform tr;
+    [SerializeField]private float rotatingSpeed;
 
     // Start is called before the first frame update
     void Start()
@@ -15,7 +16,7 @@ public class CollectibleController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        tr.Rotate(5.0f, 0.0f, 5.0f, Space.Self);
+        tr.Rotate(rotatingSpeed, 0.0f, rotatingSpeed, Space.Self);
     }
 
     void OnTriggerEnter2D(Collider2D other){
