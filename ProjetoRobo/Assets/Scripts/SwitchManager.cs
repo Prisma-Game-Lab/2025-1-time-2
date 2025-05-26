@@ -34,13 +34,11 @@ public class SwitchManager : MonoBehaviour
         if (inputManager == null) return; // prevent null reference errors
 
         switchTimer -= Time.deltaTime;
-        print(switchTimer);
         if (switchTimer <= 0)
         {
             warningTimer -= Time.deltaTime;
             if (warningTimer <= 0)
             {
-                print(warningTimer);
                 inputManager.SwitchPlayerInput();
                 switchTimer = switchTime;
                 warningTimer = warningTime;

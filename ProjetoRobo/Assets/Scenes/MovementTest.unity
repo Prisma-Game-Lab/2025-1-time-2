@@ -246,7 +246,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   switchTime: 10
   warningTime: 5
-  inputManager: {fileID: 0}
 --- !u!4 &535658313
 Transform:
   m_ObjectHideFlags: 0
@@ -312,6 +311,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6608917251125156136, guid: 6990a597796a00b42bd663c66e9744c1, type: 3}
       propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608917251125156136, guid: 6990a597796a00b42bd663c66e9744c1, type: 3}
+      propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
