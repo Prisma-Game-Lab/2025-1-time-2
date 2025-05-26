@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 8371362252926876828}
   - component: {fileID: 8590840197531246686}
   - component: {fileID: 5622550333497266844}
+  - component: {fileID: 526859834013453721}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -286,21 +287,33 @@ MonoBehaviour:
   OnParry:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8590840197531246686}
-        m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
-        m_MethodName: SwitchPlayerInput
-        m_Mode: 1
+      - m_Target: {fileID: 526859834013453721}
+        m_TargetAssemblyTypeName: PlayerTimer, Assembly-CSharp
+        m_MethodName: DecreaseTimer
+        m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 0
+          m_FloatArgument: 1
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
   OnShoot:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 526859834013453721}
+        m_TargetAssemblyTypeName: PlayerTimer, Assembly-CSharp
+        m_MethodName: DecreaseTimer
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 10
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   P1Movement: 1
   stickDeadzone: 0.25
   stickUpperzone: 0.9
@@ -321,3 +334,21 @@ MonoBehaviour:
   aimAccelerationRate: 3
   aimDesaccelerationRate: 6
   aimRadius: 4
+--- !u!114 &526859834013453721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6608917251125156136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de7d9f7fa1fdc69448cbddb6364ba0b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timerPaused: 0
+  maxVariableTimer: 7
+  maxFixedTimer: 3
+  onInputChange:
+    m_PersistentCalls:
+      m_Calls: []
