@@ -15,6 +15,11 @@ public class PlayerFiring : MonoBehaviour
     [SerializeField] private float aimDesaccelerationRate;
     [SerializeField] private float aimRadius;
 
+    [Header("Mortar Shot Configuration")]
+    [SerializeField] private GameObject shotPrefab;
+    [SerializeField] private float shotTime;
+    [SerializeField] private LayerMask targetLayerMask;
+
     private GameObject aimObject;
     private Rigidbody2D aimRb;
     private Vector2 aimInput;
@@ -67,6 +72,12 @@ public class PlayerFiring : MonoBehaviour
 
             aimObject.transform.position = (Vector2)transform.position + directionVector * aimRadius;
         }
+    }
+
+    public void OnShotFired() 
+    {
+        GameObject shot = Instantiate(shotPrefab, transform.position, Quaternion.identity);
+        shot.GetComponent<MortarController>().Initialization(aimObject.transform.position, shotTime, targetLayerMask);
     }
 
     private void OnDrawGizmosSelected()

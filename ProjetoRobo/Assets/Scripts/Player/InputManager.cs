@@ -74,11 +74,11 @@ public class InputManager : MonoBehaviour
         {
             if (P1Movement)
             {
-                OnParry?.Invoke();
+                OnShoot?.Invoke();
             }
             else
             {
-                OnShoot?.Invoke();
+                OnParry?.Invoke();
             }
         }
     }
@@ -89,11 +89,11 @@ public class InputManager : MonoBehaviour
         {
             if (!P1Movement)
             {
-                OnParry?.Invoke();
+                OnShoot?.Invoke();
             }
             else
             {
-                OnShoot?.Invoke();
+                OnParry?.Invoke();
             }
         }
     }

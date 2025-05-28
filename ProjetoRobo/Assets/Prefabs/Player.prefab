@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1456771733844822845}
   - component: {fileID: 1571707957375992519}
   - component: {fileID: 8495145369013666646}
+  - component: {fileID: 1801648763088326143}
   - component: {fileID: 6366267563213630568}
   - component: {fileID: 4128316396819188335}
   - component: {fileID: 8371362252926876828}
@@ -19,7 +20,7 @@ GameObject:
   - component: {fileID: 526859834013453721}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -118,6 +119,41 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!58 &1801648763088326143
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6608917251125156136}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!114 &6366267563213630568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -302,15 +338,15 @@ MonoBehaviour:
   OnShoot:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 526859834013453721}
-        m_TargetAssemblyTypeName: PlayerTimer, Assembly-CSharp
-        m_MethodName: DecreaseTimer
-        m_Mode: 4
+      - m_Target: {fileID: 5622550333497266844}
+        m_TargetAssemblyTypeName: PlayerFiring, Assembly-CSharp
+        m_MethodName: OnShotFired
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 10
+          m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
@@ -334,6 +370,11 @@ MonoBehaviour:
   aimAccelerationRate: 3
   aimDesaccelerationRate: 6
   aimRadius: 4
+  shotPrefab: {fileID: 8532741216186767511, guid: 1144aee368376754595b676683ace2cd, type: 3}
+  shotTime: 1
+  targetLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
 --- !u!114 &526859834013453721
 MonoBehaviour:
   m_ObjectHideFlags: 0
