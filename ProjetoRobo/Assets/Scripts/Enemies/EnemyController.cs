@@ -65,7 +65,6 @@ public class EnemyController : MonoBehaviour
         GameObject laser = laserPool.GetLaser();
         if (laser != null)
         {
-            Debug.Log("Shooting laser at player!");
             laser.transform.position = transform.position;
             laser.SetActive(true);
 
