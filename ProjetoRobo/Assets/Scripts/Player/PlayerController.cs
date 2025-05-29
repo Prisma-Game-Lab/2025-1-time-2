@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public PlayerMovement playerMovement;
     [HideInInspector] public InputManager inputManager;
 
+    [HideInInspector] public PlayerParry playerParry;
+
     [HideInInspector] public Rigidbody2D rb;
 
     private void Awake()
@@ -15,5 +17,11 @@ public class PlayerController : MonoBehaviour
         inputManager = GetComponent<InputManager>();
 
         rb = GetComponent<Rigidbody2D>();
+        playerParry = GetComponent<PlayerParry>();
+    }
+     void OnCollisionEnter2D(Collision2D other){
+         playerParry.AttemptParry(other.gameObject);
     }
 }
+
+
