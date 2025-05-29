@@ -9,6 +9,10 @@ public class PlayerParry : MonoBehaviour
     [Header("Parry Configuration")]
     [SerializeField] private float parryWindow = 0.3f;
 
+    [Header("Parry Visual")]
+    [SerializeField] private GameObject parryEffectPrefab; // prefab to show
+    [SerializeField] private float parryEffectDuration = 0.2f;
+
     private bool isParryActive = false;
 
     private void Awake()
@@ -16,22 +20,19 @@ public class PlayerParry : MonoBehaviour
         pc = GetComponent<PlayerController>();
         inputManager = GetComponent<InputManager>();
 
-        // Assign self to PlayerController reference
         pc.playerParry = this;
-
-        // Subscribe to input event
         inputManager.OnParry.AddListener(OnParryPressed);
     }
 
     private void OnDestroy()
     {
-        // Unsubscribe to avoid memory leaks
         inputManager.OnParry.RemoveListener(OnParryPressed);
     }
 
     private void OnParryPressed()
     {
         StartCoroutine(ParryWindowCoroutine());
+        
     }
 
     private IEnumerator ParryWindowCoroutine()
@@ -41,12 +42,22 @@ public class PlayerParry : MonoBehaviour
         isParryActive = false;
     }
 
+    private void OnParryVisual()
+    {
+        if (parryEffectPrefab != null)
+        {
+            GameObject effectInstance = Instantiate(parryEffectPrefab, transform.position, Quaternion.identity, transform);
+            Destroy(effectInstance, parryEffectDuration);
+        }
+    }
+
     public void AttemptParry(GameObject other)
     {
         if (other.CompareTag("Enemy"))
         {
             if (isParryActive)
             {
+                OnParryVisual(); // Trigger the visual effect
                 Debug.Log("Parried!");
             }
             else
@@ -54,10 +65,5 @@ public class PlayerParry : MonoBehaviour
                 Debug.Log("Hit");
             }
         }
-        else
-        {
-            Debug.Log("Parry Missed!");
-        }
-
     }
 }
