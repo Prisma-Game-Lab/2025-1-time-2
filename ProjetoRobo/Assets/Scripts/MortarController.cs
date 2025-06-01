@@ -9,6 +9,7 @@ public class MortarController : MonoBehaviour
     [SerializeField] private float scaleModifier;
     [SerializeField] private float hitboxRadius;
 
+    private int mortarDamage;
     private float timeElapsed;
     private float maxDuration;
     private Vector2 starterPosition;
@@ -16,11 +17,14 @@ public class MortarController : MonoBehaviour
     private Vector2 starterScale;
     private LayerMask targetMask;
 
-    public void Initialization(Vector2 target, float duration, LayerMask hitMask) 
+    public void Initialization(Vector2 target, int damage, float duration, LayerMask hitMask) 
     {
         targetPosition = target;
+
         starterPosition = transform.position;
         starterScale = transform.localScale;
+
+        mortarDamage = damage;
         maxDuration = duration;
         targetMask = hitMask;
     }
@@ -52,10 +56,7 @@ public class MortarController : MonoBehaviour
         {
             //For every hit
             //Do something
-            if (hit.transform.gameObject.CompareTag("Player")) 
-            {
-                print("Hit the player");
-            }
+            hit.transform.gameObject.GetComponent<DamageController>().OnDamage(mortarDamage);
         }
     }
 

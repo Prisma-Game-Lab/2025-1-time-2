@@ -19,7 +19,9 @@ GameObject:
   - component: {fileID: 5622550333497266844}
   - component: {fileID: 526859834013453721}
   - component: {fileID: 5530507891916285700}
-  m_Layer: 0
+  - component: {fileID: 8710172705894706232}
+  - component: {fileID: 4110095166037054398}
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -261,10 +263,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20168396bab3abf4fb9346c41a271d25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageController: {fileID: 0}
+  healthController: {fileID: 0}
+  rb: {fileID: 0}
   playerMovement: {fileID: 0}
   inputManager: {fileID: 0}
   playerParry: {fileID: 0}
-  rb: {fileID: 0}
 --- !u!114 &8371362252926876828
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -373,10 +377,11 @@ MonoBehaviour:
   aimDesaccelerationRate: 6
   aimRadius: 4
   shotPrefab: {fileID: 8532741216186767511, guid: 1144aee368376754595b676683ace2cd, type: 3}
+  mortarDamage: 5
   shotTime: 1
   targetLayerMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 192
 --- !u!114 &526859834013453721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -410,3 +415,59 @@ MonoBehaviour:
   parryWindow: 0.3
   parryEffectPrefab: {fileID: 2248265322326265532, guid: f888a631dde19ea4496b7af8e9436b5c, type: 3}
   parryEffectDuration: 0.2
+--- !u!114 &8710172705894706232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6608917251125156136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69e5875593de5ae4cbd3e3936ccc19d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DamageEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4110095166037054398}
+        m_TargetAssemblyTypeName: EntityHealthController, Assembly-CSharp
+        m_MethodName: TakeDamage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  damage: 0
+--- !u!114 &4110095166037054398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6608917251125156136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e145fbbc09d000d4e844385d22b050e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 10
+  onDeathEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2

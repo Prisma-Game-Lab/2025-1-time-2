@@ -17,6 +17,7 @@ public class PlayerFiring : MonoBehaviour
 
     [Header("Mortar Shot Configuration")]
     [SerializeField] private GameObject shotPrefab;
+    [SerializeField] private int mortarDamage;
     [SerializeField] private float shotTime;
     [SerializeField] private LayerMask targetLayerMask;
 
@@ -77,7 +78,7 @@ public class PlayerFiring : MonoBehaviour
     public void OnShotFired() 
     {
         GameObject shot = Instantiate(shotPrefab, transform.position, Quaternion.identity);
-        shot.GetComponent<MortarController>().Initialization(aimObject.transform.position, shotTime, targetLayerMask);
+        shot.GetComponent<MortarController>().Initialization(aimObject.transform.position, mortarDamage, shotTime, targetLayerMask);
     }
 
     private void OnDrawGizmosSelected()
