@@ -193,6 +193,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 526859834013453721, guid: 6990a597796a00b42bd663c66e9744c1, type: 3}
+      propertyPath: maxFixedTimer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 526859834013453721, guid: 6990a597796a00b42bd663c66e9744c1, type: 3}
+      propertyPath: maxVariableTimer
+      value: 45
+      objectReference: {fileID: 0}
     - target: {fileID: 1456771733844822845, guid: 6990a597796a00b42bd663c66e9744c1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -236,6 +244,10 @@ PrefabInstance:
     - target: {fileID: 5530507891916285700, guid: 6990a597796a00b42bd663c66e9744c1, type: 3}
       propertyPath: parryWindow
       value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5622550333497266844, guid: 6990a597796a00b42bd663c66e9744c1, type: 3}
+      propertyPath: ammoCount
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6608917251125156136, guid: 6990a597796a00b42bd663c66e9744c1, type: 3}
       propertyPath: m_Name

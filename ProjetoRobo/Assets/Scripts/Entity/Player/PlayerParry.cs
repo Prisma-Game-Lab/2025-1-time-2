@@ -4,6 +4,8 @@ using UnityEngine;
 public class PlayerParry : MonoBehaviour
 {
     private PlayerController pc;
+
+    private PlayerFiring pf;
     private InputManager inputManager;
 
     [Header("Parry Configuration")]
@@ -19,6 +21,7 @@ public class PlayerParry : MonoBehaviour
     {
         pc = GetComponent<PlayerController>();
         inputManager = GetComponent<InputManager>();
+        pf = GetComponent<PlayerFiring>();
 
         pc.playerParry = this;
         inputManager.OnParry.AddListener(OnParryPressed);
@@ -57,7 +60,8 @@ public class PlayerParry : MonoBehaviour
         {
             if (isParryActive)
             {
-                OnParryVisual(); // Trigger the visual effect
+                OnParryVisual();
+                pf.ammoCount += 1; // Trigger the visual effect
                 Debug.Log("Parried!");
             }
             else
