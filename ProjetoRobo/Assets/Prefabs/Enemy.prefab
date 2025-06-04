@@ -78,7 +78,7 @@ GameObject:
   - component: {fileID: 1456771733844822845}
   - component: {fileID: 1571707957375992519}
   - component: {fileID: 8495145369013666646}
-  - component: {fileID: 8234240749176261408}
+  - component: {fileID: 8363373964213777536}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -182,7 +182,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &8234240749176261408
+--- !u!114 &8363373964213777536
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -191,12 +191,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 6608917251125156136}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eec8dfda1522a5d4c9f385a85050dea8, type: 3}
+  m_Script: {fileID: 11500000, guid: ed4319db25904f9409a3a431da99cfe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
   maxSpeed: 4
-  laserFireRate: 0.5
+  laserFireRate: 0.8
   laserLifetime: 2
   laserSpeed: 10
   laserPool: {fileID: 0}
