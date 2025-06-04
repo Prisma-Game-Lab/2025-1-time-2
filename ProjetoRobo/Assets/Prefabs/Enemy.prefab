@@ -196,6 +196,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   maxSpeed: 4
+  laserFireRate: 0.8
+  laserLifetime: 2
+  laserSpeed: 10
+  laserPool: {fileID: 0}
 --- !u!1 &6684978191623958842
 GameObject:
   m_ObjectHideFlags: 0
