@@ -28,6 +28,7 @@ public class EntityHealthController : MonoBehaviour
         //Nao podemos passar o dano por parametro, ja que DamageController é generico e nao passa parametros 
         //(Para poder ser utilizado em objetos que não tem esse componente)
         //Logo pegamos diretamento o valor do dano
+
         currentHealth -= ec.damageController.damage;
 
         OnDamage?.Invoke();

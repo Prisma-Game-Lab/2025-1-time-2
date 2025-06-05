@@ -9,6 +9,7 @@ public class EnemyController : MonoBehaviour
     private Rigidbody2D rb;
     private Rigidbody2D player;
 
+    [SerializeField] private int laserDamage;
     [SerializeField] private float speed = 3f;
     [SerializeField] private float maxSpeed = 4f;
     [SerializeField] private float laserFireRate = 0.1f;
@@ -71,7 +72,7 @@ public class EnemyController : MonoBehaviour
 
             Laser laserScript = laser.GetComponent<Laser>();
             Vector2 direction = (player.position - rb.position).normalized;
-            laserScript.SetUp(direction, laserSpeed, laserLifetime, targetLayers);
+            laserScript.SetUp(direction, laserDamage,laserSpeed, laserLifetime, targetLayers);
         }
     }
 }

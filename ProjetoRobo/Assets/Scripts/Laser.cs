@@ -5,9 +5,9 @@ using UnityEngine;
 public class Laser : MonoBehaviour
 {
     private Rigidbody2D rb;
-    private int bulletDamage = 1;
     
     private Vector2 direction;
+    private int damage;
     private float speed = 5f;
     private float laserLifetime;
 
@@ -21,9 +21,10 @@ public class Laser : MonoBehaviour
         //transform.Translate(direction * speed * Time.deltaTime);
     }
 
-    public void SetUp(Vector2 dir, float laserSpeed, float lifetime, LayerMask layerMask) 
+    public void SetUp(Vector2 dir, int laserdamage, float laserSpeed, float lifetime, LayerMask layerMask) 
     {
         direction = dir;
+        damage = laserdamage;
         speed = laserSpeed;
         laserLifetime = lifetime;
         rb = GetComponent<Rigidbody2D>();
@@ -40,7 +41,7 @@ public class Laser : MonoBehaviour
         DamageController damageController = collision.GetComponent<DamageController>();
         if (damageController != null) 
         {
-            damageController.OnDamage(bulletDamage);
+            damageController.OnDamage(damage);
         }
 
         gameObject.SetActive(false);
