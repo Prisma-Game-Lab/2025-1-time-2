@@ -34,6 +34,7 @@ public class PlayerParry : MonoBehaviour
 
     private void OnParryPressed()
     {
+        
         StartCoroutine(ParryWindowCoroutine());
         
     }
@@ -54,20 +55,26 @@ public class PlayerParry : MonoBehaviour
         }
     }
 
-    public void AttemptParry(GameObject other)
+    public bool AttemptParry(GameObject other)
     {
-        if (other.CompareTag("Enemy"))
+        if (other.CompareTag("Enemy") || other.CompareTag("Laser"))
         {
             if (isParryActive)
             {
                 OnParryVisual();
-                pf.ammoCount += 1; // Trigger the visual effect
+                if (pf.ammoCount < pf.maxAmmo)
+                {
+                    pf.ammoCount += 1; // Trigger the visual effect
+                }
                 Debug.Log("Parried!");
+                return true;
             }
             else
             {
                 Debug.Log("Hit");
+                
             }
         }
+        return false;
     }
 }

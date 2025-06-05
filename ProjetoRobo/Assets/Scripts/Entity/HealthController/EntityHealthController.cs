@@ -11,7 +11,7 @@ public class EntityHealthController : MonoBehaviour
 
     [SerializeField] private int maxHealth;
 
-    private int currentHealth;
+    public int currentHealth;
 
     private UnityEvent OnDamage;
     private UnityEvent OnHeal;
@@ -25,8 +25,8 @@ public class EntityHealthController : MonoBehaviour
 
     public void TakeDamage() 
     {
-        //Nao podemos passar o dano por parametro, ja que DamageController é generico e nao passa parametros 
-        //(Para poder ser utilizado em objetos que não tem esse componente)
+        //Nao podemos passar o dano por parametro, ja que DamageController ï¿½ generico e nao passa parametros 
+        //(Para poder ser utilizado em objetos que nï¿½o tem esse componente)
         //Logo pegamos diretamento o valor do dano
 
         currentHealth -= ec.damageController.damage;

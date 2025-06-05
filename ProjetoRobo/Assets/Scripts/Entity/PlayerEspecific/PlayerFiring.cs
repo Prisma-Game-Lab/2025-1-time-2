@@ -19,7 +19,9 @@ public class PlayerFiring : MonoBehaviour
     [SerializeField] private GameObject shotPrefab;
     [SerializeField] private int mortarDamage;
 
-    [SerializeField] public int ammoCount;
+    [SerializeField] public int maxAmmo;
+
+    [HideInInspector] public int ammoCount;
     [SerializeField] private float shotTime;
     [SerializeField] private LayerMask targetLayerMask;
 
@@ -33,6 +35,7 @@ public class PlayerFiring : MonoBehaviour
 
         aimObject = Instantiate(aimPrefab, transform.position, Quaternion.identity);
         aimRb = aimObject.GetComponent<Rigidbody2D>();
+        ammoCount = maxAmmo;
     }
 
     private void FixedUpdate()
