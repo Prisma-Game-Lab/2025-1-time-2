@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1983237289639213686}
   - component: {fileID: 2728252614557460541}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ColliderDetector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78,8 +78,12 @@ GameObject:
   - component: {fileID: 1456771733844822845}
   - component: {fileID: 1571707957375992519}
   - component: {fileID: 8495145369013666646}
-  - component: {fileID: 8363373964213777536}
-  m_Layer: 0
+  - component: {fileID: 9199264604248984440}
+  - component: {fileID: 4380686358849181754}
+  - component: {fileID: 8411814569687638346}
+  - component: {fileID: 9063801258915154855}
+  - component: {fileID: 4410214580268529694}
+  m_Layer: 7
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -181,8 +185,8 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!114 &8363373964213777536
+  m_Constraints: 4
+--- !u!114 &9199264604248984440
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -191,15 +195,88 @@ MonoBehaviour:
   m_GameObject: {fileID: 6608917251125156136}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed4319db25904f9409a3a431da99cfe6, type: 3}
+  m_Script: {fileID: 11500000, guid: 1caae1c7d9809b8438b44d5a37696091, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageController: {fileID: 0}
+  healthController: {fileID: 0}
+  rb: {fileID: 0}
+--- !u!114 &4380686358849181754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6608917251125156136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4830185bf02c71444bf368cc6e0f6dda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
   maxSpeed: 4
-  laserFireRate: 0.8
+  laserFireRate: 1
   laserLifetime: 2
-  laserSpeed: 10
-  laserPool: {fileID: 0}
+  laserSpeed: 5
+  targetLayers:
+    serializedVersion: 2
+    m_Bits: 64
+  laserPool: {fileID: 8411814569687638346}
+--- !u!114 &8411814569687638346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6608917251125156136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2670d35d161437f408de6b4b55b7cdfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  laserPrefab: {fileID: 2559678801380612957, guid: e6a6fc142cc89eb409495ea0dc8e2f1c, type: 3}
+  initialPoolSize: 10
+--- !u!114 &9063801258915154855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6608917251125156136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69e5875593de5ae4cbd3e3936ccc19d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DamageEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4410214580268529694}
+        m_TargetAssemblyTypeName: EntityHealthController, Assembly-CSharp
+        m_MethodName: TakeDamage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  damage: 0
+--- !u!114 &4410214580268529694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6608917251125156136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 408c9def69b59b341a962dcc5f6aef5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 10
 --- !u!1 &6684978191623958842
 GameObject:
   m_ObjectHideFlags: 0

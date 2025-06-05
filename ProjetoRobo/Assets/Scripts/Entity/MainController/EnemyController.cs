@@ -14,6 +14,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float laserFireRate = 0.1f;
     [SerializeField] private float laserLifetime = 2f;
     [SerializeField] private float laserSpeed = 5f;
+    [SerializeField] private LayerMask targetLayers;
 
     private float timer = 0f;
     private bool isAlive = true;
@@ -42,7 +43,7 @@ public class EnemyController : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        if (foundPlayer && timer >= laserFireRate)
+        if (foundPlayer && timer >= 1/laserFireRate)
         {
             ShootLaser();
             timer = 0f;
@@ -70,17 +71,7 @@ public class EnemyController : MonoBehaviour
 
             Laser laserScript = laser.GetComponent<Laser>();
             Vector2 direction = (player.position - rb.position).normalized;
-            laserScript.direction = direction;
-            laserScript.speed = laserSpeed;
-
-            StartCoroutine(DisableAfterTime(laser, laserLifetime));
+            laserScript.SetUp(direction, laserSpeed, laserLifetime, targetLayers);
         }
-    }
-
-    private IEnumerator DisableAfterTime(GameObject obj, float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        if (obj != null)
-            obj.SetActive(false);
     }
 }

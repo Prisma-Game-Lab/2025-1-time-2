@@ -6,6 +6,8 @@ public class PlayerController : EntityController
 {
     [HideInInspector] public PlayerMovement playerMovement;
     [HideInInspector] public InputManager inputManager;
+    [HideInInspector] public PlayerFiring playerFiring;
+    [HideInInspector] public PlayerTimer playerTimer;
 
     [HideInInspector] public PlayerParry playerParry;
 
@@ -15,10 +17,14 @@ public class PlayerController : EntityController
         
         playerMovement = GetComponent<PlayerMovement>();
         inputManager = GetComponent<InputManager>();
+        playerFiring = GetComponent<PlayerFiring>();
+        playerTimer = GetComponent<PlayerTimer>();
 
         playerParry = GetComponent<PlayerParry>();
     }
 
+    //Nao deveria estar aqui
+    //Falar com o alvarenga
     void OnCollisionEnter2D(Collision2D other)
     {
          playerParry?.AttemptParry(other.gameObject);

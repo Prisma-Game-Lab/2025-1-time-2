@@ -178,7 +178,7 @@
                 {
                     "name": "",
                     "id": "4d4e3f78-c978-442b-ac53-3f99e866b68e",
-                    "path": "<Keyboard>/e",
+                    "path": "<Keyboard>/leftShift",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
@@ -200,7 +200,7 @@
                 {
                     "name": "",
                     "id": "02fb97d9-9dcb-4ff0-bc81-feb0ea6f5fa2",
-                    "path": "<Keyboard>/m",
+                    "path": "<Keyboard>/rightCtrl",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",

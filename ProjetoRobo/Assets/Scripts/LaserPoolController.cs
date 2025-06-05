@@ -34,7 +34,7 @@ public class LaserPoolController : MonoBehaviour
     {
         GameObject newLaser = Instantiate(laserPrefab, transform.position, Quaternion.identity);
         newLaser.SetActive(false);
-        newLaser.transform.parent = transform;
+        //newLaser.transform.parent = transform;
         laserPool.Add(newLaser);
         return newLaser;
     }
