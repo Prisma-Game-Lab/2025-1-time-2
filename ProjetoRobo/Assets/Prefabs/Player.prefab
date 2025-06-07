@@ -380,11 +380,19 @@ MonoBehaviour:
   aimRadius: 4
   shotPrefab: {fileID: 8532741216186767511, guid: 1144aee368376754595b676683ace2cd, type: 3}
   mortarDamage: 5
-  ammoCount: 5
+  maxAmmo: 0
   shotTime: 1
   targetLayerMask:
     serializedVersion: 2
     m_Bits: 192
+  ammoCount: 5
+  shotPrefab1: {fileID: 8532741216186767511, guid: 12067b5514ee00a44bdd9c28361c1e34, type: 3}
+  shotPrefab2: {fileID: 8532741216186767511, guid: f26d7358861f35a43a610afc28fc0f3d, type: 3}
+  shotPrefab3: {fileID: 8532741216186767511, guid: daa88dd34dd0fdb45b3f28706e188ba8, type: 3}
+  shot1Delay: 0.25
+  shot2minDur: 0.5
+  shot2maxDur: 1
+  shot3speed: 4
 --- !u!114 &526859834013453721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -459,6 +467,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 10
+  currentHealth: 0
   onDeathEvent:
     m_PersistentCalls:
       m_Calls:

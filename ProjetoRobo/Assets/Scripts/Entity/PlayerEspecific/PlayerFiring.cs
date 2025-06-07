@@ -21,13 +21,24 @@ public class PlayerFiring : MonoBehaviour
 
     [SerializeField] public int maxAmmo;
 
-    [HideInInspector] public int ammoCount;
     [SerializeField] private float shotTime;
     [SerializeField] private LayerMask targetLayerMask;
 
+    [HideInInspector] public int ammoCount;
     private GameObject aimObject;
     private Rigidbody2D aimRb;
     private Vector2 aimInput;
+
+    [Header("Playtest Mortar Shot Configuration")]
+    //Playtest Only
+    [SerializeField] private GameObject shotPrefab1;
+    [SerializeField] private GameObject shotPrefab2;
+    [SerializeField] private GameObject shotPrefab3;
+    [SerializeField] private float shot1Delay;
+    [SerializeField] private float shot2minDur;
+    [SerializeField] private float shot2maxDur;
+    [SerializeField] private float shot3speed;
+
 
     private void Start()
     {
@@ -84,9 +95,38 @@ public class PlayerFiring : MonoBehaviour
     {
         if (ammoCount > 0)
         {
-            GameObject shot = Instantiate(shotPrefab, transform.position, Quaternion.identity);
-            shot.GetComponent<MortarController>().Initialization(aimObject.transform.position, mortarDamage, shotTime, targetLayerMask);
-            ammoCount -= 1;
+            //Playtest Only
+            switch (GameManager.Instance.mortarShotConfiguration) 
+            {
+                case 0:
+                    //Travelling Shot
+                    GameObject shot = Instantiate(shotPrefab, transform.position, Quaternion.identity);
+                    shot.GetComponent<MortarController>().Initialization(aimObject.transform.position, mortarDamage, shotTime, targetLayerMask);
+                    ammoCount -= 1;
+                    break;
+                case 1:
+                    //Instantaneus Shot
+                    GameObject instaShot = Instantiate(shotPrefab1, aimObject.transform.position, Quaternion.identity);
+                    instaShot.GetComponent<MortarController1>().Initialization(mortarDamage, shotTime, shot1Delay, targetLayerMask);
+                    ammoCount -= 1;
+                    break;
+                case 2:
+                    //Travelling with varying duration Shot
+                    GameObject vdShot = Instantiate(shotPrefab2, transform.position, Quaternion.identity);
+                    vdShot.GetComponent<MortarController2>().Initialization(aimObject.transform.position, mortarDamage, shot2minDur, shot2maxDur, aimRadius, targetLayerMask);
+                    ammoCount -= 1;
+                    break;
+                case 3:
+                    //Travelling with varying duration Shot
+                    GameObject speedShot = Instantiate(shotPrefab3, transform.position, Quaternion.identity);
+                    speedShot.GetComponent<MortarController3>().Initialization(aimObject.transform.position, shot3speed, mortarDamage, aimRadius, targetLayerMask);
+                    ammoCount -= 1;
+                    break;
+            }
+
+            //GameObject shot = Instantiate(shotPrefab, transform.position, Quaternion.identity);
+            //shot.GetComponent<MortarController>().Initialization(aimObject.transform.position, mortarDamage, shotTime, targetLayerMask);
+            //ammoCount -= 1;
         }
     }
 
