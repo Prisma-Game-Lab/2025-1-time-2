@@ -1,27 +1,93 @@
-using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-   public  TMP_Text vidas;
-    public  TMP_Text ammo;
+    [Header("Containers")]
+    public Transform heartContainer;
+    public Transform bulletContainer;
 
+    [Header("Sprites")]
+    public Sprite fullHeartSprite;
+    public Sprite emptyHeartSprite;
+    public Sprite fullBulletSprite;
+    public Sprite emptyBulletSprite;
 
+    [Header("Prefabs")]
+    public GameObject heartPrefab;
+    public GameObject bulletPrefab;
 
+    [Header("References")]
     public GameObject player;
 
-   
+    [Header("Corners")]
 
-    // Update is called once per frame
+    public GameObject greenL;
+    public GameObject redL;
+    public GameObject greenR;
+    public GameObject redR;
+
+    private bool b1 = true;
+    private bool b2 = false;
+
+    private List<Image> heartIcons = new List<Image>();
+    private List<Image> bulletIcons = new List<Image>();
+
+    private int maxHearts;
+    private int maxBullets;
+
+    void Start()
+    {
+        maxHearts = player.GetComponent<PlayerHealthController>().maxHealth;
+        maxBullets = player.GetComponent<PlayerFiring>().maxAmmo;
+
+        InitIcons(heartContainer, heartPrefab, maxHearts, heartIcons);
+        InitIcons(bulletContainer, bulletPrefab, maxBullets, bulletIcons);
+
+        greenL.SetActive(b1);
+        redR.SetActive(b1);
+
+        greenR.SetActive(b2);
+        redL.SetActive(b2);
+    }
+
     void Update()
     {
-        //ammo.text = pf.GetComponent<>().shopItems
-        //vidas.text = phc.currentHealth.ToString();
+        int currentHealth = player.GetComponent<PlayerHealthController>().currentHealth;
+        int currentAmmo = player.GetComponent<PlayerFiring>().ammoCount;
 
-        ammo.text = "Balas: " + player.GetComponent<PlayerFiring>().ammoCount.ToString();
-        vidas.text = "Vidas: " +  player.GetComponent<PlayerHealthController>().currentHealth.ToString();
-        
+        UpdateIconSprites(heartIcons, currentHealth, fullHeartSprite, emptyHeartSprite);
+        UpdateIconSprites(bulletIcons, currentAmmo, fullBulletSprite, emptyBulletSprite);
+    }
+
+    private void InitIcons(Transform container, GameObject prefab, int count, List<Image> iconList)
+    {
+        for (int i = 0; i < count; i++)
+        {
+            GameObject icon = Instantiate(prefab, container);
+            Image img = icon.GetComponent<Image>();
+            iconList.Add(img);
+        }
+    }
+
+    private void UpdateIconSprites(List<Image> icons, int activeCount, Sprite fullSprite, Sprite emptySprite)
+    {
+        for (int i = 0; i < icons.Count; i++)
+        {
+            icons[i].sprite = i < activeCount ? fullSprite : emptySprite;
+        }
+    }
+    public void SwitchCorners()
+    {
+        b1 = !b1;
+        b2 = !b2;
+
+        greenL.SetActive(b1);
+        redR.SetActive(b1);
+
+        greenR.SetActive(b2);
+        redL.SetActive(b2);
     }
 }
+

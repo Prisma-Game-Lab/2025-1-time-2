@@ -7,6 +7,7 @@ public class PlayerTimer : MonoBehaviour
 {
     //Reference to controller
     private PlayerController pc;
+    public UIManager uim;
 
     [Header("Timer Configurations")]
     [SerializeField] private bool timerPaused;
@@ -22,6 +23,7 @@ public class PlayerTimer : MonoBehaviour
     void Start()
     {
         pc = GetComponent<PlayerController>();
+        
 
         currentVariableTimer = maxVariableTimer;
         currentFixedTimer = maxFixedTimer;
@@ -68,6 +70,7 @@ public class PlayerTimer : MonoBehaviour
         onTransition = false;
 
         pc.inputManager.SwitchPlayerInput();
+        uim.SwitchCorners();
         onInputChange?.Invoke();
     }
 

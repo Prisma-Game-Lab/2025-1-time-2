@@ -9,7 +9,7 @@ public class EntityHealthController : MonoBehaviour
     //Reference to controller
     private EntityController ec;
 
-    [SerializeField] private int maxHealth;
+    [SerializeField] public int maxHealth;
 
     public int currentHealth;
 
