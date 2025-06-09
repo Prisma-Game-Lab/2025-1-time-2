@@ -246,6 +246,14 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: b0aff59a-2a5c-4354-9027-9c10aa604eca
     m_ActionName: Normal/ButtonP2[/Keyboard/m]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8198d636-d152-431c-9a4b-85fccdb5a341
+    m_ActionName: Normal/IncreaseMortarConfiguration[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4287a451-f119-4569-b6c2-cdcf9554bf2f
+    m_ActionName: Normal/DecreaseMortarConfiguration1[/Mouse/rightButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Normal
@@ -405,6 +413,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de7d9f7fa1fdc69448cbddb6364ba0b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uim: {fileID: 0}
   timerPaused: 0
   maxVariableTimer: 7
   maxFixedTimer: 3
@@ -466,8 +475,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e145fbbc09d000d4e844385d22b050e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthDropPrefab: {fileID: 2056062450541606222, guid: 27aed88f837213b4b90397ab54b0ee32, type: 3}
+  ammoDropPrefab: {fileID: 7461689329379917843, guid: 6049f26ddcfb07d4baeba58992c9059d, type: 3}
   maxHealth: 10
+  dropChance: 0
   currentHealth: 0
+  isEnemy: 0
   onDeathEvent:
     m_PersistentCalls:
       m_Calls:

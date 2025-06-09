@@ -277,8 +277,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 408c9def69b59b341a962dcc5f6aef5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthDropPrefab: {fileID: 2056062450541606222, guid: 27aed88f837213b4b90397ab54b0ee32, type: 3}
+  ammoDropPrefab: {fileID: 7461689329379917843, guid: 6049f26ddcfb07d4baeba58992c9059d, type: 3}
   maxHealth: 10
+  dropChance: 0.33
   currentHealth: 0
+  isEnemy: 1
 --- !u!1 &6684978191623958842
 GameObject:
   m_ObjectHideFlags: 0
