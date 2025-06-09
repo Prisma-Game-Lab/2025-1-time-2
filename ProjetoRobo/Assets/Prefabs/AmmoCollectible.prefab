@@ -149,4 +149,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotatingSpeed: 1
+  despawnTime: 10
   type: 2

@@ -7,17 +7,30 @@ public class CollectibleController : MonoBehaviour
     private Transform tr;
     [SerializeField]private float rotatingSpeed;
 
+    [SerializeField]private int despawnTime;
+
+    private float timer;
+
     public int type;
 
     // Start is called before the first frame update
     void Start()
     {
+        timer = despawnTime;
         tr = GetComponent<Transform>();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (timer > 0)
+        {
+            timer -= Time.deltaTime;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
         tr.Rotate(rotatingSpeed, 0.0f, rotatingSpeed, Space.Self);
     }
 
