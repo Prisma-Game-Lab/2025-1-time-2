@@ -89,10 +89,10 @@ public class EntityHealthController : MonoBehaviour
         {
             UIManager uim = FindObjectOfType<UIManager>();
             uim.pontos++;
-
+            AudioManager.Instance.PlaySFX("enemy_death_sfx");
             Drop();
         }
-        
+        AudioManager.Instance.PlaySFX("player_death_sfx");
         Destroy(gameObject);
     }
 }

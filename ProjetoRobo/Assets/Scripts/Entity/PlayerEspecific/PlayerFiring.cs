@@ -95,8 +95,9 @@ public class PlayerFiring : MonoBehaviour
     {
         if (ammoCount > 0)
         {
+            AudioManager.Instance.PlaySFX("player_shot_sfx");
             //Playtest Only
-            switch (GameManager.Instance.mortarShotConfiguration) 
+            switch (GameManager.Instance.mortarShotConfiguration)
             {
                 case 0:
                     //Travelling Shot

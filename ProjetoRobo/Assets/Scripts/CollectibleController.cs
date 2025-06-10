@@ -51,6 +51,7 @@ public class CollectibleController : MonoBehaviour
                 PlayerFiring pf = other.GetComponent<PlayerFiring>();
                 pf.ammoCount += 1;
             }
+            AudioManager.Instance.PlaySFX("powerup_sfx");
             Debug.Log("Collected!");
             Destroy(gameObject);
         }

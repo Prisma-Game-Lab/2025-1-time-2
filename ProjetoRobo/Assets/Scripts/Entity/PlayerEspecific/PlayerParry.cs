@@ -84,6 +84,7 @@ public class PlayerParry : MonoBehaviour
             if (isParryActive)
             {
                 parrySucceeded = true; 
+                 AudioManager.Instance.PlaySFX("parry_sfx");
                 OnParryVisual();
                 if (pf.ammoCount < pf.maxAmmo)
                 {

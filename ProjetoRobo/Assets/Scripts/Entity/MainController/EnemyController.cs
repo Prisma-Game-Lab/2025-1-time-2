@@ -72,7 +72,8 @@ public class EnemyController : MonoBehaviour
 
             Laser laserScript = laser.GetComponent<Laser>();
             Vector2 direction = (player.position - rb.position).normalized;
-            laserScript.SetUp(direction, laserDamage,laserSpeed, laserLifetime, targetLayers);
+            laserScript.SetUp(direction, laserDamage, laserSpeed, laserLifetime, targetLayers);
+            AudioManager.Instance.PlaySFX("enemy_laser_sfx");
         }
     }
 }

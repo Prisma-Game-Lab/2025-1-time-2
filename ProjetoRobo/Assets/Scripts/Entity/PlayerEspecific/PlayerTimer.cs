@@ -69,6 +69,7 @@ public class PlayerTimer : MonoBehaviour
         currentFixedTimer = maxFixedTimer;
         onTransition = false;
 
+        AudioManager.Instance.PlaySFX("switch_sfx");
         pc.inputManager.SwitchPlayerInput();
         uim.SwitchCorners();
         onInputChange?.Invoke();
