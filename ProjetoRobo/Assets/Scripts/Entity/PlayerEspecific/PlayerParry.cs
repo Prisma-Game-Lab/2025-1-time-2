@@ -87,7 +87,7 @@ public class PlayerParry : MonoBehaviour
                 OnParryVisual();
                 if (pf.ammoCount < pf.maxAmmo)
                 {
-                    pf.ammoCount += 1; // Trigger the visual effect
+                    pf.ammoCount += 1; 
                 }
                 
                 return true;

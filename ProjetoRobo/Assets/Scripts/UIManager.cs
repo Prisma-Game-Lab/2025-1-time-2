@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -28,6 +29,10 @@ public class UIManager : MonoBehaviour
     public GameObject greenR;
     public GameObject redR;
 
+    public TMP_Text pontosText;
+
+    public int pontos = 0;
+
     private bool b1 = true;
     private bool b2 = false;
 
@@ -39,6 +44,7 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
+        pontosText.text = "0";
         maxHearts = player.GetComponent<PlayerHealthController>().maxHealth;
         maxBullets = player.GetComponent<PlayerFiring>().maxAmmo;
 
@@ -54,6 +60,7 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
+        pontosText.text = pontos.ToString();
         int currentHealth = player.GetComponent<PlayerHealthController>().currentHealth;
         int currentAmmo = player.GetComponent<PlayerFiring>().ammoCount;
 

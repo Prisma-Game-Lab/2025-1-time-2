@@ -13,6 +13,7 @@ public class EntityHealthController : MonoBehaviour
     public GameObject healthDropPrefab;
     public GameObject ammoDropPrefab;
 
+
     [SerializeField] public int maxHealth;
 
     [SerializeField] public float dropChance;
@@ -28,6 +29,7 @@ public class EntityHealthController : MonoBehaviour
 
     private void Start()
     {
+        
         ec = GetComponent<EntityController>();
 
         currentHealth = maxHealth;
@@ -45,6 +47,7 @@ public class EntityHealthController : MonoBehaviour
 
         if (currentHealth <= 0) 
         {
+            
             Die();
         }
     }
@@ -84,6 +87,9 @@ public class EntityHealthController : MonoBehaviour
     {
         if (isEnemy == true)
         {
+            UIManager uim = FindObjectOfType<UIManager>();
+            uim.pontos++;
+
             Drop();
         }
         
