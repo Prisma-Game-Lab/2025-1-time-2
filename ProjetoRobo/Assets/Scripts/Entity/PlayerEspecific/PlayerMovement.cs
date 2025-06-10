@@ -26,6 +26,8 @@ public class PlayerMovement : MonoBehaviour
     public void OnDirectionChange(Vector2 newInputVector)
     {
         moveInput = newInputVector;
+        float angle = Mathf.Atan2(moveInput.y, moveInput.x) * Mathf.Rad2Deg;
+        pc.rb.rotation = angle;
     }
 
     private void ApplyMovement()
