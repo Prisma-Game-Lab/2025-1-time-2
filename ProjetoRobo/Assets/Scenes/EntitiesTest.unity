@@ -18460,6 +18460,14 @@ PrefabInstance:
       propertyPath: healthDropPrefab
       value: 
       objectReference: {fileID: 2056062450541606222, guid: 27aed88f837213b4b90397ab54b0ee32, type: 3}
+    - target: {fileID: 5530507891916285700, guid: 6990a597796a00b42bd663c66e9744c1, type: 3}
+      propertyPath: parryWindow
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5530507891916285700, guid: 6990a597796a00b42bd663c66e9744c1, type: 3}
+      propertyPath: parryCooldown
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5622550333497266844, guid: 6990a597796a00b42bd663c66e9744c1, type: 3}
       propertyPath: maxAmmo
       value: 5

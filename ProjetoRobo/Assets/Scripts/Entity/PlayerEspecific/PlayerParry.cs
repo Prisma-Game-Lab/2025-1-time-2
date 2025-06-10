@@ -11,11 +11,17 @@ public class PlayerParry : MonoBehaviour
     [Header("Parry Configuration")]
     [SerializeField] private float parryWindow = 0.3f;
 
+    [SerializeField] private float parryCooldown = 0.5f;
+
     [Header("Parry Visual")]
     [SerializeField] private GameObject parryEffectPrefab; // prefab to show
     [SerializeField] private float parryEffectDuration = 0.2f;
 
+
     private bool isParryActive = false;
+    private bool isOnCooldown = false;
+
+    private bool parrySucceeded = false;
 
     private void Awake()
     {
@@ -34,17 +40,33 @@ public class PlayerParry : MonoBehaviour
 
     private void OnParryPressed()
     {
+        if (!isOnCooldown && !isParryActive)
+        {
+            StartCoroutine(ParryWindowCoroutine());
+        }
         
-        StartCoroutine(ParryWindowCoroutine());
+        
         
     }
 
     private IEnumerator ParryWindowCoroutine()
     {
         isParryActive = true;
+
         yield return new WaitForSeconds(parryWindow);
         isParryActive = false;
+
+        if (!parrySucceeded)
+        {
+            StartCoroutine(CooldownCoroutine());
+        }
     }
+    private IEnumerator CooldownCoroutine()
+    {
+        isOnCooldown = true;
+        yield return new WaitForSeconds(parryCooldown);
+         isOnCooldown = false;
+     }
 
     private void OnParryVisual()
     {
@@ -61,17 +83,19 @@ public class PlayerParry : MonoBehaviour
         {
             if (isParryActive)
             {
+                parrySucceeded = true; 
                 OnParryVisual();
                 if (pf.ammoCount < pf.maxAmmo)
                 {
                     pf.ammoCount += 1; // Trigger the visual effect
                 }
-                Debug.Log("Parried!");
+                
                 return true;
             }
             else
             {
-                Debug.Log("Hit");
+                
+                StartCoroutine(CooldownCoroutine());
                 
             }
         }

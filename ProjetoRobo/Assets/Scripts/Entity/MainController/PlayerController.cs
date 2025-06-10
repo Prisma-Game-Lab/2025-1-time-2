@@ -25,10 +25,7 @@ public class PlayerController : EntityController
 
     //Nao deveria estar aqui
     //Falar com o alvarenga
-    void OnCollisionEnter2D(Collision2D other)
-    {
-         playerParry?.AttemptParry(other.gameObject);
-    }
+    
 }
 
 
