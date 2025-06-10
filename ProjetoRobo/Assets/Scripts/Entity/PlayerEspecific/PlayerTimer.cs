@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,12 +17,20 @@ public class PlayerTimer : MonoBehaviour
 
     [SerializeField] private UnityEvent onInputChange;
 
+    [SerializeField] private float sfxVolume;
+
     private bool onTransition;
     private float currentVariableTimer;
     private float currentFixedTimer;
 
+    private AudioSource loopedSFXSource;
+   
     void Start()
     {
+        loopedSFXSource = gameObject.AddComponent<AudioSource>();
+        loopedSFXSource.clip = Array.Find(AudioManager.Instance.sfxSounds, x => x.name == "switch_warning_sfx");
+        loopedSFXSource.loop = true;
+        loopedSFXSource.volume = sfxVolume;
         pc = GetComponent<PlayerController>();
         
 
@@ -60,6 +69,8 @@ public class PlayerTimer : MonoBehaviour
 
     private void ActivateTransition() 
     {
+        if (loopedSFXSource != null && !loopedSFXSource.isPlaying)
+        loopedSFXSource.Play();
         print("O robo ira trocar de input");
     }
 
@@ -68,6 +79,9 @@ public class PlayerTimer : MonoBehaviour
         currentVariableTimer = maxVariableTimer;
         currentFixedTimer = maxFixedTimer;
         onTransition = false;
+        
+        if (loopedSFXSource != null && loopedSFXSource.isPlaying)
+            loopedSFXSource.Stop();
 
         AudioManager.Instance.PlaySFX("switch_sfx");
         pc.inputManager.SwitchPlayerInput();

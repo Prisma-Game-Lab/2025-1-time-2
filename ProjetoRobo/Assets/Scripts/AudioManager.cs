@@ -10,6 +10,8 @@ public class AudioManager : MonoBehaviour
     public AudioClip[] musicSounds, sfxSounds;
     public AudioSource musicSource, sfxSource;
 
+
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -18,9 +20,44 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
+            PlayMusic("megaWall");
             Instance = this;
+            DontDestroyOnLoad(this.gameObject);
         }
     }
+private string currentlyToggledSong = null;
+private string originalSong = null;
+
+public void ToggleMusic(string newSong)
+{
+    
+    if (musicSource.clip == null || !musicSource.isPlaying)
+    {
+        PlayMusic(newSong);
+        currentlyToggledSong = newSong;
+        return;
+    }
+
+    if (musicSource.clip.name == newSong)
+    {
+        if (!string.IsNullOrEmpty(originalSong))
+        {
+            PlayMusic(originalSong);
+            currentlyToggledSong = null;
+        }
+        else
+        {
+            musicSource.Stop();
+            currentlyToggledSong = null;
+        }
+    }
+    else
+    {
+        originalSong = musicSource.clip.name;
+        PlayMusic(newSong);
+        currentlyToggledSong = newSong;
+    }
+}
 
     public void PlayMusic(string name)
     {

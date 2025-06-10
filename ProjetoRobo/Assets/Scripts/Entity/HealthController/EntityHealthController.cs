@@ -35,7 +35,7 @@ public class EntityHealthController : MonoBehaviour
         currentHealth = maxHealth;
     }
 
-    public void TakeDamage() 
+    public void TakeDamage()
     {
         //Nao podemos passar o dano por parametro, ja que DamageController � generico e nao passa parametros 
         //(Para poder ser utilizado em objetos que n�o tem esse componente)
@@ -45,11 +45,12 @@ public class EntityHealthController : MonoBehaviour
 
         OnDamage?.Invoke();
 
-        if (currentHealth <= 0) 
+        if (currentHealth <= 0)
         {
-            
+
             Die();
         }
+        
     }
 
     public void Heal(int amount)
