@@ -22,6 +22,7 @@ public class PlayerParry : MonoBehaviour
     private bool isOnCooldown = false;
 
     private bool parrySucceeded = false;
+    public bool IsParrying => isParryActive;
 
     private void Awake()
     {
@@ -52,6 +53,7 @@ public class PlayerParry : MonoBehaviour
     private IEnumerator ParryWindowCoroutine()
     {
         isParryActive = true;
+         parrySucceeded = false;
 
         yield return new WaitForSeconds(parryWindow);
         isParryActive = false;
@@ -76,21 +78,29 @@ public class PlayerParry : MonoBehaviour
             Destroy(effectInstance, parryEffectDuration);
         }
     }
+       public void SuccessfulParry()
+    {
+        if (parryEffectPrefab != null)
+        {
+            GameObject effectInstance = Instantiate(parryEffectPrefab, transform.position, Quaternion.identity, transform);
+            Destroy(effectInstance, parryEffectDuration);
+        }
 
+        AudioManager.Instance?.PlaySFX("parry_sfx");
+
+        if (pf != null && pf.ammoCount < pf.maxAmmo)
+        {
+            pf.ammoCount += 1;
+        }
+    }
     public bool AttemptParry(GameObject other)
     {
         if (other.CompareTag("Enemy") || other.CompareTag("Laser"))
         {
             if (isParryActive)
             {
-                parrySucceeded = true; 
-                 AudioManager.Instance.PlaySFX("parry_sfx");
-                OnParryVisual();
-                if (pf.ammoCount < pf.maxAmmo)
-                {
-                    pf.ammoCount += 1; 
-                }
-                
+                 parrySucceeded = true;
+                SuccessfulParry();
                 return true;
             }
             else

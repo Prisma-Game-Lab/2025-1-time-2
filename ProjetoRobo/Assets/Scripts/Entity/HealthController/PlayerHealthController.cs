@@ -7,9 +7,23 @@ using UnityEngine.Events;
 public class PlayerHealthController : EntityHealthController
 {
     [SerializeField] private UnityEvent onDeathEvent;
+    private PlayerParry playerParry;
+    protected override void TakeDamage()
+    {
+        playerParry = GetComponent<PlayerParry>();
+       
+        if (playerParry != null && playerParry.IsParrying)
+        {
+            playerParry.SuccessfulParry();
+            Debug.Log("Parry!");
+            return;
+        }
 
+        base.TakeDamage();
+    }
     protected override void Die()
     {
+
         onDeathEvent?.Invoke();
     }
 }
