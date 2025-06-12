@@ -10,22 +10,16 @@ public class EntityHealthController : MonoBehaviour
     //Reference to controller
     private EntityController ec;
 
-    public GameObject healthDropPrefab;
-    public GameObject ammoDropPrefab;
-
 
     [SerializeField] public int maxHealth;
 
-    [SerializeField] public float dropChance;
+    [SerializeField] private string deathSfx;
+
 
     public int currentHealth;
 
-
-
     private UnityEvent OnDamage;
     private UnityEvent OnHeal;
-
-    public bool isEnemy;
 
     private void Start()
     {
@@ -64,36 +58,16 @@ public class EntityHealthController : MonoBehaviour
 
         OnHeal?.Invoke();
     }
-    void Drop(){
-    Random.InitState(System.DateTime.Now.Millisecond);
-    float rand1 = Random.Range(0.0f, 1.0f);
-        if (rand1 <= dropChance)
-        {
-            int rand2 = Random.Range(0, 2);
-            if (rand2 == 0)
-            {
-                Instantiate(healthDropPrefab, transform.position, Quaternion.identity);
-            }
-            else
-            {
-                Instantiate(ammoDropPrefab, transform.position, Quaternion.identity);
-            }
-        }
-        
+
+    public void PlayDeathSfx()
+    {
+        AudioManager.Instance.PlaySFX(deathSfx);
     }
-    
 
 
     protected virtual void Die() 
     {
-        if (isEnemy == true)
-        {
-            UIManager uim = FindObjectOfType<UIManager>();
-            uim.pontos++;
-            AudioManager.Instance.PlaySFX("enemy_death_sfx");
-            Drop();
-        }
-        AudioManager.Instance.PlaySFX("player_death_sfx");
+        
         Destroy(gameObject);
     }
 }

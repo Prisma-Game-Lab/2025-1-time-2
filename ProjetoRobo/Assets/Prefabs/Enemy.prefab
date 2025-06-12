@@ -82,7 +82,7 @@ GameObject:
   - component: {fileID: 4380686358849181754}
   - component: {fileID: 8411814569687638346}
   - component: {fileID: 9063801258915154855}
-  - component: {fileID: 4410214580268529694}
+  - component: {fileID: 4994432032424867165}
   m_Layer: 7
   m_Name: Enemy
   m_TagString: Enemy
@@ -252,7 +252,7 @@ MonoBehaviour:
   DamageEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4410214580268529694}
+      - m_Target: {fileID: 4994432032424867165}
         m_TargetAssemblyTypeName: EntityHealthController, Assembly-CSharp
         m_MethodName: TakeDamage
         m_Mode: 1
@@ -265,7 +265,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   damage: 0
---- !u!114 &4410214580268529694
+--- !u!114 &4994432032424867165
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -274,15 +274,67 @@ MonoBehaviour:
   m_GameObject: {fileID: 6608917251125156136}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 408c9def69b59b341a962dcc5f6aef5f, type: 3}
+  m_Script: {fileID: 11500000, guid: 48ec4e81845c2ca489324e1ad4b9b6da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthDropPrefab: {fileID: 2056062450541606222, guid: 27aed88f837213b4b90397ab54b0ee32, type: 3}
-  ammoDropPrefab: {fileID: 7461689329379917843, guid: 6049f26ddcfb07d4baeba58992c9059d, type: 3}
   maxHealth: 10
-  dropChance: 0.33
+  deathSfx: enemy_death_sfx
   currentHealth: 0
-  isEnemy: 1
+  healthDropPrefab: {fileID: 7461689329379917843, guid: 6049f26ddcfb07d4baeba58992c9059d, type: 3}
+  ammoDropPrefab: {fileID: 2056062450541606222, guid: 27aed88f837213b4b90397ab54b0ee32, type: 3}
+  dropChance: 33
+  score: 1
+  onDeathEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4994432032424867165}
+        m_TargetAssemblyTypeName: EnemyHealthController, Assembly-CSharp
+        m_MethodName: IncreaseScore
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4994432032424867165}
+        m_TargetAssemblyTypeName: EntityHealthController, Assembly-CSharp
+        m_MethodName: PlayDeathSfx
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4994432032424867165}
+        m_TargetAssemblyTypeName: EnemyHealthController, Assembly-CSharp
+        m_MethodName: Drop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6608917251125156136}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6684978191623958842
 GameObject:
   m_ObjectHideFlags: 0
