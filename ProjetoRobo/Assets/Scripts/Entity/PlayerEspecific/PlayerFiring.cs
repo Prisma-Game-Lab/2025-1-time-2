@@ -53,6 +53,7 @@ public class PlayerFiring : MonoBehaviour
     {
         MoveAim();
         RestrictCenter();
+        UpdateRotation();
     }
 
     public void OnAimInputChanged(Vector2 newInput) 
@@ -89,6 +90,16 @@ public class PlayerFiring : MonoBehaviour
 
             aimObject.transform.position = (Vector2)transform.position + directionVector * aimRadius;
         }
+    }
+
+    private void UpdateRotation() 
+    {
+        //Isso aqui é meio gambiarra pro playtest
+        //TODO: Deveria ser um outro script
+
+        Vector2 dir = (aimObject.transform.position - transform.position).normalized;
+        float angle = Vector2.SignedAngle(Vector2.right, dir);
+        pc.playerBody.transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 
     public void OnShotFired()

@@ -18616,21 +18616,17 @@ PrefabInstance:
       propertyPath: uim
       value: 
       objectReference: {fileID: 543432086}
-    - target: {fileID: 526859834013453721, guid: 6990a597796a00b42bd663c66e9744c1, type: 3}
-      propertyPath: sfxVolume
-      value: 0.05
+    - target: {fileID: 1456771733844822845, guid: 6990a597796a00b42bd663c66e9744c1, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.7
       objectReference: {fileID: 0}
-    - target: {fileID: 526859834013453721, guid: 6990a597796a00b42bd663c66e9744c1, type: 3}
-      propertyPath: timerPaused
-      value: 1
+    - target: {fileID: 1456771733844822845, guid: 6990a597796a00b42bd663c66e9744c1, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.7
       objectReference: {fileID: 0}
-    - target: {fileID: 526859834013453721, guid: 6990a597796a00b42bd663c66e9744c1, type: 3}
-      propertyPath: maxFixedTimer
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 526859834013453721, guid: 6990a597796a00b42bd663c66e9744c1, type: 3}
-      propertyPath: maxVariableTimer
-      value: 55
+    - target: {fileID: 1456771733844822845, guid: 6990a597796a00b42bd663c66e9744c1, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.875
       objectReference: {fileID: 0}
     - target: {fileID: 1456771733844822845, guid: 6990a597796a00b42bd663c66e9744c1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -18672,6 +18668,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1456771733844822845, guid: 6990a597796a00b42bd663c66e9744c1, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4110095166037054398, guid: 6990a597796a00b42bd663c66e9744c1, type: 3}
       propertyPath: maxHealth
       value: 5
@@ -18684,22 +18684,6 @@ PrefabInstance:
       propertyPath: healthDropPrefab
       value: 
       objectReference: {fileID: 2056062450541606222, guid: 27aed88f837213b4b90397ab54b0ee32, type: 3}
-    - target: {fileID: 5530507891916285700, guid: 6990a597796a00b42bd663c66e9744c1, type: 3}
-      propertyPath: parryWindow
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5530507891916285700, guid: 6990a597796a00b42bd663c66e9744c1, type: 3}
-      propertyPath: parryCooldown
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5622550333497266844, guid: 6990a597796a00b42bd663c66e9744c1, type: 3}
-      propertyPath: maxAmmo
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5622550333497266844, guid: 6990a597796a00b42bd663c66e9744c1, type: 3}
-      propertyPath: ammoCount
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 6366267563213630568, guid: 6990a597796a00b42bd663c66e9744c1, type: 3}
       propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -18759,6 +18743,10 @@ PrefabInstance:
     - target: {fileID: 6608917251125156136, guid: 6990a597796a00b42bd663c66e9744c1, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8371362252926876828, guid: 6990a597796a00b42bd663c66e9744c1, type: 3}
+      propertyPath: inputMinForRotation
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

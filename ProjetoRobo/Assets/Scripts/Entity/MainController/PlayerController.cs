@@ -11,6 +11,9 @@ public class PlayerController : EntityController
 
     [HideInInspector] public PlayerParry playerParry;
 
+    public GameObject playerTracks;
+    public GameObject playerBody;
+
     protected override void Awake()
     {
         base.Awake();
