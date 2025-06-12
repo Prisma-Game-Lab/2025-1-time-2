@@ -9,6 +9,7 @@ public class PlayerTimer : MonoBehaviour
     //Reference to controller
     private PlayerController pc;
     public UIManager uim;
+    public Animator cameraAnim;
 
     [Header("Timer Configurations")]
     [SerializeField] private bool timerPaused;
@@ -82,6 +83,8 @@ public class PlayerTimer : MonoBehaviour
         
         if (loopedSFXSource != null && loopedSFXSource.isPlaying)
             loopedSFXSource.Stop();
+
+        cameraAnim.SetTrigger("Shake");
 
         AudioManager.Instance.PlaySFX("switch_sfx");
         pc.inputManager.SwitchPlayerInput();
