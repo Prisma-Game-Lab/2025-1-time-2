@@ -205,8 +205,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.875}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4143208962015171859}
   - {fileID: 5158698288523743001}
@@ -423,6 +423,7 @@ MonoBehaviour:
   maxMoveSpeed: 5
   accelerationRate: 8
   desaccelerationRate: 10
+  inputMinForRotation: 0.1
 --- !u!114 &8590840197531246686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -543,6 +544,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uim: {fileID: 0}
+  cameraAnim: {fileID: 0}
   timerPaused: 1
   maxVariableTimer: 55
   maxFixedTimer: 5
@@ -608,7 +610,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthDropPrefab: {fileID: 2056062450541606222, guid: 27aed88f837213b4b90397ab54b0ee32, type: 3}
   ammoDropPrefab: {fileID: 7461689329379917843, guid: 6049f26ddcfb07d4baeba58992c9059d, type: 3}
-  maxHealth: 10
+  maxHealth: 5
   dropChance: 0
   currentHealth: 0
   isEnemy: 0
