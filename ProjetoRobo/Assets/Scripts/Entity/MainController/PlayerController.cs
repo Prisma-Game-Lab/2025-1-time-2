@@ -24,11 +24,7 @@ public class PlayerController : EntityController
         playerTimer = GetComponent<PlayerTimer>();
 
         playerParry = GetComponent<PlayerParry>();
-    }
-
-    //Nao deveria estar aqui
-    //Falar com o alvarenga
-    
+    }   
 }
 
 
