@@ -16,6 +16,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float laserLifetime = 2f;
     [SerializeField] private float laserSpeed = 5f;
     [SerializeField] private LayerMask targetLayers;
+    [SerializeField] private float rotatingSpeed = 1f;
 
     private float timer = 0f;
     private bool isAlive = true;
@@ -33,10 +34,16 @@ public class EnemyController : MonoBehaviour
         if (foundPlayer && player != null)
         {
             Vector2 direction = (player.position - rb.position).normalized;
-            if (rb.velocity.magnitude < maxSpeed)
+            if (rb.velocity.magnitude < maxSpeed){
                 rb.AddForce(direction * speed);
-            if (rb.velocity.magnitude > maxSpeed)
+            }
+            if (rb.velocity.magnitude > maxSpeed){
                 rb.velocity = rb.velocity.normalized * maxSpeed;
+            }
+
+            // Rotate towards the player
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0f, 0f, angle);
         }
     }
 
