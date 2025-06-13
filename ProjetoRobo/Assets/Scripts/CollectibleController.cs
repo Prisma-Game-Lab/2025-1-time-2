@@ -1,17 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CollectibleController : MonoBehaviour
 {
     private Transform tr;
-    [SerializeField]private float rotatingSpeed;
+    [SerializeField] private float rotatingSpeed;
 
-    [SerializeField]private int despawnTime;
+    [SerializeField] private int despawnTime;
+
+    public enum CollectibleType { Heal, Ammo }
+    [SerializeField] private CollectibleType type;
+    private UnityEvent onCollect;
 
     private float timer;
 
-    public int type;
 
     // Start is called before the first frame update
     void Start()
@@ -34,26 +39,35 @@ public class CollectibleController : MonoBehaviour
         tr.Rotate(rotatingSpeed, 0.0f, rotatingSpeed, Space.Self);
     }
 
-    void Heal()
+   
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        
-    }
+    if (!other.CompareTag("Player")) return;
 
-    void OnTriggerEnter2D(Collider2D other){
-        if(other.CompareTag("Player")){
-            if (type == 1)
+    switch (type)
+    {
+        case CollectibleType.Heal:
+            var ehc = other.GetComponent<EntityHealthController>();
+            if (ehc != null && ehc.currentHealth < ehc.maxHealth)
             {
-                EntityHealthController ehc = other.GetComponent<EntityHealthController>();
-                ehc.currentHealth += 1;
+                ehc.Heal(1);
             }
-            if (type == 2)
+            break;
+
+        case CollectibleType.Ammo:
+            var pf = other.GetComponent<PlayerFiring>();
+            if (pf != null && pf.ammoCount < pf.maxAmmo)
             {
-                PlayerFiring pf = other.GetComponent<PlayerFiring>();
                 pf.ammoCount += 1;
             }
-            AudioManager.Instance.PlaySFX("powerup_sfx");
-            Debug.Log("Collected!");
-            Destroy(gameObject);
-        }
+            break;
     }
+
+        AudioManager.Instance.PlaySFX("powerup_sfx");
+        Debug.Log("Collected!");
+        Destroy(gameObject);
 }
+
+    }
+
+

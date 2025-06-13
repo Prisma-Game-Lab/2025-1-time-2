@@ -82,8 +82,8 @@ public class PlayerParry : MonoBehaviour
     {
         if (parryEffectPrefab != null)
         {
-            GameObject effectInstance = Instantiate(parryEffectPrefab, transform.position, Quaternion.identity, transform);
-            Destroy(effectInstance, parryEffectDuration);
+            OnParryVisual();
+          
         }
 
         AudioManager.Instance?.PlaySFX("parry_sfx");

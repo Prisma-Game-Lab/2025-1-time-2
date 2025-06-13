@@ -17,15 +17,15 @@ public class EnemyHealthController : EntityHealthController
     public void Drop()
     {
         Random.InitState(System.DateTime.Now.Millisecond);
-        float rand1 = Random.Range(0.0f, 1.0f);
-        if (rand1 <= dropChance)
+        float rand1 = Random.Range(0.00f, 1.0f);
+        if (rand1 < dropChance)
         {
             int rand2 = Random.Range(0, 2);
             if (rand2 == 0)
             {
                 Instantiate(healthDropPrefab, transform.position, Quaternion.identity);
             }
-            else
+            if(rand2 == 1)
             {
                 Instantiate(ammoDropPrefab, transform.position, Quaternion.identity);
             }
