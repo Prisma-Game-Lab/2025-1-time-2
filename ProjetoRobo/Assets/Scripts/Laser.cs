@@ -38,21 +38,13 @@ public class Laser : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-       
-    
-            
-            {
-             DamageController damageController = collision.GetComponent<DamageController>();
+        DamageController damageController = collision.GetComponent<DamageController>();
         if (damageController != null) 
         {
             damageController.OnDamage(damage);
         }
-        }
-    
-        gameObject.SetActive(false);
-
-       
         
+        gameObject.SetActive(false);
     }
 
     private IEnumerator DisableAfterTime()
