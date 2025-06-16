@@ -5,9 +5,6 @@ public class PlayerParry : MonoBehaviour
 {
     private PlayerController pc;
 
-    private PlayerFiring pf;
-    private InputManager inputManager;
-
     [Header("Parry Configuration")]
     [SerializeField] private float parryWindow = 0.3f;
 
@@ -27,19 +24,9 @@ public class PlayerParry : MonoBehaviour
     private void Awake()
     {
         pc = GetComponent<PlayerController>();
-        inputManager = GetComponent<InputManager>();
-        pf = GetComponent<PlayerFiring>();
-
-        pc.playerParry = this;
-        inputManager.OnParry.AddListener(OnParryPressed);
     }
 
-    private void OnDestroy()
-    {
-        inputManager.OnParry.RemoveListener(OnParryPressed);
-    }
-
-    private void OnParryPressed()
+    public void OnParryPressed()
     {
         if (!isOnCooldown && !isParryActive)
         {
@@ -63,6 +50,7 @@ public class PlayerParry : MonoBehaviour
             StartCoroutine(CooldownCoroutine());
         }
     }
+
     private IEnumerator CooldownCoroutine()
     {
         isOnCooldown = true;
@@ -78,21 +66,14 @@ public class PlayerParry : MonoBehaviour
             Destroy(effectInstance, parryEffectDuration);
         }
     }
-       public void SuccessfulParry()
+
+    public void SuccessfulParry()
     {
-        if (parryEffectPrefab != null)
-        {
-            OnParryVisual();
-          
-        }
-
+        OnParryVisual();
         AudioManager.Instance?.PlaySFX("parry_sfx");
-
-        if (pf != null && pf.ammoCount < pf.maxAmmo)
-        {
-            pf.ammoCount += 1;
-        }
+        pc.playerFiring.IncreaseAmmoCount(1);
     }
+
     public bool AttemptParry(GameObject other)
     {
         if (other.CompareTag("Enemy") || other.CompareTag("Laser"))

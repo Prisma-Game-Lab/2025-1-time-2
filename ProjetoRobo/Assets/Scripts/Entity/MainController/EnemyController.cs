@@ -21,12 +21,13 @@ public class EnemyController : MonoBehaviour
     private float timer = 0f;
     private bool isAlive = true;
 
-    [SerializeField] private LaserPoolController laserPool;
+    private LaserPoolController laserPool;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player")?.GetComponent<Rigidbody2D>();
+        laserPool = GameManager.Instance.GetLaserPoolController();
     }
 
     void FixedUpdate()

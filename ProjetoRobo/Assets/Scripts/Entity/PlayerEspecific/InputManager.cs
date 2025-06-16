@@ -9,7 +9,7 @@ public class InputManager : MonoBehaviour
     [Header("Input Events")]
     [SerializeField] private UnityEvent<Vector2> OnMovement;
     [SerializeField] private UnityEvent<Vector2> OnAim;
-    [SerializeField] public UnityEvent OnParry;
+    [SerializeField] private UnityEvent OnParry;
     [SerializeField] private UnityEvent OnShoot;
 
     [Header("Input Variables")]

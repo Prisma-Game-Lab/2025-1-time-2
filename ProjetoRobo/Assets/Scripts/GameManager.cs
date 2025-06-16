@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
+    [SerializeField] private GameObject laserPoolPrefab;
+    private LaserPoolController laserPoolReference;
     public int mortarShotConfiguration = 0;
 
     private void Awake()
@@ -19,5 +21,15 @@ public class GameManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }
+    }
+
+    public LaserPoolController GetLaserPoolController() 
+    {
+        if (laserPoolReference == null) 
+        {
+            GameObject laserPool = Instantiate(laserPoolPrefab, Vector3.zero, Quaternion.identity);
+            laserPoolReference = laserPool.GetComponent<LaserPoolController>();
+        }
+        return laserPoolReference;
     }
 }

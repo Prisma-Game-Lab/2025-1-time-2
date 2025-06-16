@@ -61,11 +61,11 @@ public class UIManager : MonoBehaviour
     void Update()
     {
         pontosText.text = pontos.ToString();
-        int currentHealth = player.GetComponent<PlayerHealthController>().currentHealth;
-        int currentAmmo = player.GetComponent<PlayerFiring>().ammoCount;
+        //int currentHealth = player.GetComponent<PlayerHealthController>().currentHealth;
+        //int currentAmmo = player.GetComponent<PlayerFiring>().ammoCount;
 
-        UpdateIconSprites(heartIcons, currentHealth, fullHeartSprite, emptyHeartSprite);
-        UpdateIconSprites(bulletIcons, currentAmmo, fullBulletSprite, emptyBulletSprite);
+        //UpdateIconSprites(heartIcons, currentHealth, fullHeartSprite, emptyHeartSprite);
+        //UpdateIconSprites(bulletIcons, currentAmmo, fullBulletSprite, emptyBulletSprite);
     }
 
     private void InitIcons(Transform container, GameObject prefab, int count, List<Image> iconList)
@@ -76,6 +76,16 @@ public class UIManager : MonoBehaviour
             Image img = icon.GetComponent<Image>();
             iconList.Add(img);
         }
+    }
+
+    public void UpdateHealthUI(int currentHealth) 
+    {
+        UpdateIconSprites(heartIcons, currentHealth, fullHeartSprite, emptyHeartSprite);
+    }
+
+    public void UpdateAmmoUI(int currentAmmo)
+    {
+        UpdateIconSprites(bulletIcons, currentAmmo, fullBulletSprite, emptyBulletSprite);
     }
 
     private void UpdateIconSprites(List<Image> icons, int activeCount, Sprite fullSprite, Sprite emptySprite)

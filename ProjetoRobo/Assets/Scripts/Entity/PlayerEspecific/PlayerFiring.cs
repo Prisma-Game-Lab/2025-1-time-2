@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerFiring : MonoBehaviour
 {
@@ -24,7 +25,7 @@ public class PlayerFiring : MonoBehaviour
     [SerializeField] private float shotTime;
     [SerializeField] private LayerMask targetLayerMask;
 
-    [HideInInspector] public int ammoCount;
+    private int ammoCount;
     private GameObject aimObject;
     private Rigidbody2D aimRb;
     private Vector2 aimInput;
@@ -39,6 +40,8 @@ public class PlayerFiring : MonoBehaviour
     [SerializeField] private float shot2maxDur;
     [SerializeField] private float shot3speed;
 
+    [Header("Events")]
+    [SerializeField] private UnityEvent<int> OnAmmoAmountChanged;
 
     private void Start()
     {
@@ -114,32 +117,41 @@ public class PlayerFiring : MonoBehaviour
                     //Travelling Shot
                     GameObject shot = Instantiate(shotPrefab, transform.position, Quaternion.identity);
                     shot.GetComponent<MortarController>().Initialization(aimObject.transform.position, mortarDamage, shotTime, targetLayerMask);
-                    ammoCount -= 1;
                     break;
                 case 1:
                     //Instantaneus Shot
                     GameObject instaShot = Instantiate(shotPrefab1, aimObject.transform.position, Quaternion.identity);
                     instaShot.GetComponent<MortarController1>().Initialization(mortarDamage, shotTime, shot1Delay, targetLayerMask);
-                    ammoCount -= 1;
                     break;
                 case 2:
                     //Travelling with varying duration Shot
                     GameObject vdShot = Instantiate(shotPrefab2, transform.position, Quaternion.identity);
                     vdShot.GetComponent<MortarController2>().Initialization(aimObject.transform.position, mortarDamage, shot2minDur, shot2maxDur, aimRadius, targetLayerMask);
-                    ammoCount -= 1;
                     break;
                 case 3:
                     //Travelling with varying duration Shot
                     GameObject speedShot = Instantiate(shotPrefab3, transform.position, Quaternion.identity);
                     speedShot.GetComponent<MortarController3>().Initialization(aimObject.transform.position, shot3speed, mortarDamage, aimRadius, targetLayerMask);
-                    ammoCount -= 1;
                     break;
             }
 
+            ammoCount -= 1;
+            OnAmmoAmountChanged.Invoke(ammoCount);
             //GameObject shot = Instantiate(shotPrefab, transform.position, Quaternion.identity);
             //shot.GetComponent<MortarController>().Initialization(aimObject.transform.position, mortarDamage, shotTime, targetLayerMask);
-            //ammoCount -= 1;
         }
+    }
+
+    public void IncreaseAmmoCount(int ammoReceived)
+    {
+        ammoCount += ammoReceived;
+
+        if (ammoCount > maxAmmo) 
+        {
+            ammoCount = maxAmmo;
+        }
+
+        OnAmmoAmountChanged.Invoke(ammoCount);
     }
 
     private void OnDrawGizmosSelected()

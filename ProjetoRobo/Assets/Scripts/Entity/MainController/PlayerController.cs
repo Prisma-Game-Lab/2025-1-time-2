@@ -8,6 +8,7 @@ public class PlayerController : EntityController
     [HideInInspector] public InputManager inputManager;
     [HideInInspector] public PlayerFiring playerFiring;
     [HideInInspector] public PlayerTimer playerTimer;
+    [HideInInspector] public PlayerUI playerUI;
 
     [HideInInspector] public PlayerParry playerParry;
 
@@ -22,6 +23,7 @@ public class PlayerController : EntityController
         inputManager = GetComponent<InputManager>();
         playerFiring = GetComponent<PlayerFiring>();
         playerTimer = GetComponent<PlayerTimer>();
+        playerUI = GetComponent<PlayerUI>();
 
         playerParry = GetComponent<PlayerParry>();
     }   

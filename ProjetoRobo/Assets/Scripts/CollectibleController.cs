@@ -42,32 +42,26 @@ public class CollectibleController : MonoBehaviour
    
     private void OnTriggerEnter2D(Collider2D other)
     {
-    if (!other.CompareTag("Player")) return;
+        if (!other.CompareTag("Player")) return;
 
-    switch (type)
-    {
-        case CollectibleType.Heal:
-            var ehc = other.GetComponent<EntityHealthController>();
-            if (ehc != null && ehc.currentHealth < ehc.maxHealth)
-            {
-                ehc.Heal(1);
-            }
-            break;
+        switch (type)
+        {
+            case CollectibleType.Heal:
+                EntityHealthController ehc = other.GetComponent<EntityHealthController>();
+                ehc?.Heal(1);
+                break;
 
-        case CollectibleType.Ammo:
-            var pf = other.GetComponent<PlayerFiring>();
-            if (pf != null && pf.ammoCount < pf.maxAmmo)
-            {
-                pf.ammoCount += 1;
-            }
-            break;
-    }
+            case CollectibleType.Ammo:
+                PlayerFiring pf = other.GetComponent<PlayerFiring>();
+                pf?.IncreaseAmmoCount(1);
+                break;
+        }
 
         AudioManager.Instance.PlaySFX("powerup_sfx");
         Debug.Log("Collected!");
         Destroy(gameObject);
-}
-
     }
+
+}
 
 

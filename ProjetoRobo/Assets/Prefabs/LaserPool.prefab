@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 404481928541753141}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.8232784, y: 1.7630832, z: -0.0816991}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -45,4 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   laserPrefab: {fileID: 2559678801380612957, guid: e6a6fc142cc89eb409495ea0dc8e2f1c, type: 3}
-  poolSize: 10
+  initialPoolSize: 10
+  minPoolSize: 5
+  maxTimeUnused: 5

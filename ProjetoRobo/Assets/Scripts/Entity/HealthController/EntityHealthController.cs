@@ -10,20 +10,16 @@ public class EntityHealthController : MonoBehaviour
     //Reference to controller
     private EntityController ec;
 
-
     [SerializeField] public int maxHealth;
-
     [SerializeField] private string deathSfx;
 
+    private int currentHealth;
 
-    public int currentHealth;
-
-    private UnityEvent OnDamage;
-    private UnityEvent OnHeal;
+    [SerializeField] private UnityEvent<int> OnDamage;
+    [SerializeField] private UnityEvent<int> OnHeal;
 
     private void Start()
     {
-        
         ec = GetComponent<EntityController>();
 
         currentHealth = maxHealth;
@@ -37,11 +33,10 @@ public class EntityHealthController : MonoBehaviour
 
         currentHealth -= ec.damageController.damage;
 
-        OnDamage?.Invoke();
+        OnDamage?.Invoke(currentHealth);
 
         if (currentHealth <= 0)
         {
-
             Die();
         }
         
@@ -56,7 +51,7 @@ public class EntityHealthController : MonoBehaviour
             currentHealth = maxHealth;
         }
 
-        OnHeal?.Invoke();
+        OnHeal?.Invoke(currentHealth);
     }
 
     public void PlayDeathSfx()
@@ -64,10 +59,8 @@ public class EntityHealthController : MonoBehaviour
         AudioManager.Instance.PlaySFX(deathSfx);
     }
 
-
     protected virtual void Die() 
     {
-        
         Destroy(gameObject);
     }
 }

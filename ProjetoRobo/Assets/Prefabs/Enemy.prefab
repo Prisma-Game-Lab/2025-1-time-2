@@ -90,7 +90,6 @@ GameObject:
   - component: {fileID: 8495145369013666646}
   - component: {fileID: 9199264604248984440}
   - component: {fileID: 4380686358849181754}
-  - component: {fileID: 8411814569687638346}
   - component: {fileID: 9063801258915154855}
   - component: {fileID: 4994432032424867165}
   m_Layer: 7
@@ -233,21 +232,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   rotatingSpeed: 1
-  laserPool: {fileID: 8411814569687638346}
---- !u!114 &8411814569687638346
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6608917251125156136}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2670d35d161437f408de6b4b55b7cdfb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  laserPrefab: {fileID: 2559678801380612957, guid: e6a6fc142cc89eb409495ea0dc8e2f1c, type: 3}
-  initialPoolSize: 10
+  laserPool: {fileID: 0}
 --- !u!114 &9063801258915154855
 MonoBehaviour:
   m_ObjectHideFlags: 0

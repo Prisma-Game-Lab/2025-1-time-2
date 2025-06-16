@@ -188,6 +188,7 @@ GameObject:
   - component: {fileID: 5530507891916285700}
   - component: {fileID: 8710172705894706232}
   - component: {fileID: 4110095166037054398}
+  - component: {fileID: 1602558037607221524}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -205,8 +206,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 0.875}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5158698288523743001}
   - {fileID: 4143208962015171859}
@@ -282,7 +283,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2, y: 2}
+  m_Size: {x: 1.7920766, y: 2.1270642}
   m_EdgeRadius: 0
 --- !u!114 &6366267563213630568
 MonoBehaviour:
@@ -374,11 +375,35 @@ MonoBehaviour:
     m_ActionId: b0aff59a-2a5c-4354-9027-9c10aa604eca
     m_ActionName: Normal/ButtonP2[/Keyboard/m]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UIPlaytest, Assembly-CSharp
+        m_MethodName: increaseConter
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 8198d636-d152-431c-9a4b-85fccdb5a341
     m_ActionName: Normal/IncreaseMortarConfiguration[/Mouse/leftButton]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UIPlaytest, Assembly-CSharp
+        m_MethodName: decreaseConter
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 4287a451-f119-4569-b6c2-cdcf9554bf2f
     m_ActionName: Normal/DecreaseMortarConfiguration1[/Mouse/rightButton]
   m_NeverAutoSwitchControlSchemes: 0
@@ -405,6 +430,7 @@ MonoBehaviour:
   inputManager: {fileID: 0}
   playerFiring: {fileID: 0}
   playerTimer: {fileID: 0}
+  playerUI: {fileID: 0}
   playerParry: {fileID: 0}
   playerTracks: {fileID: 1253016130422423802}
   playerBody: {fileID: 3193857247099001801}
@@ -469,15 +495,15 @@ MonoBehaviour:
   OnParry:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 526859834013453721}
-        m_TargetAssemblyTypeName: PlayerTimer, Assembly-CSharp
-        m_MethodName: DecreaseTimer
-        m_Mode: 4
+      - m_Target: {fileID: 5530507891916285700}
+        m_TargetAssemblyTypeName: PlayerParry, Assembly-CSharp
+        m_MethodName: OnParryPressed
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 1
+          m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
@@ -523,7 +549,6 @@ MonoBehaviour:
   targetLayerMask:
     serializedVersion: 2
     m_Bits: 192
-  ammoCount: 10
   shotPrefab1: {fileID: 8532741216186767511, guid: 12067b5514ee00a44bdd9c28361c1e34, type: 3}
   shotPrefab2: {fileID: 8532741216186767511, guid: f26d7358861f35a43a610afc28fc0f3d, type: 3}
   shotPrefab3: {fileID: 8532741216186767511, guid: daa88dd34dd0fdb45b3f28706e188ba8, type: 3}
@@ -531,6 +556,21 @@ MonoBehaviour:
   shot2minDur: 0.5
   shot2maxDur: 1
   shot3speed: 4
+  OnAmmoAmountChanged:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1602558037607221524}
+        m_TargetAssemblyTypeName: PlayerUI, Assembly-CSharp
+        m_MethodName: UpdateAmmoUI
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &526859834013453721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -551,7 +591,7 @@ MonoBehaviour:
   onInputChange:
     m_PersistentCalls:
       m_Calls: []
-  sfxVolume: 0.05
+  sfxVolume: 0.1
 --- !u!114 &5530507891916285700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -610,7 +650,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 5
   deathSfx: player_death_sfx
-  currentHealth: 0
+  OnDamage:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1602558037607221524}
+        m_TargetAssemblyTypeName: PlayerUI, Assembly-CSharp
+        m_MethodName: UpdateHealthUI
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnHeal:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1602558037607221524}
+        m_TargetAssemblyTypeName: PlayerUI, Assembly-CSharp
+        m_MethodName: UpdateHealthUI
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onDeathEvent:
     m_PersistentCalls:
       m_Calls:
@@ -638,3 +707,15 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1602558037607221524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6608917251125156136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad21c903a1e4bdf4bbd43528a17ad2ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
