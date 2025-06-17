@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5090008605219084901}
   - component: {fileID: 2218158192127034295}
   - component: {fileID: 6770240419264155875}
+  - component: {fileID: 949414056248953496}
   m_Layer: 0
   m_Name: WaveManager
   m_TagString: Untagged
@@ -64,3 +65,16 @@ MonoBehaviour:
   perWaveEnemyCount: 0
   enemyPool: {fileID: 2218158192127034295}
   canvas: {fileID: 0}
+  spawnManager: {fileID: 0}
+--- !u!114 &949414056248953496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3187577197091015187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da274cb9d31784e4c9ecffd9d1396019, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -408,7 +408,7 @@ TilemapRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -3
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0.012000024, y: 0.012000024, z: 0}
+  m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
@@ -18745,7 +18745,7 @@ TilemapRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -4
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0.012000024, y: 0.012000024, z: 0}
+  m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
@@ -36066,6 +36066,28 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &1484334335 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6770240419264155875, guid: 806a7e87bb17f5746a06a63b3c9f59a4, type: 3}
+  m_PrefabInstance: {fileID: 9194370941259817480}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b725e3c6c04abf84b962958a680a86bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1484334336 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2218158192127034295, guid: 806a7e87bb17f5746a06a63b3c9f59a4, type: 3}
+  m_PrefabInstance: {fileID: 9194370941259817480}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b6425fa1597a9b458733b3a59e49491, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1507616802
 GameObject:
   m_ObjectHideFlags: 0
@@ -36907,10 +36929,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2218158192127034295, guid: 806a7e87bb17f5746a06a63b3c9f59a4, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
+    - target: {fileID: 949414056248953496, guid: 806a7e87bb17f5746a06a63b3c9f59a4, type: 3}
+      propertyPath: spawnZone
+      value: 
+      objectReference: {fileID: 206833329}
+    - target: {fileID: 949414056248953496, guid: 806a7e87bb17f5746a06a63b3c9f59a4, type: 3}
+      propertyPath: waveController
+      value: 
+      objectReference: {fileID: 1484334335}
+    - target: {fileID: 949414056248953496, guid: 806a7e87bb17f5746a06a63b3c9f59a4, type: 3}
+      propertyPath: enemyPoolController
+      value: 
+      objectReference: {fileID: 1484334336}
     - target: {fileID: 2218158192127034295, guid: 806a7e87bb17f5746a06a63b3c9f59a4, type: 3}
       propertyPath: spawnZone
       value: 
@@ -36918,10 +36948,6 @@ PrefabInstance:
     - target: {fileID: 3187577197091015187, guid: 806a7e87bb17f5746a06a63b3c9f59a4, type: 3}
       propertyPath: m_Name
       value: WaveManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 3187577197091015187, guid: 806a7e87bb17f5746a06a63b3c9f59a4, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5090008605219084901, guid: 806a7e87bb17f5746a06a63b3c9f59a4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -36968,9 +36994,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2091958500}
     - target: {fileID: 6770240419264155875, guid: 806a7e87bb17f5746a06a63b3c9f59a4, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
+      propertyPath: waveInfoText
+      value: 
+      objectReference: {fileID: 1004911728}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
