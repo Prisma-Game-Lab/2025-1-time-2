@@ -45,6 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f2ae10350df8df4ebec70e9190aa9eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  laserPoolPrefab: {fileID: 404481928541753141, guid: f0ad772c09046ca42a26e4d67f988a07, type: 3}
+  mortarShotConfiguration: 0
 --- !u!1 &6915360249947050726
 GameObject:
   m_ObjectHideFlags: 0

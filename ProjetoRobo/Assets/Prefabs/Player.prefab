@@ -585,7 +585,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uim: {fileID: 0}
   cameraAnim: {fileID: 0}
-  timerPaused: 1
+  timerPaused: 0
   maxVariableTimer: 55
   maxFixedTimer: 5
   onInputChange:
