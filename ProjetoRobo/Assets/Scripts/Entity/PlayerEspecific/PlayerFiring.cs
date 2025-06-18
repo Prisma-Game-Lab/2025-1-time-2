@@ -40,6 +40,8 @@ public class PlayerFiring : MonoBehaviour
     [SerializeField] private float shot2maxDur;
     [SerializeField] private float shot3speed;
 
+    public CrosshairVisual Crosshair { get; private set; }
+
     [Header("Events")]
     [SerializeField] private UnityEvent<int> OnAmmoAmountChanged;
 
@@ -48,6 +50,7 @@ public class PlayerFiring : MonoBehaviour
         pc = GetComponent<PlayerController>();
 
         aimObject = Instantiate(aimPrefab, transform.position, Quaternion.identity);
+        Crosshair = aimObject.GetComponent<CrosshairVisual>();
         aimRb = aimObject.GetComponent<Rigidbody2D>();
         ammoCount = maxAmmo;
     }
@@ -97,7 +100,7 @@ public class PlayerFiring : MonoBehaviour
 
     private void UpdateRotation() 
     {
-        //Isso aqui é meio gambiarra pro playtest
+        //Isso aqui ï¿½ meio gambiarra pro playtest
         //TODO: Deveria ser um outro script
 
         Vector2 dir = (aimObject.transform.position - transform.position).normalized;

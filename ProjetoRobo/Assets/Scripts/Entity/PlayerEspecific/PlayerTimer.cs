@@ -8,7 +8,7 @@ public class PlayerTimer : MonoBehaviour
 {
     //Reference to controller
     private PlayerController pc;
-    public UIManager uim;
+
     public Animator cameraAnim;
 
     [Header("Timer Configurations")]
@@ -77,6 +77,10 @@ public class PlayerTimer : MonoBehaviour
 
     private void ActivateChange() 
     {
+         //CrosshairVisual visual = GetComponent<CrosshairVisual>();
+
+
+
         currentVariableTimer = maxVariableTimer;
         currentFixedTimer = maxFixedTimer;
         onTransition = false;
@@ -88,7 +92,7 @@ public class PlayerTimer : MonoBehaviour
 
         AudioManager.Instance.PlaySFX("switch_sfx");
         pc.inputManager.SwitchPlayerInput();
-        uim.SwitchCorners();
+        pc.playerFiring.Crosshair.SwitchSprite();
         onInputChange?.Invoke();
     }
 

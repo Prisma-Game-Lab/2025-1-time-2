@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3325221544896319804}
   - component: {fileID: 478443927523792540}
   - component: {fileID: 1919470689687075509}
+  - component: {fileID: 3281900772453400368}
   m_Layer: 6
   m_Name: Aim
   m_TagString: Untagged
@@ -75,7 +76,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: c46657acb5f2c024f8090d79c14ffaab, type: 3}
-  m_Color: {r: 0.7924528, g: 0.27343437, b: 0.19063722, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -112,3 +113,17 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &3281900772453400368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4243932747360762605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6d8a8fd88dc9ed48909b7aa60200a63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  greenSprite: {fileID: 21300000, guid: 4201bae23e3e9ab4fad859b8d2e592f8, type: 3}
+  redSprite: {fileID: 21300000, guid: c46657acb5f2c024f8090d79c14ffaab, type: 3}
