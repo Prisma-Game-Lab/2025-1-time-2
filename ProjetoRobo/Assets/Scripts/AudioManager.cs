@@ -16,20 +16,28 @@ public class AudioManager : MonoBehaviour
     {
         if (Instance != null && Instance != this)
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
         else
         {
-            PlayMusic("megaWall");
+            
             Instance = this;
             DontDestroyOnLoad(this.gameObject);
         }
+       
     }
-private string currentlyToggledSong = null;
-private string originalSong = null;
+    void Start()
+    {
+    if (!musicSource.isPlaying)
+    {
+        PlayMusic("megaWall"); // or whatever your menu song is named
+    }
+    }
+    private string currentlyToggledSong = null;
+    private string originalSong = null;
 
-public void ToggleMusic(string newSong)
-{
+    public void ToggleMusic(string newSong)
+    {
     
     if (musicSource.clip == null || !musicSource.isPlaying)
     {
@@ -57,8 +65,12 @@ public void ToggleMusic(string newSong)
         PlayMusic(newSong);
         currentlyToggledSong = newSong;
     }
-}
+    }
 
+    public void StopMusic()
+    {
+        musicSource.Stop();
+    }
     public void PlayMusic(string name)
     {
         AudioClip s = Array.Find(musicSounds, x => x.name == name);
