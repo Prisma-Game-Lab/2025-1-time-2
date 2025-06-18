@@ -19,6 +19,12 @@ public class PlayerHealthController : EntityHealthController
             return;
         }
 
+        if (playerParry.IsInvulnerable)
+        {
+            Debug.Log("Player is Invulnerable!");
+            return;
+        }
+
         base.TakeDamage();
     }
     protected override void Die()

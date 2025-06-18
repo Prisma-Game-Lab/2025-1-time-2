@@ -10,6 +10,10 @@ public class PlayerParry : MonoBehaviour
 
     [SerializeField] private float parryCooldown = 0.5f;
 
+    [SerializeField] private float parryInvincibilityDuration = 0.5f;
+    private bool isInvulnerable = false;
+    public bool IsInvulnerable => isInvulnerable;
+
     [Header("Parry Visual")]
     [SerializeField] private GameObject parryEffectPrefab; // prefab to show
     [SerializeField] private float parryEffectDuration = 0.2f;
@@ -20,6 +24,8 @@ public class PlayerParry : MonoBehaviour
 
     private bool parrySucceeded = false;
     public bool IsParrying => isParryActive;
+
+    
 
     private void Awake()
     {
@@ -41,10 +47,13 @@ public class PlayerParry : MonoBehaviour
     {
         isParryActive = true;
          parrySucceeded = false;
-
+      
+        OnParryVisual(false);
+        
         yield return new WaitForSeconds(parryWindow);
         isParryActive = false;
 
+        
         if (!parrySucceeded)
         {
             StartCoroutine(CooldownCoroutine());
@@ -58,20 +67,47 @@ public class PlayerParry : MonoBehaviour
          isOnCooldown = false;
      }
 
-    private void OnParryVisual()
+    private IEnumerator ParryInvulnerabilityCoroutine()
     {
-        if (parryEffectPrefab != null)
-        {
-            GameObject effectInstance = Instantiate(parryEffectPrefab, transform.position, Quaternion.identity, transform);
-            Destroy(effectInstance, parryEffectDuration);
-        }
+        isInvulnerable = true;
+        yield return new WaitForSeconds(parryInvincibilityDuration);
+        isInvulnerable = false;
     }
+    private void OnParryVisual(bool successful)
+{
+    if (parryEffectPrefab != null)
+    {
+        GameObject effectInstance = Instantiate(parryEffectPrefab, transform.position, Quaternion.identity, transform);
+
+        ParryHitbox hitbox = effectInstance.GetComponent<ParryHitbox>();
+        if (hitbox != null)
+        {
+            hitbox.Init(this);
+        }
+
+        ParryVisual visual = effectInstance.GetComponent<ParryVisual>();
+        if (visual != null)
+        {
+            if (successful) visual.ShowSuccessVisual();
+            else visual.ShowAttemptVisual();
+        }
+
+        Destroy(effectInstance, parryEffectDuration);
+    }
+}
+
 
     public void SuccessfulParry()
     {
-        OnParryVisual();
+        ParryVisual visual = GetComponent<ParryVisual>();
+        if (visual != null)
+        {
+            visual.ShowAttemptVisual();
+        }
+        OnParryVisual(true);
         AudioManager.Instance?.PlaySFX("parry_sfx");
         pc.playerFiring.IncreaseAmmoCount(1);
+        StartCoroutine(ParryInvulnerabilityCoroutine());
     }
 
     public bool AttemptParry(GameObject other)
