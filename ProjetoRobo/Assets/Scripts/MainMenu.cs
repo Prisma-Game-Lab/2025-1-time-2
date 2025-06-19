@@ -1,17 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 
 public class MainMenu : MonoBehaviour
 {
     public string sceneName;
+   
     void Start()
     {
+        
         if (AudioManager.Instance != null)
         {
-        AudioManager.Instance.PlayMusic("megaWall");
+            AudioManager.Instance.PlayMusic("megaWall");
         }
     }
     public void Play()
