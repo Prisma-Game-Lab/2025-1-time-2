@@ -8,7 +8,7 @@ using System.ComponentModel;
 public class InputDisplay : MonoBehaviour
 {
     [Header("Reference to Input Action Asset")]
-    public InputActionAsset inputActions; // Drag the .inputactions file here
+    public InputActionAsset inputActions; 
 
     [Header("UI Text Fields")]
 
@@ -31,7 +31,7 @@ public class InputDisplay : MonoBehaviour
 
         GetBindingDisplay("AxisP1", P1Movement, movement);
         GetBindingDisplay("AxisP2", P2Movement, movement);
-        //P1Movement[0].text = "Cima: " + GetBindingDisplay("AxisP1/Up");
+       
 
     }
     void GetSingleBindingDisplay(string actionName, TMP_Text textElement, string keybind)
@@ -43,7 +43,7 @@ public class InputDisplay : MonoBehaviour
         return;
     }
 
-    // Usually the first binding is the main one
+   
     if (action.bindings.Count > 0)
     {
         string displayName = InputControlPath.ToHumanReadableString(
@@ -70,7 +70,7 @@ public class InputDisplay : MonoBehaviour
         if (binding.isComposite )
         {
 
-                // The next few bindings are part of this composite
+                
                 for (int j = 1; j <= 4; j++)
                 {
 
