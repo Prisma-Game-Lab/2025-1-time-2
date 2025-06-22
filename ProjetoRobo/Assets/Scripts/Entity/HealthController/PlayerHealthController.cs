@@ -6,30 +6,52 @@ using UnityEngine.Events;
 //Componente Especifico que controla a vida do PLAYER
 public class PlayerHealthController : EntityHealthController
 {
+    //Reference to controller
+    private PlayerController pc;
+
     [SerializeField] private UnityEvent onDeathEvent;
-    private PlayerParry playerParry;
+
+    [Header("I-Frames Variables")]
+    [SerializeField] private float iFramesOnHit;
+    [SerializeField] private float initialIFrames;
+    private float currentIFrames;
+
+    protected override void Start()
+    {
+        base.Start();
+
+        pc = GetComponent<PlayerController>();
+        currentIFrames = initialIFrames;
+    }
+
+    private void FixedUpdate()
+    {
+        if (currentIFrames > 0)
+        {
+            currentIFrames -= Time.deltaTime;
+        }
+    }
+
     protected override void TakeDamage()
     {
-        playerParry = GetComponent<PlayerParry>();
-       
-        if (playerParry != null && playerParry.IsParrying)
-        {
-            playerParry.SuccessfulParry();
-            Debug.Log("Parry!");
-            return;
-        }
+        pc.playerParry.OnHit();
 
-        if (playerParry.IsInvulnerable)
+        if (currentIFrames > 0) 
         {
-            Debug.Log("Player is Invulnerable!");
             return;
         }
 
         base.TakeDamage();
+        SetIFrames(iFramesOnHit);
     }
+
+    public void SetIFrames(float desiredIFrames) 
+    {
+        currentIFrames = desiredIFrames;
+    }
+
     protected override void Die()
     {
-
         onDeathEvent?.Invoke();
     }
 }

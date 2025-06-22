@@ -27,14 +27,14 @@ public class PlayerMovement : MonoBehaviour
     public void OnDirectionChange(Vector2 newInputVector)
     {
         moveInput = newInputVector;
-        //float angle = Mathf.Atan2(moveInput.y, moveInput.x) * Mathf.Rad2Deg;
 
-        //Isso aqui é meio gambiarra pro playtest
-        //TODO: Deveria ser um outro script
         if (moveInput.magnitude > inputMinForRotation) 
         {
-            float angle = Vector2.SignedAngle(Vector2.right, moveInput);
-            pc.playerTracks.transform.rotation = Quaternion.Euler(0, 0, angle);
+            pc.playerTracks?.SetDesiredRotation(moveInput);
+        }
+        else 
+        {
+            pc.playerTracks?.SetDesiredRotation(Vector2.zero);
         }
     }
 

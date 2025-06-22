@@ -100,12 +100,12 @@ public class PlayerFiring : MonoBehaviour
 
     private void UpdateRotation() 
     {
-        //Isso aqui � meio gambiarra pro playtest
-        //TODO: Deveria ser um outro script
+        if (pc.playerBody == null) return;
 
         Vector2 dir = (aimObject.transform.position - transform.position).normalized;
-        float angle = Vector2.SignedAngle(Vector2.right, dir);
-        pc.playerBody.transform.rotation = Quaternion.Euler(0, 0, angle);
+        pc.playerBody.SetDesiredRotation(dir);
+        //float angle = Vector2.SignedAngle(Vector2.right, dir);
+        //pc.playerBody.transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 
     public void OnShotFired()

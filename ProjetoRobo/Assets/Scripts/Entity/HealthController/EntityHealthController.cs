@@ -10,15 +10,17 @@ public class EntityHealthController : MonoBehaviour
     //Reference to controller
     private EntityController ec;
 
+    [Header("Basic Variables")]
     [SerializeField] public int maxHealth;
     [SerializeField] private string deathSfx;
 
     private int currentHealth;
 
+    [Header("Events")]
     [SerializeField] private UnityEvent<int> OnDamage;
     [SerializeField] private UnityEvent<int> OnHeal;
 
-    private void Start()
+    protected virtual void Start()
     {
         ec = GetComponent<EntityController>();
 

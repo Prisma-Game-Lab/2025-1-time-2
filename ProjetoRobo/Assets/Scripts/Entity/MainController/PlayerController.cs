@@ -9,11 +9,11 @@ public class PlayerController : EntityController
     [HideInInspector] public PlayerFiring playerFiring;
     [HideInInspector] public PlayerTimer playerTimer;
     [HideInInspector] public PlayerUI playerUI;
+    [HideInInspector] public PlayerHealthController playerHealthController;
+    public PlayerBodyRotation playerBody;
+    public PlayerBodyRotation playerTracks;
 
     [HideInInspector] public PlayerParry playerParry;
-
-    public GameObject playerTracks;
-    public GameObject playerBody;
 
     protected override void Awake()
     {
@@ -24,6 +24,7 @@ public class PlayerController : EntityController
         playerFiring = GetComponent<PlayerFiring>();
         playerTimer = GetComponent<PlayerTimer>();
         playerUI = GetComponent<PlayerUI>();
+        playerHealthController = GetComponent<PlayerHealthController>();
 
         playerParry = GetComponent<PlayerParry>();
     }   
