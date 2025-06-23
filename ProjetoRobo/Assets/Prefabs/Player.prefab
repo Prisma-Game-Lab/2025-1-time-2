@@ -712,6 +712,7 @@ MonoBehaviour:
   timerPaused: 0
   maxVariableTimer: 55
   maxFixedTimer: 5
+  onDamageDecrease: 5
   onInputChange:
     m_PersistentCalls:
       m_Calls: []

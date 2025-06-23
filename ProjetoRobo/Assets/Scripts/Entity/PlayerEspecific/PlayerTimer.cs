@@ -16,6 +16,8 @@ public class PlayerTimer : MonoBehaviour
     [SerializeField] private float maxVariableTimer;
     [SerializeField] private float maxFixedTimer;
 
+    [SerializeField] public float onDamageDecrease;
+
     [SerializeField] private UnityEvent onInputChange;
 
     [SerializeField] private float sfxVolume;

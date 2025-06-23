@@ -42,6 +42,8 @@ public class PlayerHealthController : EntityHealthController
         }
 
         base.TakeDamage();
+        pc.playerTimer.DecreaseTimer(pc.playerTimer.onDamageDecrease);
+        AudioManager.Instance?.PlaySFX("hit_sfx");
         SetIFrames(iFramesOnHit);
     }
 

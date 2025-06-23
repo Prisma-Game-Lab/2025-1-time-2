@@ -86,10 +86,7 @@ public class PlayerParry : MonoBehaviour
     public void SuccessfulParry()
     {
         ParryVisual visual = GetComponent<ParryVisual>();
-        if (visual != null)
-        {
-            visual.ShowAttemptVisual();
-        }
+        
         OnParryVisual(true);
         AudioManager.Instance?.PlaySFX("parry_sfx");
         pc.playerFiring.IncreaseAmmoCount(1);
