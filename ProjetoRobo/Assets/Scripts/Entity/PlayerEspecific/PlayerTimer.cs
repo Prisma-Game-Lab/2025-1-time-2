@@ -72,6 +72,8 @@ public class PlayerTimer : MonoBehaviour
 
     private void ActivateTransition() 
     {
+        //cameraAnim.SetTrigger("Shake");
+
         if (loopedSFXSource != null && !loopedSFXSource.isPlaying)
         loopedSFXSource.Play();
         print("O robo ira trocar de input");

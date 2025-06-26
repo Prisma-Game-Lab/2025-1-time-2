@@ -6,6 +6,7 @@ public class CameraController : MonoBehaviour
 {
     [SerializeField]private GameObject player;
     private Vector3 offset;
+    public Transform shakeOffset;
 
     // Start is called before the first frame update
     void Start()
@@ -15,8 +16,9 @@ public class CameraController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void LateUpdate()
+    void Update()
     {
+        //offset += transform.position - shakeOffset.position;
         transform.position = player.transform.position + offset;
     }
 }
