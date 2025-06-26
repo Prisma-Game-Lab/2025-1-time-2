@@ -23,6 +23,8 @@ public class InputDisplay : MonoBehaviour
 
     private InputAction currentAction;
 
+    private TMP_Text displayText;
+
 
 
     void Start()
@@ -96,12 +98,14 @@ public class InputDisplay : MonoBehaviour
         var actionMap = inputActions.FindActionMap(actionMapName);
         if (actionMap == null)
         {
+
             return;
         }
 
         currentAction = actionMap.FindAction(actionName);
         if (currentAction == null)
         {
+            Debug.Log("NOPE!");
             return;
         }
 
@@ -118,7 +122,7 @@ public class InputDisplay : MonoBehaviour
                 GetSingleBindingDisplay(actionName, text, keybind);
                 operation.Dispose();
 
-                
+
 
 
             })
@@ -128,8 +132,75 @@ public class InputDisplay : MonoBehaviour
     {
         StartRebinding("Normal", "ButtonP1", P1Text, "Parry/Shoot: ");
     }
-     public void RebindButtonP2()
+    public void RebindButtonP2()
     {
-    StartRebinding("Normal", "ButtonP2", P2Text, "Parry/Shoot: ");
+        StartRebinding("Normal", "ButtonP2", P2Text, "Parry/Shoot: ");
+    }
+    int GetDirectionIndex(string direction)
+    {
+        switch (direction.ToLower())
+        {
+            case "up": return 0;
+            case "down": return 1;
+            case "left": return 2;
+            case "right": return 3;
+            default: return -1;
+        }
+    }
+    public void StartRebindingMovement(string actionName, string compositePart, TMP_Text[] displayTextArray)
+    {
+
+        var action = inputActions.FindAction(actionName);
+        if (action == null)
+        {
+
+            return;
+        }
+
+        int bindingIndex = -1;
+
+        for (int i = 0; i < action.bindings.Count; i++)
+        {
+            var binding = action.bindings[i];
+
+            if (binding.isPartOfComposite && binding.name == compositePart.ToLower())
+            {
+
+                bindingIndex = i;
+                break;
+            }
+        }
+
+        if (bindingIndex == -1)
+        {
+            Debug.LogWarning($"Composite part '{compositePart}' not found.");
+            return;
+        }
+        displayText = displayTextArray[GetDirectionIndex(compositePart.ToLower())];
+        action.actionMap.Disable();
+        action.PerformInteractiveRebinding(bindingIndex)
+            .WithCancelingThrough("<Keyboard>/escape")
+            .OnComplete(operation =>
+            {
+                string newBinding = InputControlPath.ToHumanReadableString(
+                action.bindings[bindingIndex].effectivePath,
+                InputControlPath.HumanReadableStringOptions.OmitDevice
+                );
+
+                if (displayText != null)
+                    displayText.text = $"{newBinding}";
+
+                operation.Dispose();
+                action.actionMap.Enable();
+            })
+        .Start();
+    }
+    public void RebindMovementP1(string direction)
+    {
+        StartRebindingMovement("AxisP1", direction, P1Movement);
+    }
+    public void RebindMovementP2(string direction)
+    {
+        StartRebindingMovement("AxisP2",direction,P2Movement);
     }
 }
