@@ -716,7 +716,7 @@ MonoBehaviour:
   onInputChange:
     m_PersistentCalls:
       m_Calls: []
-  sfxVolume: 0.1
+  sfxVolume: 1
 --- !u!114 &5530507891916285700
 MonoBehaviour:
   m_ObjectHideFlags: 0

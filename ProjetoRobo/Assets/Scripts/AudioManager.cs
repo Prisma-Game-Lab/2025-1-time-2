@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class AudioManager : MonoBehaviour
 
     public AudioClip[] musicSounds, sfxSounds;
     public AudioSource musicSource, sfxSource;
+    
+    public AudioMixerGroup sfxMixerGroup;
 
 
 
@@ -20,11 +23,11 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
-            
+
             Instance = this;
             DontDestroyOnLoad(this.gameObject);
         }
-       
+
     }
     void Start()
     {

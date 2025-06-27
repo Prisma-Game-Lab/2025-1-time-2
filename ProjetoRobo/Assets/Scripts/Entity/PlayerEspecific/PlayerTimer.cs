@@ -33,7 +33,7 @@ public class PlayerTimer : MonoBehaviour
         loopedSFXSource = gameObject.AddComponent<AudioSource>();
         loopedSFXSource.clip = Array.Find(AudioManager.Instance.sfxSounds, x => x.name == "switch_warning_sfx");
         loopedSFXSource.loop = true;
-        loopedSFXSource.volume = sfxVolume;
+        loopedSFXSource.outputAudioMixerGroup = AudioManager.Instance.sfxMixerGroup;
         pc = GetComponent<PlayerController>();
         
 
