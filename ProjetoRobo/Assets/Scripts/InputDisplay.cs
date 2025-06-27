@@ -31,15 +31,15 @@ public class InputDisplay : MonoBehaviour
     {
 
         //   .PerformInteractiveRebinding(bindingIndex)
-        GetSingleBindingDisplay("ButtonP1", P1Text, "Parry/Shoot: ");
-        GetSingleBindingDisplay("ButtonP2", P2Text, "Parry/Shoot: ");
+        GetSingleBindingDisplay("ButtonP1", P1Text);
+        GetSingleBindingDisplay("ButtonP2", P2Text);
 
         GetBindingDisplay("AxisP1", P1Movement, movement);
         GetBindingDisplay("AxisP2", P2Movement, movement);
 
 
     }
-    void GetSingleBindingDisplay(string actionName, TMP_Text textElement, string keybind)
+    void GetSingleBindingDisplay(string actionName, TMP_Text textElement)
     {
         var action = inputActions.FindAction(actionName);
         if (action == null)
@@ -55,7 +55,7 @@ public class InputDisplay : MonoBehaviour
                 action.bindings[0].effectivePath,
                 InputControlPath.HumanReadableStringOptions.OmitDevice
             );
-            textElement.text = keybind + displayName;
+            textElement.text = displayName;
         }
     }
 
@@ -93,7 +93,7 @@ public class InputDisplay : MonoBehaviour
             }
         }
     }
-    public void StartRebinding(string actionMapName, string actionName, TMP_Text text, string keybind)
+    public void StartRebinding(string actionMapName, string actionName, TMP_Text text)
     {
         var actionMap = inputActions.FindActionMap(actionMapName);
         if (actionMap == null)
@@ -119,22 +119,19 @@ public class InputDisplay : MonoBehaviour
             .OnComplete(operation =>
             {
                 currentAction.Enable();
-                GetSingleBindingDisplay(actionName, text, keybind);
+                GetSingleBindingDisplay(actionName, text);
                 operation.Dispose();
-
-
-
 
             })
             .Start();
     }
     public void RebindButtonP1()
     {
-        StartRebinding("Normal", "ButtonP1", P1Text, "Parry/Shoot: ");
+        StartRebinding("Normal", "ButtonP1", P1Text);
     }
     public void RebindButtonP2()
     {
-        StartRebinding("Normal", "ButtonP2", P2Text, "Parry/Shoot: ");
+        StartRebinding("Normal", "ButtonP2", P2Text);
     }
     int GetDirectionIndex(string direction)
     {
