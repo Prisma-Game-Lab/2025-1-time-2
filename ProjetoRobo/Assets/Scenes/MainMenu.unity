@@ -809,6 +809,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: EntitiesTest
+  Mixer: {fileID: 24100000, guid: 6138d778c791f954d906a8e9c0d77e2a, type: 2}
   menuMusic: Experiment001
   combatMusic: ZeroZeroOne
 --- !u!1 &230539997
