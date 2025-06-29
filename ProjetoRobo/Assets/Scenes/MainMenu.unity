@@ -809,6 +809,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: EntitiesTest
+  menuMusic: Experiment001
+  combatMusic: ZeroZeroOne
 --- !u!1 &230539997
 GameObject:
   m_ObjectHideFlags: 0
@@ -5887,7 +5889,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toggleMusicButton: {fileID: 1234125977}
-  alternateSongName: OrbitalColossus
+  alternateSongName: Guitar Paradise
 --- !u!114 &1234125977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9880,6 +9882,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1330113264600241545, guid: debfe51468b6d0b4682816683c354fe9, type: 3}
+      propertyPath: menuMusic
+      value: Experiment001
+      objectReference: {fileID: 0}
     - target: {fileID: 1339535554177498771, guid: debfe51468b6d0b4682816683c354fe9, type: 3}
       propertyPath: sfxMixerGroup
       value: 

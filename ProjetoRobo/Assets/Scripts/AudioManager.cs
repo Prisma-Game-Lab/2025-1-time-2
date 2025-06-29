@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -12,6 +13,8 @@ public class AudioManager : MonoBehaviour
     public AudioSource musicSource, sfxSource;
     
     public AudioMixerGroup sfxMixerGroup;
+
+    [SerializeField] private string menuMusic;
 
 
 
@@ -29,13 +32,7 @@ public class AudioManager : MonoBehaviour
         }
 
     }
-    void Start()
-    {
-    if (!musicSource.isPlaying)
-    {
-        PlayMusic("megaWall"); // or whatever your menu song is named
-    }
-    }
+   
     private string currentlyToggledSong = null;
     private string originalSong = null;
 

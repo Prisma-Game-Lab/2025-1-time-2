@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class ToggleMusic : MonoBehaviour
 {
     public Button toggleMusicButton;
-    public string alternateSongName = "OrbitalColossus"; 
+    [SerializeField] private string alternateSongName; 
 
     void Start()
     {

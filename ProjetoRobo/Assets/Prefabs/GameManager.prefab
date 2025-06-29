@@ -177,6 +177,11 @@ MonoBehaviour:
   musicSounds:
   - {fileID: 8300000, guid: 5f4cc1d561478414faa95d4e1f6776e1, type: 3}
   - {fileID: 8300000, guid: f2afddbf3ed8f7045af4a3ed6302e5d5, type: 3}
+  - {fileID: 8300000, guid: c7a6b9508642cba4d98320e9d820d127, type: 3}
+  - {fileID: 8300000, guid: d9f32a48a89534f44ba854cf7efc1ecb, type: 3}
+  - {fileID: 8300000, guid: 5444bf56437f75145b9a70b0acdf1d87, type: 3}
+  - {fileID: 8300000, guid: ce608704a18a9bd45a4b8e8ce5ebd51a, type: 3}
+  - {fileID: 8300000, guid: d12823b0c990c1547b5238676b579aa6, type: 3}
   sfxSounds:
   - {fileID: 8300000, guid: 94c2df6a0dc8a4042a14f5aea1add444, type: 3}
   - {fileID: 8300000, guid: 7a9f2d489c42dce4d8ae8347e1a35b95, type: 3}
@@ -187,9 +192,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: afbe2af2215c9fb449b66898c5f1c4d2, type: 3}
   - {fileID: 8300000, guid: c5b82076b0bc72841a42c96a58102a21, type: 3}
   - {fileID: 8300000, guid: 62cb0d19434d1494d8aae24e574bc590, type: 3}
+  - {fileID: 8300000, guid: 4a70e71f89b86ad49a40b75e0361b8be, type: 3}
   musicSource: {fileID: 5309929090020033760}
   sfxSource: {fileID: 3580366348140201588}
   sfxMixerGroup: {fileID: 8154349453932843111, guid: 6138d778c791f954d906a8e9c0d77e2a, type: 2}
+  menuMusic: Experiment001
 --- !u!1 &4830640863379567890
 GameObject:
   m_ObjectHideFlags: 0
