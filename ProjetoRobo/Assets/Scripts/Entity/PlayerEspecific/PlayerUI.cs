@@ -15,11 +15,11 @@ public class PlayerUI : MonoBehaviour
 
     public void UpdateHealthUI(int currentHealth) 
     {
-        uiManager.UpdateHealthUI(currentHealth);
+        uiManager?.UpdateHealthUI(currentHealth);
     }
 
     public void UpdateAmmoUI(int currentAmmo)
     {
-        uiManager.UpdateAmmoUI(currentAmmo);
+        uiManager?.UpdateAmmoUI(currentAmmo);
     }
 }

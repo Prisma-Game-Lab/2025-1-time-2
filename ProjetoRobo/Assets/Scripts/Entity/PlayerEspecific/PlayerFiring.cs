@@ -30,6 +30,11 @@ public class PlayerFiring : MonoBehaviour
     private Rigidbody2D aimRb;
     private Vector2 aimInput;
 
+    [Header("Meele Attack Configuration")]
+    [SerializeField] private GameObject meleeAttackObject;
+    [SerializeField] private int meleeAttackDamage;
+    [SerializeField] private float meleeAttackDuration;
+
     [Header("Playtest Mortar Shot Configuration")]
     //Playtest Only
     [SerializeField] private GameObject shotPrefab1;
@@ -44,6 +49,8 @@ public class PlayerFiring : MonoBehaviour
 
     [Header("Events")]
     [SerializeField] private UnityEvent<int> OnAmmoAmountChanged;
+
+    private bool meleeAtacking;
 
     private void Start()
     {
@@ -60,6 +67,7 @@ public class PlayerFiring : MonoBehaviour
         MoveAim();
         RestrictCenter();
         UpdateRotation();
+        if (meleeAtacking) MoveMeleeAttack();
     }
 
     public void OnAimInputChanged(Vector2 newInput) 
@@ -155,6 +163,28 @@ public class PlayerFiring : MonoBehaviour
         }
 
         OnAmmoAmountChanged.Invoke(ammoCount);
+    }
+
+    public void MeleeAttack() 
+    {
+        meleeAtacking = true;
+        MoveMeleeAttack();
+        meleeAttackObject.GetComponentInChildren<MeeleAttackHitbox>().MeleeDamage = meleeAttackDamage;
+        meleeAttackObject.SetActive(true);
+        StartCoroutine(DisableMeleeAttack());
+    }
+
+    private void MoveMeleeAttack() 
+    {
+        Vector2 attackDirection = aimObject.transform.position - transform.position;
+        meleeAttackObject.transform.rotation = Quaternion.LookRotation(Vector3.forward, attackDirection);
+    }
+
+    private IEnumerator DisableMeleeAttack() 
+    {
+        yield return new WaitForSeconds(meleeAttackDuration);
+        meleeAtacking = false;
+        meleeAttackObject.SetActive(false);
     }
 
     private void OnDrawGizmosSelected()

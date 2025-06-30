@@ -9,8 +9,10 @@ public class InputManager : MonoBehaviour
     [Header("Input Events")]
     [SerializeField] private UnityEvent<Vector2> OnMovement;
     [SerializeField] private UnityEvent<Vector2> OnAim;
-    [SerializeField] private UnityEvent OnParry;
-    [SerializeField] private UnityEvent OnShoot;
+    [SerializeField] private UnityEvent OnMovementAction;
+    [SerializeField] private UnityEvent OnProjectileAction;
+    [SerializeField] private UnityEvent OnChangeMovementAction;
+    [SerializeField] private UnityEvent OnChangeProjectileAction;
 
     [Header("Input Variables")]
     [SerializeField] private bool P1Movement = true;
@@ -74,11 +76,11 @@ public class InputManager : MonoBehaviour
         {
             if (P1Movement)
             {
-                OnShoot?.Invoke();
+                OnProjectileAction?.Invoke();
             }
             else
             {
-                OnParry?.Invoke();
+                OnMovementAction?.Invoke();
             }
         }
     }
@@ -89,11 +91,41 @@ public class InputManager : MonoBehaviour
         {
             if (!P1Movement)
             {
-                OnShoot?.Invoke();
+                OnProjectileAction?.Invoke();
             }
             else
             {
-                OnParry?.Invoke();
+                OnMovementAction?.Invoke();
+            }
+        }
+    }
+
+    public void OnP1ChangeActionButton(InputAction.CallbackContext inputValue)
+    {
+        if (inputValue.performed)
+        {
+            if (P1Movement)
+            {
+                OnChangeMovementAction?.Invoke();
+            }
+            else
+            {
+                OnChangeProjectileAction?.Invoke();
+            }
+        }
+    }
+
+    public void OnP2ChangeActionButton(InputAction.CallbackContext inputValue)
+    {
+        if (inputValue.performed)
+        {
+            if (!P1Movement)
+            {
+                OnChangeMovementAction?.Invoke();
+            }
+            else
+            {
+                OnChangeProjectileAction?.Invoke();
             }
         }
     }
