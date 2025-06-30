@@ -15,6 +15,9 @@ public class InputDisplay : MonoBehaviour
     public TMP_Text P1Text;
     public TMP_Text P2Text;
 
+    public TMP_Text P1Switch;
+    public TMP_Text P2Switch;
+
     public TMP_Text[] P1Movement = new TMP_Text[4];
 
     public TMP_Text[] P2Movement = new TMP_Text[4];
@@ -33,6 +36,9 @@ public class InputDisplay : MonoBehaviour
         //   .PerformInteractiveRebinding(bindingIndex)
         GetSingleBindingDisplay("ButtonP1", P1Text);
         GetSingleBindingDisplay("ButtonP2", P2Text);
+
+        GetSingleBindingDisplay("ChangeActionP1", P1Switch);
+        GetSingleBindingDisplay("ChangeActionP2", P2Switch);
 
         GetBindingDisplay("AxisP1", P1Movement, movement);
         GetBindingDisplay("AxisP2", P2Movement, movement);
@@ -132,6 +138,15 @@ public class InputDisplay : MonoBehaviour
     public void RebindButtonP2()
     {
         StartRebinding("Normal", "ButtonP2", P2Text);
+    }
+
+    public void RebindSwitchP1()
+    {
+        StartRebinding("Normal", "ChangeActionP1", P1Switch);
+    }
+     public void RebindSwitchP2()
+    {
+        StartRebinding("Normal", "ChangeActionP2", P2Switch);
     }
     int GetDirectionIndex(string direction)
     {
