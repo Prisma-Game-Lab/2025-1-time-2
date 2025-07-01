@@ -1037,6 +1037,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   sfxVolume: 1
+  currentVariableTimer: 0
+  currentFixedTimer: 0
 --- !u!114 &5530507891916285700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1094,7 +1096,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e145fbbc09d000d4e844385d22b050e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 5
+  maxHealth: 10
   deathSfx: player_death_sfx
   OnDamage:
     m_PersistentCalls:

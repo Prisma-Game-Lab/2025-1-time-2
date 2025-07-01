@@ -2980,6 +2980,7 @@ MonoBehaviour:
   heartContainer: {fileID: 1978482876}
   bulletContainer: {fileID: 1433947581}
   fullHeartSprite: {fileID: 21300000, guid: cf54a38d1fba7114ca12df11cef1a795, type: 3}
+  halfHeartSprite: {fileID: 21300000, guid: 7af99f3c251da4845b09376dd1fc67d9, type: 3}
   emptyHeartSprite: {fileID: 21300000, guid: ee10e91046649c249ae71180aadc413d, type: 3}
   fullBulletSprite: {fileID: 21300000, guid: 2ee655fbb8ad53c4aae7781d61d15bac, type: 3}
   emptyBulletSprite: {fileID: 21300000, guid: 6a00fa69fd15a904a8ae8de8329768b7, type: 3}

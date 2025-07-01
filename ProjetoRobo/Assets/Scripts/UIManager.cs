@@ -11,6 +11,8 @@ public class UIManager : MonoBehaviour
 
     [Header("Sprites")]
     public Sprite fullHeartSprite;
+
+    public Sprite halfHeartSprite;
     public Sprite emptyHeartSprite;
     public Sprite fullBulletSprite;
     public Sprite emptyBulletSprite;
@@ -57,7 +59,7 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         pontosText.text = "0";
-        maxHearts = player.GetComponent<PlayerHealthController>().maxHealth;
+        maxHearts = player.GetComponent<PlayerHealthController>().maxHealth / 2;
         maxBullets = player.GetComponent<PlayerFiring>().maxAmmo;
 
         maxTime = player.GetComponent<PlayerTimer>().maxFixedTimer + player.GetComponent<PlayerTimer>().maxVariableTimer;
@@ -100,7 +102,7 @@ public class UIManager : MonoBehaviour
 
     public void UpdateHealthUI(int currentHealth) 
     {
-        UpdateIconSprites(heartIcons, currentHealth, fullHeartSprite, emptyHeartSprite);
+       UpdateHeartSprites(heartIcons,currentHealth) ;
     }
 
     public void UpdateAmmoUI(int currentAmmo)
@@ -115,6 +117,28 @@ public class UIManager : MonoBehaviour
             icons[i].sprite = i < activeCount ? fullSprite : emptySprite;
         }
     }
+    
+    private void UpdateHeartSprites(List<Image> icons, int currentHealth)
+    {
+        for (int i = 0; i < icons.Count; i++)
+        {
+            int heartValue = i * 2;
+
+            if (currentHealth >= heartValue + 2)
+            {
+                icons[i].sprite = fullHeartSprite;
+            }
+            else if (currentHealth == heartValue + 1)
+            {
+                icons[i].sprite = halfHeartSprite;
+            }
+            else
+            {
+                icons[i].sprite = emptyHeartSprite;
+            }
+        }
+    }
+
     public void SwitchCorners()
     {
         b1 = !b1;
