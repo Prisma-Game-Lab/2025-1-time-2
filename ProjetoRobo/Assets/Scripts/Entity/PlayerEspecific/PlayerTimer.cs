@@ -13,8 +13,8 @@ public class PlayerTimer : MonoBehaviour
 
     [Header("Timer Configurations")]
     [SerializeField] private bool timerPaused;
-    [SerializeField] private float maxVariableTimer;
-    [SerializeField] private float maxFixedTimer;
+    [SerializeField] public float maxVariableTimer;
+    [SerializeField] public float maxFixedTimer;
 
     [SerializeField] public float onDamageDecrease;
 
@@ -23,8 +23,8 @@ public class PlayerTimer : MonoBehaviour
     [SerializeField] private float sfxVolume;
 
     private bool onTransition;
-    private float currentVariableTimer;
-    private float currentFixedTimer;
+    public float currentVariableTimer;
+    public float currentFixedTimer;
 
     private AudioSource loopedSFXSource;
    

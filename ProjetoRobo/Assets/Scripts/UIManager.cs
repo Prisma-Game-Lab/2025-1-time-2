@@ -24,11 +24,19 @@ public class UIManager : MonoBehaviour
 
     [Header("Corners")]
 
-    public GameObject greenL;
-    public GameObject redL;
-    public GameObject greenR;
-    public GameObject redR;
+    public GameObject greenMS;
+    public GameObject redMS;
+    public GameObject greenPA;
+    public GameObject redPA;
 
+    [Header("Bars")]
+
+    public Image RedBar;
+
+    public Image GreenBar;
+
+
+    [Header("Pontos")]
     public TMP_Text pontosText;
 
     public int pontos = 0;
@@ -42,32 +50,44 @@ public class UIManager : MonoBehaviour
     private int maxHearts;
     private int maxBullets;
 
+    private float maxTime;
+
+    private float currentTime;
+
     void Start()
     {
         pontosText.text = "0";
         maxHearts = player.GetComponent<PlayerHealthController>().maxHealth;
         maxBullets = player.GetComponent<PlayerFiring>().maxAmmo;
 
+        maxTime = player.GetComponent<PlayerTimer>().maxFixedTimer + player.GetComponent<PlayerTimer>().maxVariableTimer;
+
         InitIcons(heartContainer, heartPrefab, maxHearts, heartIcons);
         InitIcons(bulletContainer, bulletPrefab, maxBullets, bulletIcons);
 
-        greenL.SetActive(b1);
-        redR.SetActive(b1);
+        greenPA.SetActive(b1);
+        redMS.SetActive(b1);
 
-        greenR.SetActive(b2);
-        redL.SetActive(b2);
+        greenMS.SetActive(b2);
+        redPA.SetActive(b2);
     }
 
     void Update()
     {
+        currentTime = player.GetComponent<PlayerTimer>().currentVariableTimer + player.GetComponent<PlayerTimer>().currentFixedTimer;
         pontosText.text = pontos.ToString();
+        FillBar();
         //int currentHealth = player.GetComponent<PlayerHealthController>().currentHealth;
         //int currentAmmo = player.GetComponent<PlayerFiring>().ammoCount;
 
         //UpdateIconSprites(heartIcons, currentHealth, fullHeartSprite, emptyHeartSprite);
         //UpdateIconSprites(bulletIcons, currentAmmo, fullBulletSprite, emptyBulletSprite);
     }
-
+    private void FillBar()
+    {
+        GreenBar.fillAmount = currentTime / maxTime;
+        RedBar.fillAmount = currentTime / maxTime;
+    }
     private void InitIcons(Transform container, GameObject prefab, int count, List<Image> iconList)
     {
         for (int i = 0; i < count; i++)
@@ -100,11 +120,11 @@ public class UIManager : MonoBehaviour
         b1 = !b1;
         b2 = !b2;
 
-        greenL.SetActive(b1);
-        redR.SetActive(b1);
+        greenPA.SetActive(b1);
+        redMS.SetActive(b1);
 
-        greenR.SetActive(b2);
-        redL.SetActive(b2);
+        greenMS.SetActive(b2);
+        redPA.SetActive(b2);
     }
 }
 
