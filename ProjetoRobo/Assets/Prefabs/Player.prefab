@@ -1051,9 +1051,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db7578e6c17907244bb0442dc67e7225, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parryWindow: 0.3
+  parryWindow: 0.5
   parryCooldown: 0.5
-  parryInvincibilityDuration: 0.5
+  parryInvincibilityDuration: 1
   parryEffectPrefab: {fileID: 2248265322326265532, guid: f888a631dde19ea4496b7af8e9436b5c, type: 3}
   parryEffectDuration: 0.5
 --- !u!114 &8710172705894706232

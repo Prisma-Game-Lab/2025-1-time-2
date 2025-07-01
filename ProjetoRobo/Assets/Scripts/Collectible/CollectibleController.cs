@@ -15,6 +15,8 @@ public class CollectibleController : MonoBehaviour
 
     private float timer;
 
+    public bool cantDespawn = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -26,12 +28,13 @@ public class CollectibleController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (timer > 0)
+        if (timer > 0 )
         {
             timer -= Time.deltaTime;
         }
         else
         {
+            if(cantDespawn == false)
             Destroy(gameObject);
         }
         tr.Rotate(0.0f, 0.0f, rotatingSpeed, Space.Self);

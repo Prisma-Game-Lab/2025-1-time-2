@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - Collectible
   - Laser
+  - ReflectedLaser
   layers:
   - Default
   - TransparentFX
@@ -17,7 +18,7 @@ TagManager:
   - Player
   - Enemy
   - Bullet
-  - 
+  - ReflectedLaser
   - 
   - 
   - 

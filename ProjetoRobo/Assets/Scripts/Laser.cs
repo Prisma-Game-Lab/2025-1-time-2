@@ -23,6 +23,7 @@ public class Laser : MonoBehaviour
 
     public void SetUp(Vector2 dir, int laserdamage, float laserSpeed, float lifetime, LayerMask layerMask) 
     {
+        ResetLaser();
         direction = dir;
         damage = laserdamage;
         speed = laserSpeed;
@@ -38,15 +39,39 @@ public class Laser : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        DamageController damageController = collision.GetComponent<DamageController>();
-        if (damageController != null) 
-        {
-            damageController.OnDamage(damage);
-        }
-        
-        gameObject.SetActive(false);
+       if (gameObject.CompareTag("ReflectedLaser"))
+    {
+        // Enemy (In case the shot gets reflected)
+        if (collision.CompareTag("Enemy"))
+            {
+                DamageController damageController = collision.GetComponent<DamageController>();
+                if (damageController != null)
+                {
+                    damageController.OnDamage(damage*5);
+                }
+                gameObject.SetActive(false);
+            }
     }
+    else
+    {
+        // Player
+        if (collision.CompareTag("Player"))
+        {
+            DamageController damageController = collision.GetComponent<DamageController>();
+            if (damageController != null)
+            {
+                damageController.OnDamage(damage);
+            }
+            gameObject.SetActive(false);
+        }
+    }
+    }
+    public void ResetLaser()
+    {
+        gameObject.tag = "Laser"; 
+        gameObject.layer = LayerMask.NameToLayer("Bullet"); 
 
+    }
     private IEnumerator DisableAfterTime()
     {
         yield return new WaitForSeconds(laserLifetime);

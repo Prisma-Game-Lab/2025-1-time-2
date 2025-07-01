@@ -34,7 +34,7 @@ public class PlayerHealthController : EntityHealthController
 
     protected override void TakeDamage()
     {
-        pc.playerParry.OnHit();
+        //pc.playerParry.OnHit();
 
         if (currentIFrames > 0) 
         {

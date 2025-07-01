@@ -164,8 +164,12 @@ public class PlayerFiring : MonoBehaviour
 
         OnAmmoAmountChanged.Invoke(ammoCount);
     }
+    public void IncreaseDamage(int extraDamage)
+    {
+        mortarDamage += extraDamage;
+    }
 
-    public void MeleeAttack() 
+    public void MeleeAttack()
     {
         meleeAtacking = true;
         MoveMeleeAttack();
