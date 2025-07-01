@@ -981,8 +981,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aimPrefab: {fileID: 4243932747360762605, guid: eb0f377e557ea9f42825eda3d113bc73, type: 3}
   aimMaxSpeed: 6
-  aimAccelerationRate: 3
-  aimDesaccelerationRate: 6
+  aimAccelerationRate: 9
+  aimDesaccelerationRate: 11
   aimRadius: 4
   shotPrefab: {fileID: 8532741216186767511, guid: 1144aee368376754595b676683ace2cd, type: 3}
   mortarDamage: 5
@@ -1155,7 +1155,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
+        m_MethodName: 
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1167,7 +1167,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
+        m_MethodName: 
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1179,7 +1179,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GameOver, Assembly-CSharp
-        m_MethodName: SetPoints
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

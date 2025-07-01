@@ -27136,7 +27136,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 526859834013453721, guid: 6990a597796a00b42bd663c66e9744c1, type: 3}
       propertyPath: maxVariableTimer
-      value: 5
+      value: 55
       objectReference: {fileID: 0}
     - target: {fileID: 526859834013453721, guid: 6990a597796a00b42bd663c66e9744c1, type: 3}
       propertyPath: onInputChange.m_PersistentCalls.m_Calls.Array.size
@@ -27226,6 +27226,18 @@ PrefabInstance:
       propertyPath: onDeathEvent.m_PersistentCalls.m_Calls.Array.data[4].m_Target
       value: 
       objectReference: {fileID: 2032210834}
+    - target: {fileID: 4110095166037054398, guid: 6990a597796a00b42bd663c66e9744c1, type: 3}
+      propertyPath: onDeathEvent.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 4110095166037054398, guid: 6990a597796a00b42bd663c66e9744c1, type: 3}
+      propertyPath: onDeathEvent.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 4110095166037054398, guid: 6990a597796a00b42bd663c66e9744c1, type: 3}
+      propertyPath: onDeathEvent.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
+      value: SetPoints
+      objectReference: {fileID: 0}
     - target: {fileID: 6366267563213630568, guid: 6990a597796a00b42bd663c66e9744c1, type: 3}
       propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -27737,6 +27749,10 @@ PrefabInstance:
     - target: {fileID: 4380686358849181754, guid: 97a36bab022c0c741b81c3dae98f0c43, type: 3}
       propertyPath: laserDamage
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4994432032424867165, guid: 97a36bab022c0c741b81c3dae98f0c43, type: 3}
+      propertyPath: dropChance
+      value: 0.33
       objectReference: {fileID: 0}
     - target: {fileID: 6608917251125156136, guid: 97a36bab022c0c741b81c3dae98f0c43, type: 3}
       propertyPath: m_Name
