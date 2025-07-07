@@ -12,6 +12,7 @@ public class ParryHitbox : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) 
     {
+        
         if (owner != null)
         {
             owner.AttemptParry(other.gameObject);

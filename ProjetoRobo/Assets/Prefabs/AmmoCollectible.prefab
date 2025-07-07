@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5262293414862831008}
   - component: {fileID: 6464152241809009292}
   - component: {fileID: 5682681155631335331}
-  - component: {fileID: 4034833689753644792}
+  - component: {fileID: 4804140541279766020}
   m_Layer: 0
   m_Name: AmmoCollectible
   m_TagString: Untagged
@@ -136,7 +136,7 @@ PolygonCollider2D:
       - {x: 0.58778536, y: -0.80901694}
       - {x: 0.9510565, y: 0.30901712}
   m_UseDelaunayMesh: 0
---- !u!114 &4034833689753644792
+--- !u!114 &4804140541279766020
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -145,9 +145,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 7461689329379917843}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a92b549a9ceceac45bc677b24cd9eda5, type: 3}
+  m_Script: {fileID: 11500000, guid: c6a81f3b2231c204d8d1478f300041b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rotatingSpeed: 1
   despawnTime: 10
-  type: 1

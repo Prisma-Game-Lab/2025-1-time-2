@@ -13,8 +13,8 @@ public class PlayerTimer : MonoBehaviour
 
     [Header("Timer Configurations")]
     [SerializeField] private bool timerPaused;
-    [SerializeField] private float maxVariableTimer;
-    [SerializeField] private float maxFixedTimer;
+    [SerializeField] public float maxVariableTimer;
+    [SerializeField] public float maxFixedTimer;
 
     [SerializeField] public float onDamageDecrease;
 
@@ -23,8 +23,8 @@ public class PlayerTimer : MonoBehaviour
     [SerializeField] private float sfxVolume;
 
     private bool onTransition;
-    private float currentVariableTimer;
-    private float currentFixedTimer;
+    public float currentVariableTimer;
+    public float currentFixedTimer;
 
     private AudioSource loopedSFXSource;
    
@@ -54,20 +54,23 @@ public class PlayerTimer : MonoBehaviour
         if (currentVariableTimer > 0) 
         {
             currentVariableTimer -= Time.deltaTime;
-            return;
+        }
+        else 
+        {
+            if (!onTransition)
+            {
+                ActivateTransition();
+                onTransition = true;
+            }
+
+            currentFixedTimer -= Time.deltaTime;
+            if (currentFixedTimer < 0)
+            {
+                ActivateChange();
+            }
         }
 
-        if (!onTransition) 
-        {
-            ActivateTransition();
-            onTransition = true;
-        }
-
-        currentFixedTimer -= Time.deltaTime;
-        if (currentFixedTimer < 0) 
-        {
-            ActivateChange();
-        }
+        pc.playerUI.UpdateBars((currentVariableTimer + currentFixedTimer) / (maxFixedTimer + maxVariableTimer));
     }
 
     private void ActivateTransition() 
@@ -102,6 +105,22 @@ public class PlayerTimer : MonoBehaviour
 
     public void DecreaseTimer(float amount) 
     {
+        if (timerPaused) return;
+
+        bool activateSlowFill = true;
+
+        if (currentVariableTimer <= 0)
+        {
+            activateSlowFill = false;
+        }
+
         currentVariableTimer -= amount;
+
+        if (currentVariableTimer < 0) 
+        {
+            currentVariableTimer = 0;
+        }
+
+        pc.playerUI.UpdateBars((currentVariableTimer + currentFixedTimer) / (maxFixedTimer + maxVariableTimer), activateSlowFill);
     }
 }

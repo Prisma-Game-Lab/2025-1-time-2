@@ -126,6 +126,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8417236094251653261}
   - component: {fileID: 8210114265742509805}
+  - component: {fileID: 3040720344294434731}
+  - component: {fileID: 8955777776557054868}
   m_Layer: 6
   m_Name: UpperBody
   m_TagString: Untagged
@@ -162,6 +164,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 270
+--- !u!114 &3040720344294434731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2691189267716915996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bee1aefe5109a5f438bcbcd476a5b68f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  affectedSprite: {fileID: 6113088735033470544}
+  flashMaterial: {fileID: 2100000, guid: 6bdc825488913984182795ec96703d7a, type: 2}
+  flashDuration: 0.2
+--- !u!114 &8955777776557054868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2691189267716915996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a627bb136f78ff345baaeda75c38acc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  affectedSprite: {fileID: 6113088735033470544}
+  transparentValue: 0.75
+  phaseDuration: 0.5
 --- !u!1 &2967703409012459938
 GameObject:
   m_ObjectHideFlags: 0
@@ -400,6 +432,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8851231161636941035}
   - component: {fileID: 4283560955390411481}
+  - component: {fileID: 5237428646857526344}
+  - component: {fileID: 1538620659952480709}
   m_Layer: 6
   m_Name: LowerBody
   m_TagString: Untagged
@@ -436,6 +470,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 270
+--- !u!114 &5237428646857526344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3681974790856330699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bee1aefe5109a5f438bcbcd476a5b68f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  affectedSprite: {fileID: 7355359112899911180}
+  flashMaterial: {fileID: 2100000, guid: 6bdc825488913984182795ec96703d7a, type: 2}
+  flashDuration: 0.2
+--- !u!114 &1538620659952480709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3681974790856330699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a627bb136f78ff345baaeda75c38acc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  affectedSprite: {fileID: 7355359112899911180}
+  transparentValue: 0.75
+  phaseDuration: 0.5
 --- !u!1 &6553461017385846541
 GameObject:
   m_ObjectHideFlags: 0
@@ -766,8 +830,12 @@ MonoBehaviour:
   playerTimer: {fileID: 0}
   playerUI: {fileID: 0}
   playerHealthController: {fileID: 0}
-  playerBody: {fileID: 8210114265742509805}
-  playerTracks: {fileID: 4283560955390411481}
+  playerBodyRotation: {fileID: 8210114265742509805}
+  playerBodyFlash: {fileID: 3040720344294434731}
+  playerBodyFlicker: {fileID: 8955777776557054868}
+  playerTracksRotation: {fileID: 4283560955390411481}
+  playerTracksFlash: {fileID: 5237428646857526344}
+  playerTracksFlicker: {fileID: 1538620659952480709}
   playerParry: {fileID: 0}
 --- !u!114 &8371362252926876828
 MonoBehaviour:
@@ -1037,6 +1105,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   sfxVolume: 1
+  currentVariableTimer: 0
+  currentFixedTimer: 0
 --- !u!114 &5530507891916285700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1049,9 +1119,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db7578e6c17907244bb0442dc67e7225, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parryWindow: 0.3
+  parryWindow: 0.5
   parryCooldown: 0.5
-  parryInvincibilityDuration: 0.5
+  parryInvincibilityDuration: 1
   parryEffectPrefab: {fileID: 2248265322326265532, guid: f888a631dde19ea4496b7af8e9436b5c, type: 3}
   parryEffectDuration: 0.5
 --- !u!114 &8710172705894706232
@@ -1094,7 +1164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e145fbbc09d000d4e844385d22b050e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 5
+  maxHealth: 10
   deathSfx: player_death_sfx
   OnDamage:
     m_PersistentCalls:

@@ -16,7 +16,7 @@ public class PlayerParry : MonoBehaviour
     [SerializeField] private GameObject parryEffectPrefab; // prefab to show
     [SerializeField] private float parryEffectDuration = 0.2f;
 
-
+    private bool reflectiveParry = false;
     private bool isParryActive = false;
     private bool isOnCooldown = false;
 
@@ -59,7 +59,16 @@ public class PlayerParry : MonoBehaviour
         yield return new WaitForSeconds(parryCooldown);
          isOnCooldown = false;
     }
-
+    public void ReflectableParry()
+    {
+        reflectiveParry = !reflectiveParry;
+        Debug.Log("Reflectable activated");
+    }
+    public void ChangeParryWindow(float value)
+    {
+        parryWindow += value;
+        parryEffectDuration += value;
+    }
     private void OnParryVisual(bool successful)
     {
         if (parryEffectPrefab != null)
@@ -95,25 +104,58 @@ public class PlayerParry : MonoBehaviour
 
     public bool AttemptParry(GameObject other)
     {
+        
         if (other.CompareTag("Enemy") || other.CompareTag("Laser"))
         {
+
             if (isParryActive)
             {
-                 parrySucceeded = true;
-                SuccessfulParry();
+
+                if (other.CompareTag("Laser") && reflectiveParry)
+                {
+                    Laser laser = other.GetComponent<Laser>();
+                    if (laser != null)
+                    {
+                        Debug.Log("Attempted Reflection");
+                        ReflectLaser(laser);
+                    }
+                }
+                if (!parrySucceeded)
+                {
+                    parrySucceeded = true;
+                    SuccessfulParry();
+                    
+                }
                 return true;
+               
             }
             else
             {
-                
+
                 StartCoroutine(CooldownCoroutine());
-                
+
             }
         }
         return false;
     }
+    private void ReflectLaser(Laser laser)
+    {
+        Rigidbody2D rb = laser.GetComponent<Rigidbody2D>();
+        if (rb != null)
+            {
+            Vector2 oldDirection = rb.velocity.normalized;
+            Vector2 newDirection = -oldDirection;
+        
+            rb.velocity = newDirection * rb.velocity.magnitude;
+            laser.transform.rotation = Quaternion.Euler(0f, 0f, Vector2.SignedAngle(Vector2.up, newDirection));
 
-    public void OnHit() 
+            
+            laser.gameObject.tag = "ReflectedLaser";
+            laser.gameObject.layer = LayerMask.NameToLayer("ReflectedLaser");
+            }
+    }
+
+    public void OnHit()
     {
         if (IsParrying)
         {

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8687410183666847581}
   - component: {fileID: 3546966423754572906}
   - component: {fileID: 778112104700955241}
-  - component: {fileID: -5889099685224344967}
+  - component: {fileID: 6250320224028335794}
   m_Layer: 0
   m_Name: HealthCollectible
   m_TagString: Collectible
@@ -136,7 +136,7 @@ PolygonCollider2D:
       - {x: 0.58778536, y: -0.80901694}
       - {x: 0.9510565, y: 0.30901712}
   m_UseDelaunayMesh: 0
---- !u!114 &-5889099685224344967
+--- !u!114 &6250320224028335794
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -145,9 +145,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 2056062450541606222}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a92b549a9ceceac45bc677b24cd9eda5, type: 3}
+  m_Script: {fileID: 11500000, guid: bce0b4f2fdcd7ac4a8c2da6b809ecd40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rotatingSpeed: 1
   despawnTime: 10
-  type: 0

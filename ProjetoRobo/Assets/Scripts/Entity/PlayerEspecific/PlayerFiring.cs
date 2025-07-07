@@ -108,10 +108,10 @@ public class PlayerFiring : MonoBehaviour
 
     private void UpdateRotation() 
     {
-        if (pc.playerBody == null) return;
+        if (pc.playerBodyRotation == null) return;
 
         Vector2 dir = (aimObject.transform.position - transform.position).normalized;
-        pc.playerBody.SetDesiredRotation(dir);
+        pc.playerBodyRotation.SetDesiredRotation(dir);
         //float angle = Vector2.SignedAngle(Vector2.right, dir);
         //pc.playerBody.transform.rotation = Quaternion.Euler(0, 0, angle);
     }
@@ -164,8 +164,12 @@ public class PlayerFiring : MonoBehaviour
 
         OnAmmoAmountChanged.Invoke(ammoCount);
     }
+    public void IncreaseDamage(int extraDamage)
+    {
+        mortarDamage += extraDamage;
+    }
 
-    public void MeleeAttack() 
+    public void MeleeAttack()
     {
         meleeAtacking = true;
         MoveMeleeAttack();

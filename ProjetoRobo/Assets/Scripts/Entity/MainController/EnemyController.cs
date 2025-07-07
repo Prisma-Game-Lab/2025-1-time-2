@@ -18,6 +18,12 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private LayerMask targetLayers;
     [SerializeField] private float rotatingSpeed = 1f;
 
+    private bool isShooter;
+    [SerializeField] private float shooterKeepAwayDistance = 5f;
+    [SerializeField] private float shooterCloseThreshold = 4.5f; // to prevent flip-flop
+    private bool keepingDistance = false;
+
+
     private float timer = 0f;
     private bool isAlive = true;
 
@@ -25,6 +31,12 @@ public class EnemyController : MonoBehaviour
 
     void Start()
     {
+        if(Random.Range(0, 2) == 0){
+            isShooter = false;
+        } else {
+            isShooter = true;
+        }
+
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player")?.GetComponent<Rigidbody2D>();
         laserPool = GameManager.Instance.GetLaserPoolController();
@@ -35,16 +47,44 @@ public class EnemyController : MonoBehaviour
         if (foundPlayer && player != null)
         {
             Vector2 direction = (player.position - rb.position).normalized;
+            float distanceToPlayer = Vector2.Distance(rb.position, player.position);
+
+            // Rotate towards the player
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0f, 0f, angle);
+
+            if (isShooter)
+            {
+                if (!keepingDistance && distanceToPlayer < shooterCloseThreshold)
+                {
+                    keepingDistance = true;
+                }
+                else if (keepingDistance && distanceToPlayer > shooterKeepAwayDistance)
+                {
+                    keepingDistance = false;
+                }
+
+                if (keepingDistance)
+                {
+                    direction = (rb.position - player.position).normalized; // move away
+                    
+                }
+                else
+                {
+                    direction = (player.position - rb.position).normalized; // move toward
+                }
+            }
+            else
+            {
+                direction = (player.position - rb.position).normalized; // always move toward if not shooter
+            }
+
             if (rb.velocity.magnitude < maxSpeed){
                 rb.AddForce(direction * speed);
             }
             if (rb.velocity.magnitude > maxSpeed){
                 rb.velocity = rb.velocity.normalized * maxSpeed;
             }
-
-            // Rotate towards the player
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(0f, 0f, angle);
         }
     }
 
@@ -52,7 +92,7 @@ public class EnemyController : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        if (foundPlayer && timer >= 1/laserFireRate)
+        if (isShooter && foundPlayer && timer >= 1/laserFireRate)
         {
             ShootLaser();
             timer = 0f;
