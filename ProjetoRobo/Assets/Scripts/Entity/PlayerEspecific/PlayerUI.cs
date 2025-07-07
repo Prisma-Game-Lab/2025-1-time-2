@@ -22,4 +22,16 @@ public class PlayerUI : MonoBehaviour
     {
         uiManager?.UpdateAmmoUI(currentAmmo);
     }
+
+    public void UpdateBars(float percentage, bool activateSlowFill = false) 
+    {
+        uiManager?.RedBarController.SetCompletion(percentage);
+        uiManager?.GreenBarController.SetCompletion(percentage);
+
+        if (activateSlowFill) 
+        {
+            uiManager?.RedBarController.ActivateSlowFill();
+            uiManager?.GreenBarController.ActivateSlowFill();
+        }
+    }
 }

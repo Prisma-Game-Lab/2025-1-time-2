@@ -55,12 +55,12 @@ public class PlayerMovement : MonoBehaviour
 
         if (moveInput.magnitude > inputMinForRotation) 
         {
-            pc.playerTracks?.SetDesiredRotation(moveInput);
+            pc.playerTracksRotation?.SetDesiredRotation(moveInput);
             lastStrongMoveInput = moveInput;
         }
         else 
         {
-            pc.playerTracks?.SetDesiredRotation(Vector2.zero);
+            pc.playerTracksRotation?.SetDesiredRotation(Vector2.zero);
         }
     }
 

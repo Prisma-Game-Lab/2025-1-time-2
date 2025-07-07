@@ -29,6 +29,11 @@ public class PlayerHealthController : EntityHealthController
         if (currentIFrames > 0)
         {
             currentIFrames -= Time.deltaTime;
+            if (currentIFrames <= 0)
+            {
+                pc.playerBodyFlicker.DeactivateFlicker();
+                pc.playerTracksFlicker.DeactivateFlicker();
+            }
         }
     }
 
@@ -44,6 +49,10 @@ public class PlayerHealthController : EntityHealthController
         base.TakeDamage();
         pc.playerTimer.DecreaseTimer(pc.playerTimer.onDamageDecrease);
         AudioManager.Instance?.PlaySFX("hit_sfx");
+        pc.playerBodyFlash.ActivateFlash();
+        pc.playerTracksFlash.ActivateFlash();
+        pc.playerBodyFlicker.ActivateFlicker();
+        pc.playerTracksFlicker.ActivateFlicker();
         SetIFrames(iFramesOnHit);
     }
 

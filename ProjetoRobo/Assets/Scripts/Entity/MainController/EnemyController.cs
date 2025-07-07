@@ -29,7 +29,7 @@ public class EnemyController : MonoBehaviour
 
     private LaserPoolController laserPool;
 
-    void Awake()
+    void Start()
     {
         if(Random.Range(0, 2) == 0){
             isShooter = false;
