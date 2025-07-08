@@ -24,13 +24,14 @@ public class InputManager : MonoBehaviour
     private Vector2 p1Axis;
     private Vector2 p2Axis;
 
-    public void SwitchPlayerInput()
+    public bool SwitchPlayerInput()
     {
-        print("Changed Input");
         P1Movement = !P1Movement;
 
         OnAxis(p1Axis, P1Movement);
         OnAxis(p2Axis, !P1Movement);
+
+        return P1Movement;
     }
 
     public void OnP1Axis(InputAction.CallbackContext inputValue) 

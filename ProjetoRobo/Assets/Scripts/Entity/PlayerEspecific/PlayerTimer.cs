@@ -98,7 +98,8 @@ public class PlayerTimer : MonoBehaviour
         cameraAnim.SetTrigger("Shake");
 
         AudioManager.Instance.PlaySFX("switch_sfx");
-        pc.inputManager.SwitchPlayerInput();
+        bool currentState = pc.inputManager.SwitchPlayerInput();
+        pc.playerUI.ChangeIcons(currentState);
         pc.playerFiring.Crosshair.SwitchSprite();
         onInputChange?.Invoke();
     }

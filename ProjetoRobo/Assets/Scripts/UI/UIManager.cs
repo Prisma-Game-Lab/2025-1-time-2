@@ -25,7 +25,8 @@ public class UIManager : MonoBehaviour
     public GameObject player;
 
     [Header("Corners")]
-
+    [SerializeField] private Animator greenIconAnimator;
+    [SerializeField] private Animator redIconAnimator;
     public GameObject greenMS;
     public GameObject redMS;
     public GameObject greenPA;
@@ -139,16 +140,27 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void SwitchCorners()
+    public void SwitchCorners(bool P1Movement)
     {
-        b1 = !b1;
-        b2 = !b2;
+        //b1 = !b1;
+        //b2 = !b2;
 
-        greenPA.SetActive(b1);
-        redMS.SetActive(b1);
+        //greenPA.SetActive(b1);
+        //redMS.SetActive(b1);
 
-        greenMS.SetActive(b2);
-        redPA.SetActive(b2);
+        //greenMS.SetActive(b2);
+        //redPA.SetActive(b2);
+
+        if (P1Movement) 
+        {
+            redIconAnimator.Play("ProjectileToMovement");
+            greenIconAnimator.Play("MovementToProjectile");
+        }
+        else 
+        {
+            redIconAnimator.Play("MovementToProjectile");
+            greenIconAnimator.Play("ProjectileToMovement");
+        }
     }
 }
 

@@ -34,4 +34,9 @@ public class PlayerUI : MonoBehaviour
             uiManager?.GreenBarController.ActivateSlowFill();
         }
     }
+
+    public void ChangeIcons(bool P1Movement) 
+    {
+        uiManager.SwitchCorners(P1Movement);
+    }
 }
