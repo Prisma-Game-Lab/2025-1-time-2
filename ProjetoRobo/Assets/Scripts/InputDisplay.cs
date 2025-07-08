@@ -118,7 +118,7 @@ public class InputDisplay : MonoBehaviour
 
 
         currentAction.Disable();
-
+        text.text = "Press Any Key";
         currentAction
             .PerformInteractiveRebinding(0)
             .WithCancelingThrough("<Keyboard>/escape")
@@ -190,6 +190,7 @@ public class InputDisplay : MonoBehaviour
         }
         displayText = displayTextArray[GetDirectionIndex(compositePart.ToLower())];
         action.actionMap.Disable();
+        displayText.text = "Press Any Key";
         action.PerformInteractiveRebinding(bindingIndex)
             .WithCancelingThrough("<Keyboard>/escape")
             .OnComplete(operation =>
