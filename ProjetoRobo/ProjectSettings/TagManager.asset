@@ -8,6 +8,7 @@ TagManager:
   - Collectible
   - Laser
   - ReflectedLaser
+  - DialogController
   layers:
   - Default
   - TransparentFX
