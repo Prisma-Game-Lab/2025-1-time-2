@@ -53,8 +53,8 @@ public class ShootParryPowerup : PowerUpController
     protected override void DeactivateNerf()
     {
         pp.ChangeParryWindow(parryWindowDecrease);
-       
-        Destroy(gameObject);
+
+        Despawn();
     }
 
 }

@@ -24,13 +24,36 @@ public class UIManager : MonoBehaviour
     [Header("References")]
     public GameObject player;
 
-    [Header("Corners")]
+   
     [SerializeField] private Animator greenIconAnimator;
     [SerializeField] private Animator redIconAnimator;
-    public GameObject greenMS;
-    public GameObject redMS;
-    public GameObject greenPA;
-    public GameObject redPA;
+
+     [Header("Corners")]
+    [SerializeField] private GameObject greenMove;
+    [SerializeField] private GameObject redMove;
+    [SerializeField] private GameObject greenAim;
+    [SerializeField] private GameObject redAim;
+
+    [Header("Secondary Functions Icons")]
+
+    [SerializeField] private GameObject GparryIcon;
+
+    [SerializeField] private GameObject GshootIcon;
+
+    [SerializeField] private GameObject GmeleeIcon;
+
+    [SerializeField] private GameObject GdodgeIcon;
+
+    [SerializeField] private GameObject RparryIcon;
+
+    [SerializeField] private GameObject RshootIcon;
+
+    [SerializeField] private GameObject RmeleeIcon;
+
+    [SerializeField] private GameObject RdodgeIcon;
+
+    private bool isShotActive = true, isParryActive = true;
+   
 
     [Header("Bars")]
     public ChangeBar RedBarController;
@@ -42,8 +65,6 @@ public class UIManager : MonoBehaviour
 
     public int pontos = 0;
 
-    private bool b1 = true;
-    private bool b2 = false;
 
     private List<Image> heartIcons = new List<Image>();
     private List<Image> bulletIcons = new List<Image>();
@@ -66,11 +87,11 @@ public class UIManager : MonoBehaviour
         InitIcons(heartContainer, heartPrefab, maxHearts, heartIcons);
         InitIcons(bulletContainer, bulletPrefab, maxBullets, bulletIcons);
 
-        greenPA.SetActive(b1);
-        redMS.SetActive(b1);
+        greenAim.SetActive(true);
+        redMove.SetActive(true);
 
-        greenMS.SetActive(b2);
-        redPA.SetActive(b2);
+        greenMove.SetActive(false);
+        redAim.SetActive(false);
     }
 
     void Update()
@@ -140,6 +161,82 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void MorphOffensive()
+    {
+        bool P1Movement = player.GetComponent<InputManager>().P1Movement;
+        
+        if (P1Movement)
+        {
+            RshootIcon.SetActive(!isShotActive);
+            RmeleeIcon.SetActive(isShotActive);
+
+
+        }
+        else
+        {
+            GshootIcon.SetActive(!isShotActive);
+            GmeleeIcon.SetActive(isShotActive);
+
+
+        }
+        isShotActive = !isShotActive;
+    }
+    public void MorphDefensive()
+    {
+      bool P1Movement = player.GetComponent<InputManager>().P1Movement;
+
+      if (P1Movement)
+        {
+            GparryIcon.SetActive(!isParryActive);
+            GdodgeIcon.SetActive(isParryActive);
+
+
+        }
+        else
+        {
+            RparryIcon.SetActive(!isParryActive);
+            RdodgeIcon.SetActive(isParryActive);
+
+
+        }
+        isParryActive = !isParryActive;
+    }
+
+    private void SwitchSecondaryIcons(bool P1Movement)
+    {
+
+        // IF !P1MOVEMENT -> SHOOT/MELEE  = RED AND PARRY/DODGE = GREEN 
+        // REDSM (FALSE) AND GREENPD (FALSE)
+        // redpd (TRUE) AND GREENSM (TRUE)
+
+        if (isShotActive)
+        {
+            RshootIcon.SetActive(P1Movement);
+            GshootIcon.SetActive(!P1Movement);
+        }
+        else
+        {
+            RmeleeIcon.SetActive(P1Movement);
+            GmeleeIcon.SetActive(!P1Movement);
+        }
+
+        if (isParryActive)
+        {
+            GparryIcon.SetActive(P1Movement);
+            RparryIcon.SetActive(!P1Movement);
+        }
+
+        else {
+            GdodgeIcon.SetActive(P1Movement);
+            RdodgeIcon.SetActive(!P1Movement);
+        }
+        
+
+    
+
+
+        
+    }
     public void SwitchCorners(bool P1Movement)
     {
         //b1 = !b1;
@@ -151,13 +248,19 @@ public class UIManager : MonoBehaviour
         //greenMS.SetActive(b2);
         //redPA.SetActive(b2);
 
-        if (P1Movement) 
+        SwitchSecondaryIcons(P1Movement);
+        if (P1Movement)
         {
+
+            
+
             redIconAnimator.Play("ProjectileToMovement");
             greenIconAnimator.Play("MovementToProjectile");
         }
-        else 
+        else
         {
+           
+
             redIconAnimator.Play("MovementToProjectile");
             greenIconAnimator.Play("ProjectileToMovement");
         }

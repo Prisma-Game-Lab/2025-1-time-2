@@ -15,7 +15,7 @@ public class InputManager : MonoBehaviour
     [SerializeField] private UnityEvent OnChangeProjectileAction;
 
     [Header("Input Variables")]
-    [SerializeField] private bool P1Movement = true;
+    [SerializeField] public bool P1Movement = true;
     [Range(0f, 1f)]
     [SerializeField] private float stickDeadzone;
     [Range(0f, 1f)]
@@ -108,6 +108,7 @@ public class InputManager : MonoBehaviour
             if (P1Movement)
             {
                 OnChangeMovementAction?.Invoke();
+                
             }
             else
             {

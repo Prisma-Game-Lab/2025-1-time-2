@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PowerUpController : CollectibleController
 {
-    [SerializeField] private int buffDuration;
+    [SerializeField] public int buffDuration;
 
-    [SerializeField] private int nerfDuration;
+    [SerializeField] public int nerfDuration;
 
     private Collider2D c;
 
@@ -26,7 +26,6 @@ public class PowerUpController : CollectibleController
         cantDespawn = true;
         StartCoroutine(BuffSequence());
         
-
     }
 
     public IEnumerator BuffSequence()
@@ -70,6 +69,6 @@ public class PowerUpController : CollectibleController
     {
         // Undo Nerf
         Debug.Log("NERF DESATIVADO");
-        Destroy(gameObject);
+        Despawn();
     }
 }
