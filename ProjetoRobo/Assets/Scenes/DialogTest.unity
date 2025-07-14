@@ -626,7 +626,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2461b2a60131b024bb43064a2b33129d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialog: {fileID: 11400000, guid: ad39660d49c4f1140beb3c8f0ab1ce71, type: 2}
+  dialog: {fileID: 11400000, guid: 5f0bbb2746bf9944d966cae00c821434, type: 2}
 --- !u!114 &1412276849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1346,7 +1346,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6608917251125156136, guid: 6990a597796a00b42bd663c66e9744c1, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1361,14 +1361,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1543567546}
     m_Modifications:
-    - target: {fileID: 4092084367357124766, guid: df6801f4e25730547bcd855340a84160, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6540968532919702215, guid: df6801f4e25730547bcd855340a84160, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7146098401309625255, guid: df6801f4e25730547bcd855340a84160, type: 3}
       propertyPath: m_Name
       value: DialogController

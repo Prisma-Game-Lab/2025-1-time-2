@@ -15,8 +15,8 @@ MonoBehaviour:
   dialogueLines:
   - DialogText: If you're gonna give someone flowers, you should probably do it BEFORE
       they wither and die.
-    SpeakerSprite: {fileID: 0}
+    SpeakerSprite: {fileID: 21300000, guid: 617a666f2d4feb0469c0cbb5262946a5, type: 3}
   - DialogText: What. The flower? Or Sophie?
-    SpeakerSprite: {fileID: 0}
+    SpeakerSprite: {fileID: 21300000, guid: 1c64a62370647fe449f4ca98523598e1, type: 3}
   - DialogText: SANS UNDERTALE
-    SpeakerSprite: {fileID: 0}
+    SpeakerSprite: {fileID: 21300000, guid: f4edc90857d647f469a3aed898c67c40, type: 3}
