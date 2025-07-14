@@ -1344,6 +1344,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6608917251125156136, guid: 6990a597796a00b42bd663c66e9744c1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1357,6 +1361,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1543567546}
     m_Modifications:
+    - target: {fileID: 4092084367357124766, guid: df6801f4e25730547bcd855340a84160, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6540968532919702215, guid: df6801f4e25730547bcd855340a84160, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7146098401309625255, guid: df6801f4e25730547bcd855340a84160, type: 3}
       propertyPath: m_Name
       value: DialogController

@@ -12,6 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5093f333b4f1734694e32780372ce70, type: 3}
   m_Name: DialogTest
   m_EditorClassIdentifier: 
-  DialogText:
-  - "Voc\xEA ta bem?"
-  - "N\xE3o"
+  dialogueLines:
+  - DialogText: If you're gonna give someone flowers, you should probably do it BEFORE
+      they wither and die.
+    SpeakerSprite: {fileID: 0}
+  - DialogText: What. The flower? Or Sophie?
+    SpeakerSprite: {fileID: 0}
+  - DialogText: SANS UNDERTALE
+    SpeakerSprite: {fileID: 0}
