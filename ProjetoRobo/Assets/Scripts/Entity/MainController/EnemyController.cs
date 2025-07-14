@@ -26,15 +26,23 @@ public class EnemyController : MonoBehaviour
 
     private float timer = 0f;
     private bool isAlive = true;
+    
+    private SpriteRenderer spriteRenderer;
+    [SerializeField] private Sprite sprite1;
+    [SerializeField] private Sprite sprite2;
 
     private LaserPoolController laserPool;
 
     void Start()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        
         if(Random.Range(0, 2) == 0){
             isShooter = false;
+            spriteRenderer.sprite = sprite2;
         } else {
             isShooter = true;
+            spriteRenderer.sprite = sprite1;
         }
 
         rb = GetComponent<Rigidbody2D>();
