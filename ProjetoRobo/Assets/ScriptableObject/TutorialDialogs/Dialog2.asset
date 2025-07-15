@@ -16,6 +16,6 @@ MonoBehaviour:
   - DialogText: "Destruir o obst\xE1culo exigiu toda sua muni\xE7\xE3o, mas existe
       um jeito de consegui-l\xE1 de volta!"
     SpeakerSprite: {fileID: 0}
-  - DialogText: "Pressione a tecla N para realizar um Parry em proj\xE9teis e transform\xE1-los
-      em muni\xE7\xE3o!"
+  - DialogText: "Pressione a tecla <BUTTONP2> para realizar um Parry em proj\xE9teis
+      e transform\xE1-los em muni\xE7\xE3o!"
     SpeakerSprite: {fileID: 0}

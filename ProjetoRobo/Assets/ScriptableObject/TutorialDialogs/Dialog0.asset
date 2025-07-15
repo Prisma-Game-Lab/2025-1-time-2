@@ -15,6 +15,6 @@ MonoBehaviour:
   dialogueLines:
   - DialogText: "Os dois pilotos controlam fun\xE7\xF5es diferentes!"
     SpeakerSprite: {fileID: 0}
-  - DialogText: Utilizem as teclas WASD para se movimentar e IJKL para controlar
+  - DialogText: Utilizem as teclas <MOVEP1> para se movimentar e <MOVEP2> para controlar
       a mira.
     SpeakerSprite: {fileID: 0}

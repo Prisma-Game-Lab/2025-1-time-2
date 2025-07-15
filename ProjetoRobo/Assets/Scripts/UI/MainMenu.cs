@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public string sceneName;
+    [SerializeField] public string sceneName;
 
     [SerializeField] private AudioMixer Mixer;
     [SerializeField] private string menuMusic;

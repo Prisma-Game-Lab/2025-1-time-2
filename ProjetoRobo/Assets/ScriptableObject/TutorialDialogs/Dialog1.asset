@@ -15,5 +15,5 @@ MonoBehaviour:
   dialogueLines:
   - DialogText: "Parece que a carca\xE7a de um rob\xF4 est\xE1 bloquando o caminho.."
     SpeakerSprite: {fileID: 0}
-  - DialogText: "Mire no obst\xE1culo e o destrua com seu tiro (tecla C)."
+  - DialogText: "Mire no obst\xE1culo e o destrua com seu tiro (tecla <BUTTONP1>)."
     SpeakerSprite: {fileID: 0}

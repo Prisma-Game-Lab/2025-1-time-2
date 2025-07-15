@@ -943,7 +943,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3388e858122501f4ab711f57d412d8b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: EntitiesTest
+  sceneName: Tutorial
   Mixer: {fileID: 24100000, guid: 6138d778c791f954d906a8e9c0d77e2a, type: 2}
   menuMusic: Experiment001
   combatMusic: ZeroZeroOne

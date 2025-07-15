@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class DialogController : MonoBehaviour
 {
@@ -14,6 +15,9 @@ public class DialogController : MonoBehaviour
     [Header("Variables")]
     [SerializeField] private float timeBetweenCharacters;
     [SerializeField] private Sprite defaultSprite;
+
+    [Header("InputActions")]
+    [SerializeField] public InputActionAsset inputActions;
 
 
     public delegate void DialogEndedHandler(DialogData endedDialog);

@@ -15,10 +15,11 @@ MonoBehaviour:
   dialogueLines:
   - DialogText: "O Mecha tamb\xE9m possui a a\xE7\xE3o de Morphar!"
     SpeakerSprite: {fileID: 0}
-  - DialogText: "Aperte a tecla V para Morfar a op\xE7\xE3o ofensiva (Tiro -> Soco)"
+  - DialogText: "Aperte a tecla <MORPHP2> para Morfar a op\xE7\xE3o ofensiva (Tiro
+      -> Soco)"
     SpeakerSprite: {fileID: 0}
-  - DialogText: "Aperte a tecla B para Morphar a op\xE7\xE3o defensiva (Escudo ->
-      Desviada)"
+  - DialogText: "Aperte a tecla <MORPHP1>  para Morphar a op\xE7\xE3o defensiva (Parry
+      -> Desviada)"
     SpeakerSprite: {fileID: 0}
   - DialogText: "O Soco \xE9 ideal para momentos onde a muni\xE7\xE3o est\xE1 escassa."
     SpeakerSprite: {fileID: 0}

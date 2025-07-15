@@ -21,5 +21,6 @@ MonoBehaviour:
   - DialogText: "As fun\xE7\xF5es dos dois pilotos s\xE3o completamente invertidos
       ap\xF3s a troca, mas  as teclas continuam as mesmas."
     SpeakerSprite: {fileID: 0}
-  - DialogText: Andar se torna a mira (WASD/IJKL)e o Tiro se torna o Parry (C/N)
+  - DialogText: Andar se torna a mira (<MOVEP1>/<MOVEP2>)e o Tiro se torna o Parry
+      (<BUTTONP1>/<BUTTONP2>)
     SpeakerSprite: {fileID: 0}
