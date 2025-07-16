@@ -14,7 +14,7 @@ public class CrosshairVisual : MonoBehaviour
     void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-       
+        SwitchSprite();
     }
    
     public void SwitchSprite()

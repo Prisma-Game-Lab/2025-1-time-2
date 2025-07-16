@@ -1149,7 +1149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aimPrefab: {fileID: 4243932747360762605, guid: eb0f377e557ea9f42825eda3d113bc73, type: 3}
-  aimMaxSpeed: 6
+  aimMaxSpeed: 7
   aimAccelerationRate: 9
   aimDesaccelerationRate: 11
   aimRadius: 4
