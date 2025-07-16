@@ -67,6 +67,7 @@ public class EntityHealthController : MonoBehaviour
 
     protected virtual void Die() 
     {
+        PlayDeathSfx();
         Destroy(gameObject);
     }
 }

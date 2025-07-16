@@ -183,6 +183,7 @@ public class UIManager : MonoBehaviour
 
 
         }
+        AudioManager.Instance.PlaySFX("morph_sfx");
         isShotActive = !isShotActive;
     }
     public void MorphDefensive()
@@ -203,34 +204,41 @@ public class UIManager : MonoBehaviour
 
 
         }
+        AudioManager.Instance.PlaySFX("morph_sfx");
         isParryActive = !isParryActive;
     }
 
-    private void SwitchSecondaryIcons(bool P1Movement)
+    public void SwitchSecondaryIcons()
     {
-
+        bool P1Movement = player.GetComponent<InputManager>().P1Movement;
         // IF !P1MOVEMENT -> SHOOT/MELEE  = RED AND PARRY/DODGE = GREEN 
-        // REDSM (FALSE) AND GREENPD (FALSE)
-        // redpd (TRUE) AND GREENSM (TRUE)
+        
+
+
 
         if (isShotActive)
         {
+            
             RshootIcon.SetActive(P1Movement);
+           
             GshootIcon.SetActive(!P1Movement);
         }
         else
         {
+            
             RmeleeIcon.SetActive(P1Movement);
             GmeleeIcon.SetActive(!P1Movement);
         }
 
         if (isParryActive)
         {
+           
             GparryIcon.SetActive(P1Movement);
             RparryIcon.SetActive(!P1Movement);
         }
 
         else {
+            
             GdodgeIcon.SetActive(P1Movement);
             RdodgeIcon.SetActive(!P1Movement);
         }
@@ -252,7 +260,7 @@ public class UIManager : MonoBehaviour
         //greenMS.SetActive(b2);
         //redPA.SetActive(b2);
 
-        SwitchSecondaryIcons(P1Movement);
+        
         if (P1Movement)
         {
 

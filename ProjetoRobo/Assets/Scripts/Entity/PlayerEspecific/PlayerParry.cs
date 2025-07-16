@@ -85,7 +85,11 @@ public class PlayerParry : MonoBehaviour
             if (visual != null)
             {
                 if (successful) visual.ShowSuccessVisual();
-                else visual.ShowAttemptVisual();
+                else
+                {
+                    visual.ShowAttemptVisual();
+                    AudioManager.Instance.PlaySFX("parry_start_sfx");
+                }
             }
 
             Destroy(effectInstance, parryEffectDuration);
@@ -104,6 +108,7 @@ public class PlayerParry : MonoBehaviour
 
     public bool AttemptParry(GameObject other)
     {
+        
         
         if (other.CompareTag("Enemy") || other.CompareTag("Laser"))
         {
@@ -124,10 +129,10 @@ public class PlayerParry : MonoBehaviour
                 {
                     parrySucceeded = true;
                     SuccessfulParry();
-                    
+
                 }
                 return true;
-               
+
             }
             else
             {

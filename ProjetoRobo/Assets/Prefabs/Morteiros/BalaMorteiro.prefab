@@ -155,4 +155,4 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   scaleModifier: 0.5
-  hitboxRadius: 1
+  hitboxRadius: 0.7

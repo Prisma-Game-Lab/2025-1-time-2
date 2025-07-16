@@ -174,6 +174,7 @@ public class PlayerFiring : MonoBehaviour
 
     public void MeleeAttack()
     {
+         AudioManager.Instance.PlaySFX("player_melee_sfx");
         meleeAtacking = true;
         MoveMeleeAttack();
         meleeAttackObject.GetComponentInChildren<MeeleAttackHitbox>().MeleeDamage = meleeAttackDamage;

@@ -193,6 +193,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c5b82076b0bc72841a42c96a58102a21, type: 3}
   - {fileID: 8300000, guid: 62cb0d19434d1494d8aae24e574bc590, type: 3}
   - {fileID: 8300000, guid: 4a70e71f89b86ad49a40b75e0361b8be, type: 3}
+  - {fileID: 8300000, guid: 3205cae0ca1eb184982d344f583a4f95, type: 3}
+  - {fileID: 8300000, guid: 444e8e2ba46b6f64297867492b849d82, type: 3}
+  - {fileID: 8300000, guid: c6f6e38edfbcc0b488a0750fd1bc30d8, type: 3}
+  - {fileID: 8300000, guid: da8455619accd424f9c061ef00f1a487, type: 3}
+  - {fileID: 8300000, guid: 4d311158b104eca4ebd6e42fb27b39cb, type: 3}
   musicSource: {fileID: 5309929090020033760}
   sfxSource: {fileID: 3580366348140201588}
   sfxMixerGroup: {fileID: 8154349453932843111, guid: 6138d778c791f954d906a8e9c0d77e2a, type: 2}

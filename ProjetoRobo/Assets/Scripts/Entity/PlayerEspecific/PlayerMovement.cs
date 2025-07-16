@@ -51,7 +51,10 @@ public class PlayerMovement : MonoBehaviour
     {
         ApplyMovement();
         if (endingDash)
+        {
+            
             ApplyDashAcceleration();
+        }
     }
 
     public void OnDirectionChange(Vector2 newInputVector)
@@ -92,6 +95,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void ApplyDashAcceleration() 
     {
+        
         timeAfterDash += Time.deltaTime;
         float completionRatio = timeAfterDash / dashDesaccelerationDuration;
 
@@ -110,18 +114,23 @@ public class PlayerMovement : MonoBehaviour
 
     public void PerformDash() 
     {
+        
         if (!shouldMove || !canDash) return;
 
+        AudioManager.Instance.PlaySFX("dodge_start_sfx");
         dashing = true;
 
         shouldMove = false;
         canDash = false;
+
 
         hitDuringDash = false;
         closeCallsOnDash = dashHitboxScript.nContacts;
         pc.healthController.OnDamage.AddListener(OnHitDuringDash);
 
         pc.rb.velocity = lastStrongMoveInput.normalized * dashSpeed;
+
+        
 
         StartCoroutine(EndDash(lastStrongMoveInput.normalized));
         StartCoroutine(EndSuccessfulDash());
@@ -130,6 +139,7 @@ public class PlayerMovement : MonoBehaviour
 
     private IEnumerator EndDash(Vector2 dashDir) 
     {
+        
         yield return new WaitForSeconds(dashDuration);
 
         dashing = false;
@@ -173,6 +183,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (closeCallsOnDash > 0) 
         {
+            AudioManager.Instance.PlaySFX("dodge_sucess_sfx");
             pc.healthController.Heal(1);
         }
     }
