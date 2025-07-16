@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 using TMPro;
 using System.ComponentModel;
 using UnityEngine.UI;
-using UnityEngine.InputSystem.Android;
+//using UnityEngine.InputSystem.Android;
 
 public class InputDisplay : MonoBehaviour
 {
