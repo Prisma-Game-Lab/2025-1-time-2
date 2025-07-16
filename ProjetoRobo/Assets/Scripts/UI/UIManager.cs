@@ -78,6 +78,10 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
+        if (player == null)
+        {
+        player = GameObject.FindGameObjectWithTag("Player");
+        }
         pontosText.text = "0";
         maxHearts = player.GetComponent<PlayerHealthController>().maxHealth / 2;
         maxBullets = player.GetComponent<PlayerFiring>().maxAmmo;

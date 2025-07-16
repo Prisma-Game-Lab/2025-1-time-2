@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5555717249003475958
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6980701705644700324}
+  - component: {fileID: 3815319914325772409}
+  m_Layer: 0
+  m_Name: UIManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6980701705644700324
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5555717249003475958}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3815319914325772409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5555717249003475958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034498259bd35534bbc2fe6025610f2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heartContainer: {fileID: 0}
+  bulletContainer: {fileID: 0}
+  fullHeartSprite: {fileID: 21300000, guid: cf54a38d1fba7114ca12df11cef1a795, type: 3}
+  halfHeartSprite: {fileID: 21300000, guid: 7af99f3c251da4845b09376dd1fc67d9, type: 3}
+  emptyHeartSprite: {fileID: 21300000, guid: ee10e91046649c249ae71180aadc413d, type: 3}
+  fullBulletSprite: {fileID: 21300000, guid: 2ee655fbb8ad53c4aae7781d61d15bac, type: 3}
+  emptyBulletSprite: {fileID: 21300000, guid: 6a00fa69fd15a904a8ae8de8329768b7, type: 3}
+  heartPrefab: {fileID: 2142616584742569456, guid: 36441923c3e9f3c4d976b3f6efefe82c, type: 3}
+  bulletPrefab: {fileID: 6023567190186354542, guid: 6433120a7575c9e46938a4ca2682b513, type: 3}
+  player: {fileID: 0}
+  greenIconAnimator: {fileID: 0}
+  redIconAnimator: {fileID: 0}
+  greenMove: {fileID: 0}
+  redMove: {fileID: 0}
+  greenAim: {fileID: 0}
+  redAim: {fileID: 0}
+  GparryIcon: {fileID: 0}
+  GshootIcon: {fileID: 0}
+  GmeleeIcon: {fileID: 0}
+  GdodgeIcon: {fileID: 0}
+  RparryIcon: {fileID: 0}
+  RshootIcon: {fileID: 0}
+  RmeleeIcon: {fileID: 0}
+  RdodgeIcon: {fileID: 0}
+  RedBarController: {fileID: 0}
+  GreenBarController: {fileID: 0}
+  pontosText: {fileID: 0}
+  pontos: 0

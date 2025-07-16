@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Dialog1
   m_EditorClassIdentifier: 
   dialogueLines:
-  - DialogText: "Parece que a carca\xE7a de um rob\xF4 est\xE1 bloquando o caminho.."
+  - DialogText: "Parece que a carca\xE7a de um rob\xF4 est\xE1 bloqueando o caminho.."
     SpeakerSprite: {fileID: 0}
   - DialogText: "Mire no obst\xE1culo e o destrua com seu tiro (tecla <BUTTONP1>)."
     SpeakerSprite: {fileID: 0}
