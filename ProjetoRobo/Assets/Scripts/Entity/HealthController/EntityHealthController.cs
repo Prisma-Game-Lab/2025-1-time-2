@@ -17,7 +17,7 @@ public class EntityHealthController : MonoBehaviour
     private int currentHealth;
 
     [Header("Events")]
-    [SerializeField] private UnityEvent<int> OnDamage;
+    [SerializeField] public UnityEvent<int> OnDamage;
     [SerializeField] private UnityEvent<int> OnHeal;
 
     protected virtual void Start()

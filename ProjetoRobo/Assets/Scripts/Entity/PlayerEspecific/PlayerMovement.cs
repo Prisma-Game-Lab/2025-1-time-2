@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements.Experimental;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float dashDesacceleration;
     [SerializeField] private float dashDesaccelerationDuration;
     [SerializeField] private float dashEndForce;
+    [SerializeField] private float dashHealthWindow;
+    [SerializeField] private OnTriggerEvent dashHitboxScript;
 
     private Vector2 moveInput;
     private Vector2 lastStrongMoveInput;
@@ -28,11 +31,13 @@ public class PlayerMovement : MonoBehaviour
     private float currentAcceleration;
     private float currentDesacceleration;
     private float timeAfterDash;
-    
+
+    private bool dashing = false;
     private bool shouldMove = true;
     private bool canDash = true;
     private bool endingDash = false;
-
+    private bool hitDuringDash = false;
+    private int closeCallsOnDash;
 
     private void Start()
     {
@@ -107,24 +112,68 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!shouldMove || !canDash) return;
 
+        dashing = true;
+
         shouldMove = false;
         canDash = false;
+
+        hitDuringDash = false;
+        closeCallsOnDash = dashHitboxScript.nContacts;
+        pc.healthController.OnDamage.AddListener(OnHitDuringDash);
 
         pc.rb.velocity = lastStrongMoveInput.normalized * dashSpeed;
 
         StartCoroutine(EndDash(lastStrongMoveInput.normalized));
+        StartCoroutine(EndSuccessfulDash());
     }
+
 
     private IEnumerator EndDash(Vector2 dashDir) 
     {
         yield return new WaitForSeconds(dashDuration);
+
+        dashing = false;
+
         currentAcceleration = dashAcceleration;
         currentDesacceleration = dashDesacceleration;
         pc.rb.AddForce(dashDir * dashSpeed * dashEndForce * 10);
+
         timeAfterDash = 0;
         endingDash = true;
         shouldMove = true;
         yield return new WaitForSeconds(dashCooldown);
         canDash = true;
+    }
+
+    private void OnHitDuringDash(int damage)
+    {
+        hitDuringDash = true;
+        pc.healthController.OnDamage.RemoveListener(OnHitDuringDash);
+    }
+
+    private IEnumerator EndSuccessfulDash() 
+    {
+        yield return new WaitForSeconds(dashHealthWindow);
+
+        if (!hitDuringDash)
+        {
+            OnSucessfulDash();
+            pc.healthController.OnDamage.RemoveListener(OnHitDuringDash);
+        }
+    }
+
+    public void AddCloseCalls() 
+    {
+        if (!dashing) return;
+
+        closeCallsOnDash++;
+    }
+
+    private void OnSucessfulDash() 
+    {
+        if (closeCallsOnDash > 0) 
+        {
+            pc.healthController.Heal(1);
+        }
     }
 }
