@@ -161,7 +161,10 @@ public class PlayerFiring : MonoBehaviour
         {
             ammoCount = maxAmmo;
         }
-
+        if (ammoCount < 0)
+        {
+            ammoCount = 0;
+        }
         OnAmmoAmountChanged.Invoke(ammoCount);
     }
     public void IncreaseDamage(int extraDamage)

@@ -43,12 +43,16 @@ public class EntityHealthController : MonoBehaviour
         }
         
     }
+    public void TakeDamageOnEvent()
+    {
+        TakeDamage();
+    }
 
     public void Heal(int amount)
     {
         currentHealth += amount;
 
-        if (currentHealth > maxHealth) 
+        if (currentHealth > maxHealth)
         {
             currentHealth = maxHealth;
         }

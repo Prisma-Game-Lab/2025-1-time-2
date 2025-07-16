@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5093f333b4f1734694e32780372ce70, type: 3}
+  m_Name: Dialog3
+  m_EditorClassIdentifier: 
+  dialogueLines:
+  - DialogText: "O Mecha tamb\xE9m possui a a\xE7\xE3o de Morphar!"
+    SpeakerSprite: {fileID: 0}
+  - DialogText: "Aperte a tecla <MORPHP2> para Morfar a op\xE7\xE3o ofensiva (Tiro
+      -> Soco)"
+    SpeakerSprite: {fileID: 0}
+  - DialogText: "Aperte a tecla <MORPHP1>  para Morphar a op\xE7\xE3o defensiva (Parry
+      -> Desviada)"
+    SpeakerSprite: {fileID: 0}
+  - DialogText: "O Soco \xE9 ideal para momentos onde a muni\xE7\xE3o est\xE1 escassa."
+    SpeakerSprite: {fileID: 0}
+  - DialogText: "Enquanto a desviada ajuda mais na locomo\xE7\xE3o pelo mapa!"
+    SpeakerSprite: {fileID: 0}

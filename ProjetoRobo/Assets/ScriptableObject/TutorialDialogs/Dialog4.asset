@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5093f333b4f1734694e32780372ce70, type: 3}
+  m_Name: Dialog4
+  m_EditorClassIdentifier: 
+  dialogueLines:
+  - DialogText: "Parab\xE9ns! Voc\xEAs aprenderam a controlar o Mechazord! "
+    SpeakerSprite: {fileID: 0}
+  - DialogText: "Trabalho em Equipe \xE9 a chave para sobreviver l\xE1 fora!"
+    SpeakerSprite: {fileID: 0}
+  - DialogText: Desejam desbravar o que restou do mundo?
+    SpeakerSprite: {fileID: 0}
