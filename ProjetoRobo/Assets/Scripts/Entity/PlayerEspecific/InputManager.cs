@@ -105,10 +105,9 @@ public class InputManager : MonoBehaviour
     {
         if (inputValue.performed)
         {
-            if (P1Movement)
+            if (!P1Movement)
             {
                 OnChangeMovementAction?.Invoke();
-                
             }
             else
             {
@@ -121,7 +120,7 @@ public class InputManager : MonoBehaviour
     {
         if (inputValue.performed)
         {
-            if (!P1Movement)
+            if (P1Movement)
             {
                 OnChangeMovementAction?.Invoke();
             }
