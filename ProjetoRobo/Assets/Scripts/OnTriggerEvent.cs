@@ -13,7 +13,6 @@ public class OnTriggerEvent : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         nContacts++;
-        print(collision.name);
         OnTriggerEnterEvent.Invoke(nContacts);
     }
 
