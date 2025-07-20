@@ -32,7 +32,7 @@ public class PlayerMovement : MonoBehaviour
     private float currentDesacceleration;
     private float timeAfterDash;
 
-    private bool dashing = false;
+    public bool dashing { get; private set; } = false ;
     private bool shouldMove = true;
     private bool canDash = true;
     private bool endingDash = false;
@@ -95,7 +95,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void ApplyDashAcceleration() 
     {
-        
         timeAfterDash += Time.deltaTime;
         float completionRatio = timeAfterDash / dashDesaccelerationDuration;
 
@@ -109,12 +108,10 @@ public class PlayerMovement : MonoBehaviour
 
         currentAcceleration = Mathf.SmoothStep(dashAcceleration, accelerationRate, completionRatio);
         currentDesacceleration = Mathf.SmoothStep(dashDesacceleration, desaccelerationRate, completionRatio);
-
     }
 
     public void PerformDash() 
     {
-        
         if (!shouldMove || !canDash) return;
 
         AudioManager.Instance.PlaySFX("dodge_start_sfx");
@@ -123,14 +120,11 @@ public class PlayerMovement : MonoBehaviour
         shouldMove = false;
         canDash = false;
 
-
         hitDuringDash = false;
         closeCallsOnDash = dashHitboxScript.nContacts;
         pc.healthController.OnDamage.AddListener(OnHitDuringDash);
 
         pc.rb.velocity = lastStrongMoveInput.normalized * dashSpeed;
-
-        
 
         StartCoroutine(EndDash(lastStrongMoveInput.normalized));
         StartCoroutine(EndSuccessfulDash());
@@ -138,11 +132,8 @@ public class PlayerMovement : MonoBehaviour
 
 
     private IEnumerator EndDash(Vector2 dashDir) 
-    {
-        
+    {        
         yield return new WaitForSeconds(dashDuration);
-
-        dashing = false;
 
         currentAcceleration = dashAcceleration;
         currentDesacceleration = dashDesacceleration;
@@ -164,6 +155,8 @@ public class PlayerMovement : MonoBehaviour
     private IEnumerator EndSuccessfulDash() 
     {
         yield return new WaitForSeconds(dashHealthWindow);
+
+        dashing = false;
 
         if (!hitDuringDash)
         {
