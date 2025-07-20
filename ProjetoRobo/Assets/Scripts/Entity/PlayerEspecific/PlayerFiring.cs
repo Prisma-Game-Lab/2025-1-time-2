@@ -26,7 +26,7 @@ public class PlayerFiring : MonoBehaviour
     [SerializeField] private LayerMask targetLayerMask;
 
     private int ammoCount;
-    private GameObject aimObject;
+    public GameObject aimObject { get; private set; }
     private Rigidbody2D aimRb;
     private Vector2 aimInput;
 

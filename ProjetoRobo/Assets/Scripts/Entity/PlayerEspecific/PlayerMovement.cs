@@ -124,9 +124,17 @@ public class PlayerMovement : MonoBehaviour
         closeCallsOnDash = dashHitboxScript.nContacts;
         pc.healthController.OnDamage.AddListener(OnHitDuringDash);
 
-        pc.rb.velocity = lastStrongMoveInput.normalized * dashSpeed;
+        Vector2 dashDir = pc.playerFiring.aimObject.transform.position - transform.position;
+        dashDir.Normalize();
+        if (Mathf.Abs(dashDir.magnitude) < 0.5) 
+        {
+            print(dashDir);
+            dashDir = Vector2.right;
+        }
 
-        StartCoroutine(EndDash(lastStrongMoveInput.normalized));
+        pc.rb.velocity = dashDir * dashSpeed;
+
+        StartCoroutine(EndDash(dashDir.normalized));
         StartCoroutine(EndSuccessfulDash());
     }
 
