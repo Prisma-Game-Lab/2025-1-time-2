@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Dialog2
   m_EditorClassIdentifier: 
   dialogueLines:
-  - DialogText: "Destruir o obst\xE1culo exigiu toda sua muni\xE7\xE3o, mas existe
-      um jeito de consegui-l\xE1 de volta!"
+  - DialogText: "Ocorreu um erro no compartimento da artilharia e perdemos toda nosaa
+      muni\xE7\xE3o, mas existe um jeito de consegui-l\xE1 de volta!"
     SpeakerSprite: {fileID: 0}
   - DialogText: "Pressione a tecla <BUTTONP2> para realizar um Parry em ataques e
       transform\xE1-los em muni\xE7\xE3o!"

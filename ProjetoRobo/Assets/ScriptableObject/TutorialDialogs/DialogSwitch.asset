@@ -24,3 +24,5 @@ MonoBehaviour:
   - DialogText: Andar se torna a mira (<MOVEP1> | <MOVEP2>)e o Tiro se torna o Parry
       (<BUTTONP1>/<BUTTONP2>)
     SpeakerSprite: {fileID: 0}
+  - DialogText: "E tome cuidado pois receber dano acelerar\xE1 a troca!"
+    SpeakerSprite: {fileID: 0}

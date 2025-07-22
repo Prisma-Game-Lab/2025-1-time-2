@@ -21,6 +21,9 @@ public class InputManager : MonoBehaviour
     [Range(0f, 1f)]
     [SerializeField] private float stickUpperzone;
 
+    [Header("Reference to Pause Menu")]
+
+    [SerializeField] private PauseMenu pauseMenu;
     private Vector2 p1Axis;
     private Vector2 p2Axis;
 
@@ -34,7 +37,7 @@ public class InputManager : MonoBehaviour
         return P1Movement;
     }
 
-    public void OnP1Axis(InputAction.CallbackContext inputValue) 
+    public void OnP1Axis(InputAction.CallbackContext inputValue)
     {
         p1Axis = inputValue.ReadValue<Vector2>();
 
@@ -48,14 +51,14 @@ public class InputManager : MonoBehaviour
         OnAxis(p2Axis, !P1Movement);
     }
 
-    private void OnAxis(Vector2 axis, bool playerMoves) 
+    private void OnAxis(Vector2 axis, bool playerMoves)
     {
         if (axis.magnitude < stickDeadzone)
         {
             //Too little of an input
             axis = Vector2.zero;
         }
-        else if (axis.magnitude > stickUpperzone) 
+        else if (axis.magnitude > stickUpperzone)
         {
             //Max magnitude at 1
             axis.Normalize();
@@ -73,7 +76,7 @@ public class InputManager : MonoBehaviour
 
     public void OnP1Button(InputAction.CallbackContext inputValue)
     {
-        if (inputValue.performed) 
+        if (inputValue.performed)
         {
             if (P1Movement)
             {
@@ -128,6 +131,14 @@ public class InputManager : MonoBehaviour
             {
                 OnChangeProjectileAction?.Invoke();
             }
+        }
+    }
+
+    public void OnPauseButton(InputAction.CallbackContext inputValue)
+    {
+        if (inputValue.performed)
+        {
+            pauseMenu.TogglePause();
         }
     }
 }

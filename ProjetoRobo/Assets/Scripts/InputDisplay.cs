@@ -14,7 +14,7 @@ public class InputDisplay : MonoBehaviour
 
     [Header("UI Text Fields")]
 
-    [SerializeField] private GameObject RebindText;
+    [SerializeField] private TMP_Text RebindText;
 
     [SerializeField] private TMP_Text P1Text;
     [SerializeField] private TMP_Text P2Text;
@@ -40,6 +40,12 @@ public class InputDisplay : MonoBehaviour
 
     [SerializeField] private Button[] P2MovementButtons = new Button[4];
 
+    [Header("Pause Button")]
+
+    [SerializeField] private Button PauseButton;
+
+    [SerializeField] private TMP_Text PauseText;
+
     [Header("Buttons Sprites")]
 
     [SerializeField] private Sprite smallKey;
@@ -56,16 +62,18 @@ public class InputDisplay : MonoBehaviour
 
     void Start()
     {
-       
+
         //   .PerformInteractiveRebinding(bindingIndex)
-        GetSingleBindingDisplay("ButtonP1", P1Text,P1Button);
-        GetSingleBindingDisplay("ButtonP2", P2Text,P2Button);
+        GetSingleBindingDisplay("ButtonP1", P1Text, P1Button);
+        GetSingleBindingDisplay("ButtonP2", P2Text, P2Button);
 
-        GetSingleBindingDisplay("ChangeActionP1", P1Switch,P1Morph);
-        GetSingleBindingDisplay("ChangeActionP2", P2Switch,P2Morph);
+        GetSingleBindingDisplay("ChangeActionP1", P1Switch, P1Morph);
+        GetSingleBindingDisplay("ChangeActionP2", P2Switch, P2Morph);
 
-        GetBindingDisplay("AxisP1", P1Movement, movement,P1MovementButtons);
-        GetBindingDisplay("AxisP2", P2Movement, movement,P2MovementButtons);
+        GetSingleBindingDisplay("PauseButton", PauseText, PauseButton);
+
+        GetBindingDisplay("AxisP1", P1Movement, movement, P1MovementButtons);
+        GetBindingDisplay("AxisP2", P2Movement, movement, P2MovementButtons);
 
 
     }
@@ -130,14 +138,14 @@ public class InputDisplay : MonoBehaviour
                     movement[j - 1].text = displayName;
                     if (displayName.Length == 1)
                     {
-                    buttons[j-1].image.sprite = smallKey;
-                    buttons[j-1].image.SetNativeSize();
+                        buttons[j - 1].image.sprite = smallKey;
+                        buttons[j - 1].image.SetNativeSize();
                     }
                     else
                     {
 
-                    buttons[j-1].image.sprite = longKey;
-                    buttons[j-1].image.SetNativeSize();
+                        buttons[j - 1].image.sprite = longKey;
+                        buttons[j - 1].image.SetNativeSize();
                     }
 
                 }
@@ -147,56 +155,65 @@ public class InputDisplay : MonoBehaviour
     }
     public void StartRebinding(string actionMapName, string actionName, TMP_Text text, Button button)
     {
-        var actionMap = inputActions.FindActionMap(actionMapName);
-        if (actionMap == null)
+    var actionMap = inputActions.FindActionMap(actionMapName);
+    if (actionMap == null) return;
+
+    currentAction = actionMap.FindAction(actionName);
+    if (currentAction == null)
+    {
+        Debug.Log("NOPE!");
+        return;
+    }
+
+    currentAction.Disable();
+    RebindText.text = "Aperte Qualquer Tecla";
+    text.text = "?";
+
+    int bindingIndex = 0;
+
+    var rebind = currentAction
+        .PerformInteractiveRebinding(bindingIndex)
+        .OnMatchWaitForAnother(0.01f) 
+        .OnComplete(operation =>
         {
+            string selectedPath = currentAction.bindings[bindingIndex].effectivePath;
 
-            return;
-        }
-
-        currentAction = actionMap.FindAction(actionName);
-        if (currentAction == null)
-        {
-            Debug.Log("NOPE!");
-            return;
-        }
-
-
-
-        currentAction.Disable();
-        RebindText.SetActive(true);
-        text.text = "?";
-        
-        currentAction
-            .PerformInteractiveRebinding(0)
-            .WithCancelingThrough("<Keyboard>/escape")
-            .OnComplete(operation =>
+            if (IsKeyAlreadyBound(selectedPath, currentAction.name,bindingIndex))
             {
-                currentAction.Enable();
-                RebindText.SetActive(false);
-                GetSingleBindingDisplay(actionName, text, button);
+                
                 operation.Dispose();
+                StartRebinding(actionMapName, actionName, text, button);
+                return;
+            }
 
-            })
-            .Start();
-        
+            RebindText.text = "Clique em uma tecla para mudá-la";
+            GetSingleBindingDisplay(actionName, text, button);
+            currentAction.Enable();
+            operation.Dispose();
+        });
+
+    rebind.Start();
     }
     public void RebindButtonP1()
     {
-        StartRebinding("Normal", "ButtonP1", P1Text,P1Button);
+        StartRebinding("Normal", "ButtonP1", P1Text, P1Button);
     }
     public void RebindButtonP2()
     {
-        StartRebinding("Normal", "ButtonP2", P2Text,P2Button);
+        StartRebinding("Normal", "ButtonP2", P2Text, P2Button);
     }
 
     public void RebindSwitchP1()
     {
-        StartRebinding("Normal", "ChangeActionP1", P1Switch,P1Morph);
+        StartRebinding("Normal", "ChangeActionP1", P1Switch, P1Morph);
     }
-     public void RebindSwitchP2()
+    public void RebindSwitchP2()
     {
-        StartRebinding("Normal", "ChangeActionP2", P2Switch,P2Morph);
+        StartRebinding("Normal", "ChangeActionP2", P2Switch, P2Morph);
+    }
+    public void RebindPauseButton()
+    {
+        StartRebinding("Normal", "PauseButton", PauseText, PauseButton);
     }
     int GetDirectionIndex(string direction)
     {
@@ -241,43 +258,68 @@ public class InputDisplay : MonoBehaviour
         displayText = displayTextArray[GetDirectionIndex(compositePart.ToLower())];
         action.actionMap.Disable();
         displayText.text = "?";
-        RebindText.SetActive(true);
+        RebindText.text = "Aperte Qualquer Tecla";
         action.PerformInteractiveRebinding(bindingIndex)
-            .WithCancelingThrough("<Keyboard>/escape")
+            
+           
             .OnComplete(operation =>
             {
-                RebindText.SetActive(false);
-                string newBinding = InputControlPath.ToHumanReadableString(
-                action.bindings[bindingIndex].effectivePath,
-                InputControlPath.HumanReadableStringOptions.OmitDevice
-                );
+                string newPath = action.bindings[bindingIndex].effectivePath;
 
-                if (displayText != null)
-                    displayText.text = $"{newBinding}";
-                if (newBinding.Length == 1)
-                {
-                    buttons[GetDirectionIndex(compositePart.ToLower())].image.sprite = smallKey;
-                    buttons[GetDirectionIndex(compositePart.ToLower())].image.SetNativeSize();
-                }
-                else
-                {
-
-                    buttons[GetDirectionIndex(compositePart.ToLower())].image.sprite = longKey;
-                    buttons[GetDirectionIndex(compositePart.ToLower())].image.SetNativeSize();
+                 if (IsKeyAlreadyBound(newPath, action.name, bindingIndex))
+                    {
+                     operation.Dispose();
+                    StartRebindingMovement(actionName, compositePart, displayTextArray, buttons);
+                    return;
                     }
 
-                operation.Dispose();
-                action.actionMap.Enable();
-            })
-        .Start();
-        
+       
+                    string readable = InputControlPath.ToHumanReadableString(
+                    newPath,
+                    InputControlPath.HumanReadableStringOptions.OmitDevice
+                    );
+
+                    displayText.text = readable;
+                    Sprite sprite = readable.Length == 1 ? smallKey : longKey;
+                     Button btn = buttons[GetDirectionIndex(compositePart.ToLower())];
+                    btn.image.sprite = sprite;
+                     btn.image.SetNativeSize();
+
+                    operation.Dispose();
+                    action.actionMap.Enable();
+                    RebindText.text = "Clique em uma tecla para mudá-la";
+                    })
+                    .Start();
+
     }
     public void RebindMovementP1(string direction)
     {
-        StartRebindingMovement("AxisP1", direction, P1Movement,P1MovementButtons);
+        StartRebindingMovement("AxisP1", direction, P1Movement, P1MovementButtons);
     }
     public void RebindMovementP2(string direction)
     {
-        StartRebindingMovement("AxisP2",direction,P2Movement,P2MovementButtons);
+        StartRebindingMovement("AxisP2", direction, P2Movement, P2MovementButtons);
     }
+    
+   private bool IsKeyAlreadyBound(string controlPath, string excludingActionName, int? excludingBindingIndex = null)
+    {
+    foreach (var map in inputActions.actionMaps)
+    {
+        foreach (var action in map.actions)
+        {
+            for (int i = 0; i < action.bindings.Count; i++)
+            {
+                // Skip the current binding being modified
+                if (action.name == excludingActionName && excludingBindingIndex.HasValue && i == excludingBindingIndex.Value)
+                    continue;
+
+                if (action.bindings[i].effectivePath == controlPath)
+                    return true;
+            }
+        }
+    }
+
+    return false;
+    }
+ 
 }
