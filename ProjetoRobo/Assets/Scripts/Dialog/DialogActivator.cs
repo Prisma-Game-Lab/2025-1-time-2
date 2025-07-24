@@ -86,6 +86,10 @@ public class DialogActivator : MonoBehaviour
             {
                 line = line.Replace("<MORPHP2>", GetSingleKeybind("ChangeActionP2"));
             }
+            if (line.Contains("<TEXTADV>"))
+            {
+                line = line.Replace("<TEXTADV>", GetSingleKeybind("AdvanceText"));
+            }
 
             newDialog.dialogueLines[i].DialogText = line;
         }
