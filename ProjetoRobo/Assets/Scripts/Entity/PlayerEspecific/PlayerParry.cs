@@ -8,7 +8,7 @@ public class PlayerParry : MonoBehaviour
     [Header("Parry Configuration")]
     [SerializeField] private float parryWindow = 0.3f;
 
-    [SerializeField] private float parryCooldown = 0.5f;
+    [SerializeField] public float parryCooldown = 0.5f;
 
     [SerializeField] private float parryInvincibilityDuration = 0.5f;
 
@@ -30,7 +30,7 @@ public class PlayerParry : MonoBehaviour
 
     public void OnParryPressed()
     {
-        if (!isOnCooldown && !isParryActive)
+        if (!isParryActive)
         {
             StartCoroutine(ParryWindowCoroutine());
         }
@@ -38,27 +38,27 @@ public class PlayerParry : MonoBehaviour
 
     private IEnumerator ParryWindowCoroutine()
     {
+        if (isOnCooldown) yield break;
+
         isParryActive = true;
-         parrySucceeded = false;
-      
+        parrySucceeded = false;
+        isOnCooldown = true;
+
         OnParryVisual(false);
-        
+
         yield return new WaitForSeconds(parryWindow);
         isParryActive = false;
 
-        
+
         if (!parrySucceeded)
         {
-            StartCoroutine(CooldownCoroutine());
+            FindObjectOfType<UIManager>().TriggerSecondaryCooldown(false);
+            yield return new WaitForSeconds(parryCooldown);
         }
+        isOnCooldown = false;
     }
 
-    private IEnumerator CooldownCoroutine()
-    {
-        isOnCooldown = true;
-        yield return new WaitForSeconds(parryCooldown);
-         isOnCooldown = false;
-    }
+    
     public void ReflectableParry()
     {
         reflectiveParry = !reflectiveParry;
@@ -134,12 +134,7 @@ public class PlayerParry : MonoBehaviour
                 return true;
 
             }
-            else
-            {
-
-                StartCoroutine(CooldownCoroutine());
-
-            }
+            
         }
         return false;
     }

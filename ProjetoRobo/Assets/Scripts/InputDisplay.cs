@@ -309,7 +309,7 @@ public class InputDisplay : MonoBehaviour
         {
             for (int i = 0; i < action.bindings.Count; i++)
             {
-                // Skip the current binding being modified
+                
                 if (action.name == excludingActionName && excludingBindingIndex.HasValue && i == excludingBindingIndex.Value)
                     continue;
 

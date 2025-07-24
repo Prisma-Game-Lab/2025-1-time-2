@@ -21,7 +21,7 @@ MonoBehaviour:
   - DialogText: "As fun\xE7\xF5es dos dois pilotos s\xE3o completamente invertidos
       ap\xF3s a troca, mas  as teclas continuam as mesmas."
     SpeakerSprite: {fileID: 0}
-  - DialogText: Andar se torna a mira (<MOVEP1> | <MOVEP2>)e o Tiro se torna o Parry
+  - DialogText: Andar se torna a mira (<MOVEP1> | <MOVEP2>) e o Tiro se torna o Parry
       (<BUTTONP1>/<BUTTONP2>)
     SpeakerSprite: {fileID: 0}
   - DialogText: "E tome cuidado pois receber dano acelerar\xE1 a troca!"

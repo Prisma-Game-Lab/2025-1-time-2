@@ -10,19 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b5093f333b4f1734694e32780372ce70, type: 3}
-  m_Name: Dialog3
+  m_Name: DialogMorph1
   m_EditorClassIdentifier: 
   dialogueLines:
   - DialogText: "O Mecha tamb\xE9m possui a a\xE7\xE3o de Morphar!"
     SpeakerSprite: {fileID: 0}
-  - DialogText: "Aperte a tecla <MORPHP2> para Morfar a op\xE7\xE3o ofensiva (Tiro
+  - DialogText: "Aperte a tecla <MORPHP1> para Morphar a op\xE7\xE3o ofensiva (Tiro
       -> Soco)"
     SpeakerSprite: {fileID: 0}
-  - DialogText: "Aperte a tecla <MORPHP1>  para Morphar a op\xE7\xE3o defensiva (Parry
-      -> Desviada)"
-    SpeakerSprite: {fileID: 0}
   - DialogText: "O Soco \xE9 ideal para momentos onde a muni\xE7\xE3o est\xE1 escassa."
-    SpeakerSprite: {fileID: 0}
-  - DialogText: "A desviada ajuda na locomo\xE7\xE3o do mapa e, caso consiga desviar
-      de um ataque, o Mecha recupera vida."
     SpeakerSprite: {fileID: 0}

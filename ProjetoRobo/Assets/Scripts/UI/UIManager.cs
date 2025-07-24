@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -23,6 +24,8 @@ public class UIManager : MonoBehaviour
 
     [Header("References")]
     public GameObject player;
+
+    [SerializeField] GameObject UI;
 
    
     [SerializeField] private Animator greenIconAnimator;
@@ -52,9 +55,18 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private GameObject RdodgeIcon;
 
-    private bool isShotActive = true, isParryActive = true;
-   
+    [SerializeField] private SecondaryCooldown greenCD;
 
+    [SerializeField] private SecondaryCooldown redCD;
+
+
+
+    private bool isShotActive = true, isParryActive = true;
+
+    private float parryCooldown, shotCooldown, dashCooldown, meleeCooldown;
+
+    
+   
     [Header("Bars")]
     public ChangeBar RedBarController;
     public ChangeBar GreenBarController;
@@ -74,14 +86,15 @@ public class UIManager : MonoBehaviour
 
     //private float maxTime;
 
-    //private float currentTime;
+
 
     void Start()
     {
         if (player == null)
         {
-        player = GameObject.FindGameObjectWithTag("Player");
+            player = GameObject.FindGameObjectWithTag("Player");
         }
+        UI.SetActive(true);
         pontosText.text = "0";
         maxHearts = player.GetComponent<PlayerHealthController>().maxHealth / 2;
         maxBullets = player.GetComponent<PlayerFiring>().maxAmmo;
@@ -96,12 +109,25 @@ public class UIManager : MonoBehaviour
 
         greenMove.SetActive(false);
         redAim.SetActive(false);
+
+        parryCooldown = player.GetComponent<PlayerParry>().parryCooldown;
+        dashCooldown = player.GetComponent<PlayerMovement>().dashCooldown;
+
+        shotCooldown = 0;
+        meleeCooldown = 0;
+
+        greenCD = greenCD.GetComponent<SecondaryCooldown>();
+        redCD = redCD.GetComponent<SecondaryCooldown>();
+       
+        
     }
 
     void Update()
     {
+        
         //currentTime = player.GetComponent<PlayerTimer>().currentVariableTimer + player.GetComponent<PlayerTimer>().currentFixedTimer;
         pontosText.text = pontos.ToString();
+        
         //FillBar();
         //int currentHealth = player.GetComponent<PlayerHealthController>().currentHealth;
         //int currentAmmo = player.GetComponent<PlayerFiring>().ammoCount;
@@ -110,11 +136,8 @@ public class UIManager : MonoBehaviour
         //UpdateIconSprites(bulletIcons, currentAmmo, fullBulletSprite, emptyBulletSprite);
     }
 
-    //private void FillBar()
-    //{
-    //    GreenBar.fillAmount = currentTime / maxTime;
-    //    RedBar.fillAmount = currentTime / maxTime;
-    //}
+
+   
 
     private void InitIcons(Transform container, GameObject prefab, int count, List<Image> iconList)
     {
@@ -168,12 +191,16 @@ public class UIManager : MonoBehaviour
     public void MorphOffensive()
     {
         bool P1Movement = player.GetComponent<InputManager>().P1Movement;
-        
+        float newCooldown = isShotActive ? meleeCooldown : shotCooldown;
+
         if (P1Movement)
         {
             RshootIcon.SetActive(!isShotActive);
             RmeleeIcon.SetActive(isShotActive);
 
+            redCD.SetCooldown(newCooldown);
+            redCD.SetCurrentTime(newCooldown);
+            redCD.ResetCooldown();
 
         }
         else
@@ -181,33 +208,91 @@ public class UIManager : MonoBehaviour
             GshootIcon.SetActive(!isShotActive);
             GmeleeIcon.SetActive(isShotActive);
 
+            greenCD.SetCooldown(newCooldown);
+            greenCD.SetCurrentTime(newCooldown);
+            greenCD.ResetCooldown();
+
 
         }
         AudioManager.Instance.PlaySFX("morph_sfx");
         isShotActive = !isShotActive;
+        greenCD.SyncVisual();
+        redCD.SyncVisual();
     }
     public void MorphDefensive()
     {
-      bool P1Movement = player.GetComponent<InputManager>().P1Movement;
+        bool P1Movement = player.GetComponent<InputManager>().P1Movement;
+        float newCooldown = isParryActive ? dashCooldown : parryCooldown;
 
-      if (P1Movement)
+        if (P1Movement)
         {
             GparryIcon.SetActive(!isParryActive);
             GdodgeIcon.SetActive(isParryActive);
 
-
+            greenCD.SetCooldown(newCooldown);
+            greenCD.SetCurrentTime(newCooldown);
+            greenCD.ResetCooldown();
         }
         else
         {
             RparryIcon.SetActive(!isParryActive);
             RdodgeIcon.SetActive(isParryActive);
 
+            redCD.SetCooldown(newCooldown);
+            redCD.SetCurrentTime(newCooldown);
+            redCD.ResetCooldown();
+
 
         }
         AudioManager.Instance.PlaySFX("morph_sfx");
         isParryActive = !isParryActive;
+        
+        greenCD.SyncVisual();
+        redCD.SyncVisual();
     }
+    public void TriggerSecondaryCooldown(bool isOffensive)
+    {
+    bool isP1 = player.GetComponent<InputManager>().P1Movement;
 
+    if (isOffensive)
+    {
+        if (isShotActive)
+        {
+            // Currently in shoot mode
+            if (isP1)
+                redCD.TriggerCooldown(shotCooldown);
+            else
+                greenCD.TriggerCooldown(shotCooldown);
+        }
+        else
+        {
+            // Currently in melee mode
+            if (isP1)
+                redCD.TriggerCooldown(meleeCooldown);
+            else
+                greenCD.TriggerCooldown(meleeCooldown);
+        }
+    }
+    else
+    {
+        if (isParryActive)
+        {
+            // Currently in parry mode
+            if (isP1)
+                greenCD.TriggerCooldown(parryCooldown);
+            else
+                redCD.TriggerCooldown(parryCooldown);
+        }
+        else
+        {
+            // Currently in dash mode
+            if (isP1)
+                greenCD.TriggerCooldown(dashCooldown);
+            else
+                redCD.TriggerCooldown(dashCooldown);
+        }
+    }
+    }
     public void SwitchSecondaryIcons()
     {
         bool P1Movement = player.GetComponent<InputManager>().P1Movement;
@@ -260,18 +345,29 @@ public class UIManager : MonoBehaviour
         //greenMS.SetActive(b2);
         //redPA.SetActive(b2);
 
-        
+        float tempCooldown = greenCD.currentCooldown;
+        float tempTime = greenCD.currentTime;
+
+        greenCD.SetCooldown(redCD.currentCooldown);
+        greenCD.SetCurrentTime(redCD.currentTime);
+
+        redCD.SetCooldown(tempCooldown);
+        redCD.SetCurrentTime(tempTime);
+
+        greenCD.SyncVisual();
+        redCD.SyncVisual();
+
         if (P1Movement)
         {
 
-            
+
 
             redIconAnimator.Play("ProjectileToMovement");
             greenIconAnimator.Play("MovementToProjectile");
         }
         else
         {
-           
+
 
             redIconAnimator.Play("MovementToProjectile");
             greenIconAnimator.Play("ProjectileToMovement");

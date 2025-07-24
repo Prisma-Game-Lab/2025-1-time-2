@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5093f333b4f1734694e32780372ce70, type: 3}
+  m_Name: DialogMorph2
+  m_EditorClassIdentifier: 
+  dialogueLines:
+  - DialogText: "O Mecha tamb\xE9m pode Morphar a op\xE7\xE3o Defensiva!"
+    SpeakerSprite: {fileID: 0}
+  - DialogText: "Aperte a tecla <MORPHP2>  para Morphar a op\xE7\xE3o defensiva (Parry
+      -> Desviada)"
+    SpeakerSprite: {fileID: 0}
+  - DialogText: "A Desviada pode ajudar na locomo\xE7\xE3o pelo campo de batalha
+      e sua dire\xE7\xE3o \xE9 definida pela mira do Mecha."
+    SpeakerSprite: {fileID: 0}
+  - DialogText: "Caso o Mecha desvie precisamente de um ataque, ele recuperar\xE1
+      pontos de vida!"
+    SpeakerSprite: {fileID: 0}
+  - DialogText: "O poder dos propulsores \xE9 colossal e nem pr\xE9dios massivos
+      resistem ao impacto da Desviada."
+    SpeakerSprite: {fileID: 0}

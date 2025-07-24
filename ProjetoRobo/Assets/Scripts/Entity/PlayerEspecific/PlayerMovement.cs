@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Dash Variables")]
     [SerializeField] private float dashSpeed;
     [SerializeField] private float dashDuration;
-    [SerializeField] private float dashCooldown;
+    [SerializeField] public float dashCooldown;
     [SerializeField] private float dashAcceleration;
     [SerializeField] private float dashDesacceleration;
     [SerializeField] private float dashDesaccelerationDuration;
@@ -150,6 +150,7 @@ public class PlayerMovement : MonoBehaviour
         timeAfterDash = 0;
         endingDash = true;
         shouldMove = true;
+        FindObjectOfType<UIManager>().TriggerSecondaryCooldown(false);
         yield return new WaitForSeconds(dashCooldown);
         canDash = true;
     }
