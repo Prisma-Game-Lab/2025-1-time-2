@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements.Experimental;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -112,7 +111,9 @@ public class PlayerMovement : MonoBehaviour
 
     public void PerformDash() 
     {
-        if (!shouldMove || !canDash) return;
+        if (!pc.defensiveActionUnlocked || pc.defensiveActionBlocked) return;
+
+        if (!canDash) return;
 
         AudioManager.Instance.PlaySFX("dodge_start_sfx");
         dashing = true;

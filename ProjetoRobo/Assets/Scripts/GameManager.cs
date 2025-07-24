@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject laserPoolPrefab;
     private LaserPoolController laserPoolReference;
     public int mortarShotConfiguration = 0;
+
+    public UnityEvent<bool> OnPause;
 
     private void Awake()
     {
@@ -31,5 +34,19 @@ public class GameManager : MonoBehaviour
             laserPoolReference = laserPool.GetComponent<LaserPoolController>();
         }
         return laserPoolReference;
+    }
+
+    public void SetPause(bool state) 
+    {
+        if (state) 
+        {
+            Time.timeScale = 0;
+        }
+        else 
+        {
+            Time.timeScale = 1;
+        }
+
+        OnPause.Invoke(state);
     }
 }

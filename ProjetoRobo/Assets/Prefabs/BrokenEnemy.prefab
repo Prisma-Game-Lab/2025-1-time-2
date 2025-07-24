@@ -116,7 +116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 408c9def69b59b341a962dcc5f6aef5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
+  maxHealth: 2
   deathSfx: enemy_death_sfx
   OnDamage:
     m_PersistentCalls:

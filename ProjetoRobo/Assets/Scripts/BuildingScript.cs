@@ -23,8 +23,8 @@ public class BuildingScript : MonoBehaviour
             PlayerMovement playerMovement = collision.gameObject.GetComponent<PlayerMovement>();
             if (playerMovement.dashing)
             {
-                contactPoint = (collision.GetContact(0).point + collision.GetContact(1).point)/2;
-                normalContact = (collision.GetContact(0).normal + collision.GetContact(1).normal) / 2;
+                //contactPoint = (collision.GetContact(0).point + collision.GetContact(1).point)/2;
+                //normalContact = (collision.GetContact(0).normal + collision.GetContact(1).normal) / 2;
                 DestroyBuilding();
             }
         }
@@ -38,9 +38,9 @@ public class BuildingScript : MonoBehaviour
     private IEnumerator DestructionTimer() 
     {
         buildingCollider.enabled = false;
-        impactParticle.transform.position = contactPoint;
-        impactParticle.transform.rotation = Quaternion.LookRotation(-normalContact);
-        impactParticle.SetActive(true);
+        //impactParticle.transform.position = contactPoint;
+        //impactParticle.transform.rotation = Quaternion.LookRotation(-normalContact);
+        //impactParticle.SetActive(true);
         foreach (ParticleSystem particle in destructionParticles) 
         {
             particle.Play();
