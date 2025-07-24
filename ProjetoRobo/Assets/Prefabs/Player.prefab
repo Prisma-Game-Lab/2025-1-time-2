@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 4182112486404156515}
   - component: {fileID: 8656409487307551681}
   - component: {fileID: 5819073618962570417}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: DashHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -164,7 +164,7 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 631
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -641,7 +641,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1456771733844822845}
   - component: {fileID: 8495145369013666646}
-  - component: {fileID: 6640409601880987240}
+  - component: {fileID: 6402271761117149753}
   - component: {fileID: 6366267563213630568}
   - component: {fileID: 4128316396819188335}
   - component: {fileID: 8371362252926876828}
@@ -705,8 +705,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &6640409601880987240
-BoxCollider2D:
+--- !u!58 &6402271761117149753
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -738,18 +738,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.56, y: 2.56}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.7920766, y: 2.1270642}
-  m_EdgeRadius: 0
+  m_Radius: 0.9
 --- !u!114 &6366267563213630568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1066,6 +1056,7 @@ MonoBehaviour:
   P1Movement: 1
   stickDeadzone: 0.25
   stickUpperzone: 0.9
+  pauseMenu: {fileID: 0}
 --- !u!114 &2836296929701973382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1154,7 +1145,7 @@ MonoBehaviour:
   aimDesaccelerationRate: 11
   aimRadius: 4
   shotPrefab: {fileID: 8532741216186767511, guid: 1144aee368376754595b676683ace2cd, type: 3}
-  mortarDamage: 5
+  mortarDamage: 1
   maxAmmo: 5
   shotTime: 1
   targetLayerMask:
