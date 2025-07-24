@@ -6,8 +6,9 @@ public class BuildingScript : MonoBehaviour
 {
     [Header("Components")]
     [SerializeField] private GameObject buildingSprite;
+    [SerializeField] private Collider2D buildingCollider;
     [SerializeField] private GameObject impactParticle;
-    [SerializeField] private GameObject buildingParticle;
+    [SerializeField] private ParticleSystem[] destructionParticles;
 
     [Header("Variables")]
     [SerializeField] private float timeBeforeDestruction;
@@ -36,11 +37,14 @@ public class BuildingScript : MonoBehaviour
 
     private IEnumerator DestructionTimer() 
     {
+        buildingCollider.enabled = false;
         impactParticle.transform.position = contactPoint;
-        buildingParticle.transform.rotation = Quaternion.LookRotation(normalContact);
         impactParticle.transform.rotation = Quaternion.LookRotation(-normalContact);
         impactParticle.SetActive(true);
-        buildingParticle.SetActive(true);
+        foreach (ParticleSystem particle in destructionParticles) 
+        {
+            particle.Play();
+        }
         buildingSprite.SetActive(false);
         yield return new WaitForSeconds(timeBeforeDestruction);
         Destroy(gameObject);
