@@ -118,6 +118,8 @@ public class PlayerFiring : MonoBehaviour
 
     public void OnShotFired()
     {
+        if (pc.offensiveActionBlocked || !pc.offensiveActionUnlocked) return;
+
         if (ammoCount > 0)
         {
             AudioManager.Instance.PlaySFX("player_shot_sfx");
@@ -174,7 +176,9 @@ public class PlayerFiring : MonoBehaviour
 
     public void MeleeAttack()
     {
-         AudioManager.Instance.PlaySFX("player_melee_sfx");
+        if (pc.offensiveActionBlocked || !pc.offensiveActionUnlocked) return;
+
+        AudioManager.Instance.PlaySFX("player_melee_sfx");
         meleeAtacking = true;
         MoveMeleeAttack();
         meleeAttackObject.GetComponentInChildren<MeeleAttackHitbox>().MeleeDamage = meleeAttackDamage;

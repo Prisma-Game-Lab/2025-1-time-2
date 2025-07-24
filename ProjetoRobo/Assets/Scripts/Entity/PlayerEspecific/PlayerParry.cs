@@ -30,6 +30,8 @@ public class PlayerParry : MonoBehaviour
 
     public void OnParryPressed()
     {
+        if (!pc.defensiveActionUnlocked || pc.defensiveActionBlocked) return;
+
         if (!isParryActive)
         {
             StartCoroutine(ParryWindowCoroutine());

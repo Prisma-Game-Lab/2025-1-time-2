@@ -39,4 +39,14 @@ public class PlayerUI : MonoBehaviour
     {
         uiManager.SwitchCorners(P1Movement);
     }
+
+    public void UpdateDefensiveMorph() 
+    {
+        uiManager.MorphDefensive();
+    }
+
+    public void UpdateOffensiveMorph()
+    {
+        uiManager.MorphOffensive();
+    }
 }

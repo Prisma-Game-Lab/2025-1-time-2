@@ -11,8 +11,8 @@ public class InputManager : MonoBehaviour
     [SerializeField] private UnityEvent<Vector2> OnAim;
     [SerializeField] private UnityEvent OnMovementAction;
     [SerializeField] private UnityEvent OnProjectileAction;
-    [SerializeField] private UnityEvent OnChangeMovementAction;
-    [SerializeField] private UnityEvent OnChangeProjectileAction;
+    [SerializeField] private UnityEvent OnDefensiveMorph;
+    [SerializeField] private UnityEvent OnOffensiveMorph;
 
     [Header("Input Variables")]
     [SerializeField] public bool P1Movement = true;
@@ -104,32 +104,32 @@ public class InputManager : MonoBehaviour
         }
     }
 
-    public void OnP1ChangeActionButton(InputAction.CallbackContext inputValue)
-    {
-        if (inputValue.performed)
-        {
-            if (!P1Movement)
-            {
-                OnChangeMovementAction?.Invoke();
-            }
-            else
-            {
-                OnChangeProjectileAction?.Invoke();
-            }
-        }
-    }
-
-    public void OnP2ChangeActionButton(InputAction.CallbackContext inputValue)
+    public void OnP1Morph(InputAction.CallbackContext inputValue)
     {
         if (inputValue.performed)
         {
             if (P1Movement)
             {
-                OnChangeMovementAction?.Invoke();
+                OnOffensiveMorph?.Invoke();
             }
             else
             {
-                OnChangeProjectileAction?.Invoke();
+                OnDefensiveMorph?.Invoke();
+            }
+        }
+    }
+
+    public void OnP2Morph(InputAction.CallbackContext inputValue)
+    {
+        if (inputValue.performed)
+        {
+            if (!P1Movement)
+            {
+                OnOffensiveMorph?.Invoke();
+            }
+            else
+            {
+                OnDefensiveMorph?.Invoke();
             }
         }
     }

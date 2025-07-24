@@ -42,8 +42,8 @@ public class DialogController : MonoBehaviour
         currentDialogText = currentDialogData.dialogueLines[currentDialogIndex].DialogText;
 
         ChangeSpeakerImage();
-        
-        Time.timeScale = 0;
+
+        GameManager.Instance.SetPause(true);
         writeSentenceCoroutine = StartCoroutine(WriteSentence());
     }
 
@@ -85,7 +85,7 @@ public class DialogController : MonoBehaviour
     {
         onDialog = false;
         textField.text = "";
-        Time.timeScale = 1;
+        GameManager.Instance.SetPause(false);
         dialogHolder.SetActive(false);
         
         OnDialogEnded?.Invoke(currentDialogData);

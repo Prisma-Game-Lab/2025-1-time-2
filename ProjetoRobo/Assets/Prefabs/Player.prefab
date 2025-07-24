@@ -849,7 +849,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UIPlaytest, Assembly-CSharp
-        m_MethodName: decreaseConter
+        m_MethodName: increaseConter
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -865,7 +865,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8590840197531246686}
         m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
-        m_MethodName: OnP1ChangeActionButton
+        m_MethodName: OnP1Morph
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -881,7 +881,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8590840197531246686}
         m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
-        m_MethodName: OnP2ChangeActionButton
+        m_MethodName: OnP2Morph
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -893,6 +893,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: b76a4554-35d4-44f0-8093-af81c834d06b
     m_ActionName: Normal/ChangeActionP2[/Keyboard/b]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8590840197531246686}
+        m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
+        m_MethodName: OnPauseButton
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 82f2ff8f-7726-40fa-a61a-0a9eed2428f9
+    m_ActionName: Normal/PauseButton[/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Normal
@@ -926,6 +942,14 @@ MonoBehaviour:
   playerTracksFlash: {fileID: 5237428646857526344}
   playerTracksFlicker: {fileID: 1538620659952480709}
   playerParry: {fileID: 0}
+  defensiveActionUnlocked: 1
+  defensiveActionBlocked: 0
+  offensiveActionUnlocked: 1
+  offensiveActionBlocked: 0
+  defensiveMorphUnlocked: 1
+  defensiveMorphBlocked: 0
+  offensiveMorphUnlocked: 1
+  offensiveMorphBlocked: 0
 --- !u!114 &8371362252926876828
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1023,12 +1047,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  OnChangeMovementAction:
+  OnDefensiveMorph:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2836296929701973382}
         m_TargetAssemblyTypeName: PlayerActionController, Assembly-CSharp
-        m_MethodName: ChangeCurrentMovementAction
+        m_MethodName: ChangeCurrentDefensiveMorph
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1038,12 +1062,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  OnChangeProjectileAction:
+  OnOffensiveMorph:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2836296929701973382}
         m_TargetAssemblyTypeName: PlayerActionController, Assembly-CSharp
-        m_MethodName: ChangeCurrentProjectileAction
+        m_MethodName: ChangeCurrentOffensiveMorph
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

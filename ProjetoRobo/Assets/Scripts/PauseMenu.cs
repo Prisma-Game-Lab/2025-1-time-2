@@ -24,7 +24,7 @@ public class PauseMenu : MonoBehaviour
         UI.SetActive(isActive);
         Controls.SetActive(false);
         Audio.SetActive(false);
-        Time.timeScale = isActive ? 1 : 0;
+        GameManager.Instance.SetPause(!isActive);
 
 
     }

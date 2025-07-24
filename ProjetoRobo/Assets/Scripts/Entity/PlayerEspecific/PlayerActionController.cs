@@ -35,8 +35,10 @@ public class PlayerActionController : MonoBehaviour
         ProjectileActions[ProjectileActionIndex].Invoke();
     }
 
-    public void ChangeCurrentMovementAction(int increaseAmount) 
+    public void ChangeCurrentDefensiveMorph(int increaseAmount) 
     {
+        if (!pc.defensiveMorphUnlocked || pc.defensiveMorphBlocked) return;
+
         MovementActionIndex += increaseAmount;
         if (MovementActionIndex >= maxMovementActionIndex) 
         {
@@ -46,10 +48,14 @@ public class PlayerActionController : MonoBehaviour
         {
             MovementActionIndex += maxMovementActionIndex;
         }
+
+        pc.playerUI.UpdateDefensiveMorph();
     }
 
-    public void ChangeCurrentProjectileAction(int increaseAmount)
+    public void ChangeCurrentOffensiveMorph(int increaseAmount)
     {
+        if (!pc.offensiveMorphUnlocked || pc.offensiveMorphBlocked) return;
+
         ProjectileActionIndex += increaseAmount;
         if (ProjectileActionIndex >= maxProjectileActionIndex)
         {
@@ -59,5 +65,7 @@ public class PlayerActionController : MonoBehaviour
         {
             ProjectileActionIndex += maxProjectileActionIndex;
         }
+
+        pc.playerUI.UpdateOffensiveMorph();
     }
 }

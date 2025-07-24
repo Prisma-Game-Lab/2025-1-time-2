@@ -19,6 +19,27 @@ public class PlayerController : EntityController
 
     [HideInInspector] public PlayerParry playerParry;
 
+    [Header("Player Skills")]
+    public bool defensiveActionUnlocked;
+    public bool offensiveActionUnlocked;
+    public bool defensiveMorphUnlocked;
+    public bool offensiveMorphUnlocked;
+
+    public bool defensiveActionBlocked { get; private set; }
+    public bool offensiveActionBlocked { get; private set; }
+    public bool defensiveMorphBlocked  { get; private set; }
+    public bool offensiveMorphBlocked  { get; private set; }
+
+    private void OnEnable()
+    {
+        GameManager.Instance?.OnPause.AddListener(SetSkillsBlock);
+    }
+
+    private void OnDisable()
+    {
+        GameManager.Instance?.OnPause.RemoveListener(SetSkillsBlock);
+    }
+
     protected override void Awake()
     {
         base.Awake();
@@ -32,6 +53,14 @@ public class PlayerController : EntityController
 
         playerParry = GetComponent<PlayerParry>();
     }   
+
+    public void SetSkillsBlock(bool state) 
+    {
+        defensiveActionBlocked = state;
+        offensiveActionBlocked = state;
+        defensiveMorphBlocked = state;
+        offensiveMorphBlocked = state;
+    }
 }
 
 
