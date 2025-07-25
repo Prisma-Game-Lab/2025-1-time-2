@@ -9999,6 +9999,7 @@ MonoBehaviour:
   - {fileID: 6133605921497588691}
   - {fileID: 3602923293048378499}
   timeBeforeDestruction: 1
+  durability: 1
 --- !u!1001 &2240633172570779413
 PrefabInstance:
   m_ObjectHideFlags: 0
