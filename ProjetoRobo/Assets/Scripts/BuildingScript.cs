@@ -12,6 +12,7 @@ public class BuildingScript : MonoBehaviour
 
     [Header("Variables")]
     [SerializeField] private float timeBeforeDestruction;
+    [SerializeField] private float durability;
 
     private Vector2 contactPoint;
     private Vector2 normalContact;
@@ -25,7 +26,8 @@ public class BuildingScript : MonoBehaviour
             {
                 //contactPoint = (collision.GetContact(0).point + collision.GetContact(1).point)/2;
                 //normalContact = (collision.GetContact(0).normal + collision.GetContact(1).normal) / 2;
-                DestroyBuilding();
+                durability--;
+                if (durability <= 0) DestroyBuilding();
             }
         }
     }
