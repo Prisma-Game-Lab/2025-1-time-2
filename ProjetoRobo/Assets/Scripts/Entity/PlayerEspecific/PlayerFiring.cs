@@ -26,7 +26,7 @@ public class PlayerFiring : MonoBehaviour
     [SerializeField] private LayerMask targetLayerMask;
 
     private int ammoCount;
-    public GameObject aimObject { get; private set; }
+    public GameObject aimObject;
     private Rigidbody2D aimRb;
     private Vector2 aimInput;
 
@@ -56,7 +56,6 @@ public class PlayerFiring : MonoBehaviour
     {
         pc = GetComponent<PlayerController>();
 
-        aimObject = Instantiate(aimPrefab, transform.position, Quaternion.identity);
         Crosshair = aimObject.GetComponent<CrosshairVisual>();
         aimRb = aimObject.GetComponent<Rigidbody2D>();
         ammoCount = maxAmmo;
@@ -65,6 +64,7 @@ public class PlayerFiring : MonoBehaviour
     private void FixedUpdate()
     {
         MoveAim();
+        aimRb.transform.Translate(pc.rb.velocity * Time.deltaTime, transform);
         RestrictCenter();
         UpdateRotation();
         if (meleeAtacking) MoveMeleeAttack();
