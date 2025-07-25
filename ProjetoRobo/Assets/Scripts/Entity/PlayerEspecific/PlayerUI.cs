@@ -10,7 +10,7 @@ public class PlayerUI : MonoBehaviour
     private void Awake()
     {
         playerController = GetComponent<PlayerController>();
-        uiManager = GameObject.Find("UIManager").GetComponent<UIManager>();
+        uiManager = GameObject.Find("UIManager")?.GetComponent<UIManager>();
     }
 
     public void UpdateHealthUI(int currentHealth) 
@@ -37,16 +37,16 @@ public class PlayerUI : MonoBehaviour
 
     public void ChangeIcons(bool P1Movement) 
     {
-        uiManager.SwitchCorners(P1Movement);
+        uiManager?.SwitchCorners(P1Movement);
     }
 
     public void UpdateDefensiveMorph() 
     {
-        uiManager.MorphDefensive();
+        uiManager?.MorphDefensive();
     }
 
     public void UpdateOffensiveMorph()
     {
-        uiManager.MorphOffensive();
+        uiManager?.MorphOffensive();
     }
 }

@@ -54,7 +54,7 @@ public class PlayerParry : MonoBehaviour
 
         if (!parrySucceeded)
         {
-            FindObjectOfType<UIManager>().TriggerSecondaryCooldown(false);
+            FindObjectOfType<UIManager>()?.TriggerSecondaryCooldown(false);
             yield return new WaitForSeconds(parryCooldown);
         }
         isOnCooldown = false;
