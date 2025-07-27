@@ -10,7 +10,7 @@ public class PlayerFiring : MonoBehaviour
     private PlayerController pc;
 
     [Header("Aim Configuration")]
-    [SerializeField] private GameObject aimPrefab;
+    public GameObject aimObject;
     [SerializeField] private float aimMaxSpeed;
     [SerializeField] private float aimAccelerationRate;
     [SerializeField] private float aimDesaccelerationRate;
@@ -19,14 +19,12 @@ public class PlayerFiring : MonoBehaviour
     [Header("Mortar Shot Configuration")]
     [SerializeField] private GameObject shotPrefab;
     [SerializeField] private int mortarDamage;
-
-    [SerializeField] public int maxAmmo;
-
+    public int maxAmmo;
     [SerializeField] private float shotTime;
     [SerializeField] private LayerMask targetLayerMask;
+    [SerializeField] private ParticleSystem onShootParticles;
 
     private int ammoCount;
-    public GameObject aimObject;
     private Rigidbody2D aimRb;
     private Vector2 aimInput;
 
@@ -34,16 +32,6 @@ public class PlayerFiring : MonoBehaviour
     [SerializeField] private GameObject meleeAttackObject;
     [SerializeField] private int meleeAttackDamage;
     [SerializeField] private float meleeAttackDuration;
-
-    [Header("Playtest Mortar Shot Configuration")]
-    //Playtest Only
-    [SerializeField] private GameObject shotPrefab1;
-    [SerializeField] private GameObject shotPrefab2;
-    [SerializeField] private GameObject shotPrefab3;
-    [SerializeField] private float shot1Delay;
-    [SerializeField] private float shot2minDur;
-    [SerializeField] private float shot2maxDur;
-    [SerializeField] private float shot3speed;
 
     public CrosshairVisual Crosshair { get; private set; }
 
@@ -122,31 +110,11 @@ public class PlayerFiring : MonoBehaviour
 
         if (ammoCount > 0)
         {
+            onShootParticles.Play();
             AudioManager.Instance.PlaySFX("player_shot_sfx");
-            //Playtest Only
-            switch (GameManager.Instance.mortarShotConfiguration)
-            {
-                case 0:
-                    //Travelling Shot
-                    GameObject shot = Instantiate(shotPrefab, transform.position, Quaternion.identity);
-                    shot.GetComponent<MortarController>().Initialization(aimObject.transform.position, mortarDamage, shotTime, targetLayerMask);
-                    break;
-                case 1:
-                    //Instantaneus Shot
-                    GameObject instaShot = Instantiate(shotPrefab1, aimObject.transform.position, Quaternion.identity);
-                    instaShot.GetComponent<MortarController1>().Initialization(mortarDamage, shotTime, shot1Delay, targetLayerMask);
-                    break;
-                case 2:
-                    //Travelling with varying duration Shot
-                    GameObject vdShot = Instantiate(shotPrefab2, transform.position, Quaternion.identity);
-                    vdShot.GetComponent<MortarController2>().Initialization(aimObject.transform.position, mortarDamage, shot2minDur, shot2maxDur, aimRadius, targetLayerMask);
-                    break;
-                case 3:
-                    //Travelling with varying duration Shot
-                    GameObject speedShot = Instantiate(shotPrefab3, transform.position, Quaternion.identity);
-                    speedShot.GetComponent<MortarController3>().Initialization(aimObject.transform.position, shot3speed, mortarDamage, aimRadius, targetLayerMask);
-                    break;
-            }
+
+            GameObject shot = Instantiate(shotPrefab, onShootParticles.transform.position, onShootParticles.transform.rotation);
+            shot.GetComponent<MortarController>().Initialization(aimObject.transform.position, mortarDamage, shotTime, targetLayerMask);
 
             ammoCount -= 1;
             OnAmmoAmountChanged.Invoke(ammoCount);

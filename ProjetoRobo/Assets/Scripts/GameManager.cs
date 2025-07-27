@@ -9,7 +9,6 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private GameObject laserPoolPrefab;
     private LaserPoolController laserPoolReference;
-    public int mortarShotConfiguration = 0;
 
     public UnityEvent<bool> OnPause;
 

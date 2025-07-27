@@ -17,6 +17,8 @@ public class MortarController : MonoBehaviour
     private Vector2 starterScale;
     private LayerMask targetMask;
 
+    [SerializeField] private float explosionDuration;
+
     public void Initialization(Vector2 target, int damage, float duration, LayerMask hitMask) 
     {
         targetPosition = target;
@@ -45,7 +47,7 @@ public class MortarController : MonoBehaviour
         if (progress >= 1) 
         {
             HitGround();
-            Destroy(gameObject);
+            StartCoroutine(DestructionCoroutine());
         }
     }
 
@@ -58,6 +60,14 @@ public class MortarController : MonoBehaviour
             //Do something
             hit.transform.gameObject.GetComponent<DamageController>().OnDamage(mortarDamage);
         }
+    }
+
+    IEnumerator DestructionCoroutine() 
+    {
+        GetComponentInChildren<SpriteRenderer>().enabled = false;
+        GetComponent<ParticleSystem>().Stop();
+        yield return new WaitForSeconds(explosionDuration);
+        Destroy(gameObject);
     }
 
     private void OnDrawGizmosSelected()
