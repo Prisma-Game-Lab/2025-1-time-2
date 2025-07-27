@@ -189,8 +189,9 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   scaleModifier: 0.5
-  hitboxRadius: 0.7
-  explosionDuration: 1
+  hitboxRadius: 1.28
+  onHitExplosion: {fileID: 6459649521141726312, guid: e071daa53c9da5e4e89d7226996f2fe3, type: 3}
+  destructionTime: 1
 --- !u!198 &3238708130188074737
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -1028,7 +1029,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 15
+      scalar: 10
       minScalar: 5
       maxCurve:
         serializedVersion: 2

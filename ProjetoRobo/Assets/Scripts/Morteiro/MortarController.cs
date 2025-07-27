@@ -8,6 +8,8 @@ public class MortarController : MonoBehaviour
     [SerializeField] private AnimationCurve scaleCurve;
     [SerializeField] private float scaleModifier;
     [SerializeField] private float hitboxRadius;
+    [SerializeField] private GameObject onHitExplosion;
+    [SerializeField] private float destructionTime;
 
     private int mortarDamage;
     private float timeElapsed;
@@ -16,8 +18,7 @@ public class MortarController : MonoBehaviour
     private Vector2 targetPosition;
     private Vector2 starterScale;
     private LayerMask targetMask;
-
-    [SerializeField] private float explosionDuration;
+    private bool exploding = false;
 
     public void Initialization(Vector2 target, int damage, float duration, LayerMask hitMask) 
     {
@@ -39,6 +40,8 @@ public class MortarController : MonoBehaviour
 
     private void UpdatePosition() 
     {
+        if (exploding) return;
+
         float progress = timeElapsed / maxDuration;
         float easing = progressCurve.Evaluate(progress);
         transform.localScale = starterScale + Vector2.one * scaleModifier * scaleCurve.Evaluate(progress);
@@ -46,8 +49,9 @@ public class MortarController : MonoBehaviour
 
         if (progress >= 1) 
         {
-            HitGround();
-            StartCoroutine(DestructionCoroutine());
+            exploding = true;
+            //HitGround();
+            DestructionCoroutine();
         }
     }
 
@@ -62,12 +66,13 @@ public class MortarController : MonoBehaviour
         }
     }
 
-    IEnumerator DestructionCoroutine() 
+    private void DestructionCoroutine() 
     {
         GetComponentInChildren<SpriteRenderer>().enabled = false;
         GetComponent<ParticleSystem>().Stop();
-        yield return new WaitForSeconds(explosionDuration);
-        Destroy(gameObject);
+        GameObject explosion = Instantiate(onHitExplosion, transform.position, Quaternion.identity);
+        explosion.GetComponent<ExplosionScript>().Initialization(mortarDamage, targetMask, hitboxRadius);
+        Destroy(gameObject, destructionTime);
     }
 
     private void OnDrawGizmosSelected()
