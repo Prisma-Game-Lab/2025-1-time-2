@@ -25062,7 +25062,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 980948722490312149, guid: ce9b44b3626452142a71bad914a984c0, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5246139990806043015, guid: ce9b44b3626452142a71bad914a984c0, type: 3}
       propertyPath: m_Pivot.x
@@ -25144,10 +25144,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5803686022912934319, guid: ce9b44b3626452142a71bad914a984c0, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -25158,17 +25154,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5246139990806043015, guid: ce9b44b3626452142a71bad914a984c0, type: 3}
   m_PrefabInstance: {fileID: 1446487731}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1446487733 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6214705115734234926, guid: ce9b44b3626452142a71bad914a984c0, type: 3}
-  m_PrefabInstance: {fileID: 1446487731}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bab37cc29c4fc5649bca12169b580d89, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1446487734 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2229617814528870052, guid: ce9b44b3626452142a71bad914a984c0, type: 3}
@@ -25643,11 +25628,11 @@ PrefabInstance:
     - target: {fileID: 6366267563213630568, guid: 6990a597796a00b42bd663c66e9744c1, type: 3}
       propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1446487733}
+      objectReference: {fileID: 0}
     - target: {fileID: 6366267563213630568, guid: 6990a597796a00b42bd663c66e9744c1, type: 3}
       propertyPath: m_ActionEvents.Array.data[5].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1446487733}
+      objectReference: {fileID: 0}
     - target: {fileID: 6366267563213630568, guid: 6990a597796a00b42bd663c66e9744c1, type: 3}
       propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: increaseConter
