@@ -285,6 +285,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4179804406563435023, guid: fdfda03acbcb82c4eafcdb58b578946e, type: 3}
+      propertyPath: durability
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7864994385148833353, guid: fdfda03acbcb82c4eafcdb58b578946e, type: 3}
       propertyPath: m_Name
       value: Building (1)
@@ -774,6 +778,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4179804406563435023, guid: fdfda03acbcb82c4eafcdb58b578946e, type: 3}
+      propertyPath: durability
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7864994385148833353, guid: fdfda03acbcb82c4eafcdb58b578946e, type: 3}
       propertyPath: m_Name
       value: Building (2)
@@ -795,6 +803,10 @@ PrefabInstance:
       propertyPath: cameraAnim
       value: 
       objectReference: {fileID: 389179554}
+    - target: {fileID: 1045523683677315536, guid: 6990a597796a00b42bd663c66e9744c1, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1456771733844822845, guid: 6990a597796a00b42bd663c66e9744c1, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4
@@ -904,6 +916,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3957947340894888744, guid: fdfda03acbcb82c4eafcdb58b578946e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 12eb373edb473f641b68270e262d9c2c, type: 3}
     - target: {fileID: 7864994385148833353, guid: fdfda03acbcb82c4eafcdb58b578946e, type: 3}
       propertyPath: m_Name
       value: Building
