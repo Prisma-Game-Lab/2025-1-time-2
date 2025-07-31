@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -14,6 +15,8 @@ public class DialogActivator : MonoBehaviour
     private DialogData newDialog;
     private DialogController dialogController;
 
+    private GameObject player;
+
     private InputActionAsset playerInput;
 
     private string teste;
@@ -23,6 +26,7 @@ public class DialogActivator : MonoBehaviour
     {
 
         dialogController = GameObject.FindWithTag("DialogController").GetComponent<DialogController>();
+        player = GameObject.FindGameObjectWithTag("Player");
 
         if (dialogController == null)
         {
@@ -57,6 +61,10 @@ public class DialogActivator : MonoBehaviour
 }
     private void SubstituteKeybind()
     {
+        bool P1Movement = player.GetComponent<InputManager>().P1Movement;
+        // PROBLEM
+        // NEED TO KEEP TRACK TO WHICH MORPH BUTTON IS ACTIVE:
+        // SOLUTION USE <MORPHDEFENSVE> AND <MORPHOPHENSIVE> INSTEAD OF <MORPHP1> AND <MORPHP2>
         //newDialog = CloneDialog(dialog);
         for (int i = 0; i < newDialog.dialogueLines.Length; i++)
         {
@@ -78,13 +86,20 @@ public class DialogActivator : MonoBehaviour
             {
                 line = line.Replace("<BUTTONP2>", GetSingleKeybind("ButtonP2"));
             }
-            if (line.Contains("<MORPHP1>"))
+            if (line.Contains("<MORPHOFFENSIVE>"))
             {
-                line = line.Replace("<MORPHP1>", GetSingleKeybind("ChangeActionP1"));
+                // IF P1MOVEMENT -> P1 HAS OFFENSIVE
+                if (P1Movement)
+                    line = line.Replace("<MORPHOFFENSIVE>", GetSingleKeybind("MorphP1"));
+                else
+                    line = line.Replace("<MORPHOFFENSIVE>", GetSingleKeybind("MorphP2"));
             }
-            if (line.Contains("<MORPHP2>"))
+            if (line.Contains("<MORPHDEFENSIVE>"))
             {
-                line = line.Replace("<MORPHP2>", GetSingleKeybind("ChangeActionP2"));
+                if (P1Movement)
+                    line = line.Replace("<MORPHDEFENSIVE>", GetSingleKeybind("MorphP2"));
+                else
+                    line = line.Replace("<MORPHDEFENSIVE>", GetSingleKeybind("MorphP1"));
             }
             if (line.Contains("<TEXTADV>"))
             {

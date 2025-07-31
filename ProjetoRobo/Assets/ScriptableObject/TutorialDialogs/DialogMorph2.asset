@@ -15,8 +15,8 @@ MonoBehaviour:
   dialogueLines:
   - DialogText: "O Mecha tamb\xE9m pode Morphar a op\xE7\xE3o Defensiva!"
     SpeakerSprite: {fileID: 0}
-  - DialogText: "Aperte a tecla <MORPHP2> para Morphar a op\xE7\xE3o defensiva (Parry
-      -> Desviada)"
+  - DialogText: "Aperte a tecla <MORPHDEFENSIVE> para Morphar a op\xE7\xE3o defensiva
+      (Parry -> Desviada)"
     SpeakerSprite: {fileID: 0}
   - DialogText: "A Desviada pode ajudar na locomo\xE7\xE3o pelo campo de batalha
       e sua dire\xE7\xE3o \xE9 definida pela mira do Mecha."
