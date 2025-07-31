@@ -46,6 +46,13 @@ public class InputDisplay : MonoBehaviour
 
     [SerializeField] private TMP_Text PauseText;
 
+    [Header("Advance Text Button")]
+
+    [SerializeField] private Button AdvanceTextButton;
+
+    [SerializeField] private TMP_Text AdvanceTextText;
+
+
     [Header("Buttons Sprites")]
 
     [SerializeField] private Sprite smallKey;
@@ -67,9 +74,10 @@ public class InputDisplay : MonoBehaviour
         GetSingleBindingDisplay("ButtonP1", P1Text, P1Button);
         GetSingleBindingDisplay("ButtonP2", P2Text, P2Button);
 
-        GetSingleBindingDisplay("ChangeActionP1", P1Switch, P1Morph);
-        GetSingleBindingDisplay("ChangeActionP2", P2Switch, P2Morph);
+        GetSingleBindingDisplay("MorphP1", P1Switch, P1Morph);
+        GetSingleBindingDisplay("MorphP2", P2Switch, P2Morph);
 
+        GetSingleBindingDisplay("AdvanceText", AdvanceTextText, AdvanceTextButton);
         GetSingleBindingDisplay("PauseButton", PauseText, PauseButton);
 
         GetBindingDisplay("AxisP1", P1Movement, movement, P1MovementButtons);
@@ -205,15 +213,19 @@ public class InputDisplay : MonoBehaviour
 
     public void RebindSwitchP1()
     {
-        StartRebinding("Normal", "ChangeActionP1", P1Switch, P1Morph);
+        StartRebinding("Normal", "MorphP1", P1Switch, P1Morph);
     }
     public void RebindSwitchP2()
     {
-        StartRebinding("Normal", "ChangeActionP2", P2Switch, P2Morph);
+        StartRebinding("Normal", "MorphP2", P2Switch, P2Morph);
     }
     public void RebindPauseButton()
     {
         StartRebinding("Normal", "PauseButton", PauseText, PauseButton);
+    }
+    public void RebindAdvanceTextButton()
+    {
+        StartRebinding("Normal", "AdvanceText", AdvanceTextText, AdvanceTextButton);
     }
     int GetDirectionIndex(string direction)
     {

@@ -72,7 +72,10 @@ public class PlayerTimer : MonoBehaviour
 
         pc.playerUI.UpdateBars((currentVariableTimer + currentFixedTimer) / (maxFixedTimer + maxVariableTimer));
     }
-
+    public void ToggleTimer(bool isPaused)
+    {
+        timerPaused = isPaused;
+    }
     private void ActivateTransition() 
     {
         //cameraAnim.SetTrigger("Shake");

@@ -27,8 +27,8 @@ public class PlayerController : EntityController
 
     public bool defensiveActionBlocked { get; private set; }
     public bool offensiveActionBlocked { get; private set; }
-    public bool defensiveMorphBlocked  { get; private set; }
-    public bool offensiveMorphBlocked  { get; private set; }
+    public bool defensiveMorphBlocked { get; private set; }
+    public bool offensiveMorphBlocked { get; private set; }
 
     private void OnEnable()
     {
@@ -43,7 +43,7 @@ public class PlayerController : EntityController
     protected override void Awake()
     {
         base.Awake();
-        
+
         playerMovement = GetComponent<PlayerMovement>();
         inputManager = GetComponent<InputManager>();
         playerFiring = GetComponent<PlayerFiring>();
@@ -52,14 +52,39 @@ public class PlayerController : EntityController
         playerHealthController = GetComponent<PlayerHealthController>();
 
         playerParry = GetComponent<PlayerParry>();
-    }   
+    }
 
-    public void SetSkillsBlock(bool state) 
+    public void SetSkillsBlock(bool state)
     {
         defensiveActionBlocked = state;
         offensiveActionBlocked = state;
         defensiveMorphBlocked = state;
         offensiveMorphBlocked = state;
+    }
+    public void SetDefensiveMorph(bool state)
+    {
+        defensiveMorphUnlocked = state;
+    }
+
+    public void SetOffensiveMorph(bool state)
+    {
+        offensiveMorphUnlocked = state;
+    }
+
+    public void SetMorphs(bool state)
+    {
+        SetDefensiveMorph(state);
+        SetOffensiveMorph(state);
+    }
+
+    public void SetDefensiveAction(bool state)
+    {
+        defensiveActionUnlocked = state;
+    }
+    
+    public void SetOffensiveAction(bool state)
+    {
+        offensiveActionUnlocked = state;
     }
 }
 
