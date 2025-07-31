@@ -198,6 +198,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c6f6e38edfbcc0b488a0750fd1bc30d8, type: 3}
   - {fileID: 8300000, guid: da8455619accd424f9c061ef00f1a487, type: 3}
   - {fileID: 8300000, guid: 4d311158b104eca4ebd6e42fb27b39cb, type: 3}
+  - {fileID: 8300000, guid: 35d2d7c28abb5a645969f2a96651432c, type: 3}
   musicSource: {fileID: 5309929090020033760}
   sfxSource: {fileID: 3580366348140201588}
   sfxMixerGroup: {fileID: 8154349453932843111, guid: 6138d778c791f954d906a8e9c0d77e2a, type: 2}
@@ -248,7 +249,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   laserPoolPrefab: {fileID: 404481928541753141, guid: f0ad772c09046ca42a26e4d67f988a07, type: 3}
-  mortarShotConfiguration: 0
+  OnPause:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &7060854739440192996
 GameObject:
   m_ObjectHideFlags: 0

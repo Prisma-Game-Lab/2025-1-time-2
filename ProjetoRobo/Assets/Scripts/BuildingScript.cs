@@ -34,6 +34,7 @@ public class BuildingScript : MonoBehaviour
 
     public void DestroyBuilding() 
     {
+        
         StartCoroutine(DestructionTimer());
     }
 
@@ -43,12 +44,14 @@ public class BuildingScript : MonoBehaviour
         //impactParticle.transform.position = contactPoint;
         //impactParticle.transform.rotation = Quaternion.LookRotation(-normalContact);
         //impactParticle.SetActive(true);
-        foreach (ParticleSystem particle in destructionParticles) 
+        AudioManager.Instance.PlaySFX("destroyed_building_sfx");
+        foreach (ParticleSystem particle in destructionParticles)
         {
             particle.Play();
         }
         buildingSprite.SetActive(false);
         yield return new WaitForSeconds(timeBeforeDestruction);
+        
         Destroy(gameObject);
     }
 }
