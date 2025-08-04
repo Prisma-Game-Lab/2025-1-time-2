@@ -32,7 +32,7 @@ public class PauseMenu : MonoBehaviour
     public void ToMenu()
     {
         TogglePause();
-        SceneManager.LoadSceneAsync("MainMenu");
+        LevelManager.LoadSceneByName("MainMenu");
 
     }
 }

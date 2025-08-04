@@ -9,10 +9,9 @@ public class CameraController : MonoBehaviour
     public Transform shakeOffset;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         offset = transform.position - player.transform.position;
-        
     }
 
     // Update is called once per frame
