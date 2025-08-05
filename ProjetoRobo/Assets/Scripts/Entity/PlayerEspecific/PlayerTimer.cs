@@ -21,7 +21,10 @@ public class PlayerTimer : MonoBehaviour
     [SerializeField] private UnityEvent onInputChange;
 
     [SerializeField] private float sfxVolume;
+    
+    [SerializeField] float stopTimer;
 
+    private GameManager gameManager;
     private bool onTransition;
     public float currentVariableTimer;
     public float currentFixedTimer;
@@ -35,8 +38,8 @@ public class PlayerTimer : MonoBehaviour
         loopedSFXSource.loop = true;
         loopedSFXSource.outputAudioMixerGroup = AudioManager.Instance.sfxMixerGroup;
         pc = GetComponent<PlayerController>();
-        
 
+        gameManager = FindObjectOfType<GameManager>();
         currentVariableTimer = maxVariableTimer;
         currentFixedTimer = maxFixedTimer;
     }
@@ -101,6 +104,12 @@ public class PlayerTimer : MonoBehaviour
         cameraAnim.SetTrigger("Shake");
 
         AudioManager.Instance.PlaySFX("switch_sfx");
+        gameManager.SetPause(true);
+        float pauseEndTime = Time.realtimeSinceStartup + stopTimer;
+        while (Time.realtimeSinceStartup < pauseEndTime)
+        {
+        }
+        gameManager.SetPause(false);
         bool currentState = pc.inputManager.SwitchPlayerInput();
         pc.playerUI.ChangeIcons(currentState);
         pc.playerFiring.Crosshair.SwitchSprite();

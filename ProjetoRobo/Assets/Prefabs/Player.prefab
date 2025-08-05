@@ -6078,13 +6078,6 @@ MonoBehaviour:
   meleeAttackObject: {fileID: 8033611640820049556}
   meleeAttackDamage: 5
   meleeAttackDuration: 1
-  shotPrefab1: {fileID: 8532741216186767511, guid: 12067b5514ee00a44bdd9c28361c1e34, type: 3}
-  shotPrefab2: {fileID: 8532741216186767511, guid: f26d7358861f35a43a610afc28fc0f3d, type: 3}
-  shotPrefab3: {fileID: 8532741216186767511, guid: daa88dd34dd0fdb45b3f28706e188ba8, type: 3}
-  shot1Delay: 0.25
-  shot2minDur: 0.5
-  shot2maxDur: 1
-  shot3speed: 4
   OnAmmoAmountChanged:
     m_PersistentCalls:
       m_Calls:
@@ -6121,6 +6114,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   sfxVolume: 1
+  stopTimer: 0.1
   currentVariableTimer: 0
   currentFixedTimer: 0
 --- !u!114 &5530507891916285700
