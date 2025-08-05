@@ -18,7 +18,6 @@ public class CheckpointController : MonoBehaviour
 
         LevelManager.OnSceneChanged.AddListener(RestartCheckPoint);
 
-        print(GameManager.Instance.currentCheckpointIndex);
         if (GameManager.Instance.currentCheckpointIndex >= 0) LoadCheckpoint();
     }
 
