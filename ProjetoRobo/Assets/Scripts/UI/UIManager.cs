@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Collections;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -27,11 +28,15 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] GameObject UI;
 
-   
+
     [SerializeField] private Animator greenIconAnimator;
     [SerializeField] private Animator redIconAnimator;
 
-     [Header("Corners")]
+    [SerializeField] private Animator redSecondaryAnimator;
+
+    [SerializeField] private Animator greenSecondaryAnimator;
+
+    [Header("Corners")]
     [SerializeField] private GameObject greenMove;
     [SerializeField] private GameObject redMove;
     [SerializeField] private GameObject greenAim;
@@ -65,8 +70,8 @@ public class UIManager : MonoBehaviour
 
     private float parryCooldown, shotCooldown, dashCooldown, meleeCooldown;
 
-    
-   
+
+
     [Header("Bars")]
     public ChangeBar RedBarController;
     public ChangeBar GreenBarController;
@@ -118,16 +123,16 @@ public class UIManager : MonoBehaviour
 
         greenCD = greenCD.GetComponent<SecondaryCooldown>();
         redCD = redCD.GetComponent<SecondaryCooldown>();
-       
-        
+
+
     }
 
     void Update()
     {
-        
+
         //currentTime = player.GetComponent<PlayerTimer>().currentVariableTimer + player.GetComponent<PlayerTimer>().currentFixedTimer;
         pontosText.text = pontos.ToString();
-        
+
         //FillBar();
         //int currentHealth = player.GetComponent<PlayerHealthController>().currentHealth;
         //int currentAmmo = player.GetComponent<PlayerFiring>().ammoCount;
@@ -137,7 +142,7 @@ public class UIManager : MonoBehaviour
     }
 
 
-   
+
 
     private void InitIcons(Transform container, GameObject prefab, int count, List<Image> iconList)
     {
@@ -149,9 +154,9 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void UpdateHealthUI(int currentHealth) 
+    public void UpdateHealthUI(int currentHealth)
     {
-       UpdateHeartSprites(heartIcons,currentHealth) ;
+        UpdateHeartSprites(heartIcons, currentHealth);
     }
 
     public void UpdateAmmoUI(int currentAmmo)
@@ -166,7 +171,7 @@ public class UIManager : MonoBehaviour
             icons[i].sprite = i < activeCount ? fullSprite : emptySprite;
         }
     }
-    
+
     private void UpdateHeartSprites(List<Image> icons, int currentHealth)
     {
         for (int i = 0; i < icons.Count; i++)
@@ -188,6 +193,14 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    private IEnumerator DelayedIconSwitch(GameObject icon1, GameObject icon2, bool wasActive)
+    {
+    yield return new WaitForSeconds(0.3f); 
+
+    icon1.SetActive(!wasActive);  
+    icon2.SetActive(wasActive);
+    }
+    
     public void MorphOffensive()
     {
         bool P1Movement = player.GetComponent<InputManager>().P1Movement;
@@ -195,22 +208,42 @@ public class UIManager : MonoBehaviour
 
         if (P1Movement)
         {
-            RshootIcon.SetActive(!isShotActive);
-            RmeleeIcon.SetActive(isShotActive);
+            RshootIcon.SetActive(true);
+            RmeleeIcon.SetActive(true);
+
+            if (isShotActive)
+                redSecondaryAnimator.Play("ShootToMelee");
+            else
+                redSecondaryAnimator.Play("MeleeToShoot");
+
+            //RshootIcon.SetActive(!isShotActive);
+            //RmeleeIcon.SetActive(isShotActive);
 
             redCD.SetCooldown(newCooldown);
             redCD.SetCurrentTime(newCooldown);
             redCD.ResetCooldown();
 
+            StartCoroutine(DelayedIconSwitch(RshootIcon, RmeleeIcon, isShotActive));
+
         }
         else
         {
-            GshootIcon.SetActive(!isShotActive);
-            GmeleeIcon.SetActive(isShotActive);
+            GshootIcon.SetActive(true);
+            GmeleeIcon.SetActive(true);
+
+            if (isShotActive)
+                greenSecondaryAnimator.Play("ShootToMelee");
+            else
+                greenSecondaryAnimator.Play("MeleeToShoot");
+
+            //GshootIcon.SetActive(!isShotActive);
+            //GmeleeIcon.SetActive(isShotActive);
 
             greenCD.SetCooldown(newCooldown);
             greenCD.SetCurrentTime(newCooldown);
             greenCD.ResetCooldown();
+
+            StartCoroutine(DelayedIconSwitch(GshootIcon, GmeleeIcon, isShotActive));
 
 
         }
@@ -226,113 +259,139 @@ public class UIManager : MonoBehaviour
 
         if (P1Movement)
         {
-            GparryIcon.SetActive(!isParryActive);
-            GdodgeIcon.SetActive(isParryActive);
+            GparryIcon.SetActive(true);
+            GdodgeIcon.SetActive(true);
+
+            if (isParryActive)
+                greenSecondaryAnimator.Play("ParryToDodge");
+            else
+                greenSecondaryAnimator.Play("DodgeToParry");
+
+            //GparryIcon.SetActive(!isParryActive);
+            //GdodgeIcon.SetActive(isParryActive);
 
             greenCD.SetCooldown(newCooldown);
             greenCD.SetCurrentTime(newCooldown);
             greenCD.ResetCooldown();
+
+            StartCoroutine(DelayedIconSwitch(GparryIcon, GdodgeIcon, isParryActive));
         }
         else
         {
-            RparryIcon.SetActive(!isParryActive);
-            RdodgeIcon.SetActive(isParryActive);
+
+            RparryIcon.SetActive(true);
+            RdodgeIcon.SetActive(true);
+
+            if (isParryActive)
+                redSecondaryAnimator.Play("ParryToDodge");
+            else
+                redSecondaryAnimator.Play("DodgeToParry");
+
+            //RparryIcon.SetActive(!isParryActive);
+            //RdodgeIcon.SetActive(isParryActive);
 
             redCD.SetCooldown(newCooldown);
             redCD.SetCurrentTime(newCooldown);
             redCD.ResetCooldown();
 
-
+            StartCoroutine(DelayedIconSwitch(RparryIcon, RdodgeIcon, isParryActive));
         }
         AudioManager.Instance.PlaySFX("morph_sfx");
         isParryActive = !isParryActive;
-        
+
         greenCD.SyncVisual();
         redCD.SyncVisual();
     }
     public void TriggerSecondaryCooldown(bool isOffensive)
     {
-    bool isP1 = player.GetComponent<InputManager>().P1Movement;
+        bool isP1 = player.GetComponent<InputManager>().P1Movement;
 
-    if (isOffensive)
+        if (isOffensive)
+        {
+            if (isShotActive)
+            {
+                // Currently in shoot mode
+                if (isP1)
+                    redCD.TriggerCooldown(shotCooldown);
+                else
+                    greenCD.TriggerCooldown(shotCooldown);
+            }
+            else
+            {
+                // Currently in melee mode
+                if (isP1)
+                    redCD.TriggerCooldown(meleeCooldown);
+                else
+                    greenCD.TriggerCooldown(meleeCooldown);
+            }
+        }
+        else
+        {
+            if (isParryActive)
+            {
+                // Currently in parry mode
+                if (isP1)
+                    greenCD.TriggerCooldown(parryCooldown);
+                else
+                    redCD.TriggerCooldown(parryCooldown);
+            }
+            else
+            {
+                // Currently in dash mode
+                if (isP1)
+                    greenCD.TriggerCooldown(dashCooldown);
+                else
+                    redCD.TriggerCooldown(dashCooldown);
+            }
+        }
+    }
+    public void SwitchSecondaryIcons(bool P1Movement)
     {
+
+
+
+        GshootIcon.SetActive(false);
+        GmeleeIcon.SetActive(false);
+        GparryIcon.SetActive(false);
+        GdodgeIcon.SetActive(false);
+
+        RshootIcon.SetActive(false);
+        RmeleeIcon.SetActive(false);
+        RparryIcon.SetActive(false);
+        RdodgeIcon.SetActive(false);
+
+        // Offensive Icons
         if (isShotActive)
         {
-            // Currently in shoot mode
-            if (isP1)
-                redCD.TriggerCooldown(shotCooldown);
+            if (P1Movement)
+                RshootIcon.SetActive(true);
             else
-                greenCD.TriggerCooldown(shotCooldown);
+                GshootIcon.SetActive(true);
         }
         else
         {
-            // Currently in melee mode
-            if (isP1)
-                redCD.TriggerCooldown(meleeCooldown);
+            if (P1Movement)
+                RmeleeIcon.SetActive(true);
             else
-                greenCD.TriggerCooldown(meleeCooldown);
+                GmeleeIcon.SetActive(true);
         }
-    }
-    else
-    {
+
+        // Defensive Icons
         if (isParryActive)
         {
-            // Currently in parry mode
-            if (isP1)
-                greenCD.TriggerCooldown(parryCooldown);
+            if (P1Movement)
+                GparryIcon.SetActive(true);
             else
-                redCD.TriggerCooldown(parryCooldown);
+                RparryIcon.SetActive(true);
         }
         else
         {
-            // Currently in dash mode
-            if (isP1)
-                greenCD.TriggerCooldown(dashCooldown);
+            if (P1Movement)
+                GdodgeIcon.SetActive(true);
             else
-                redCD.TriggerCooldown(dashCooldown);
-        }
-    }
-    }
-    public void SwitchSecondaryIcons()
-    {
-        bool P1Movement = player.GetComponent<InputManager>().P1Movement;
-        // IF !P1MOVEMENT -> SHOOT/MELEE  = RED AND PARRY/DODGE = GREEN 
-        
-
-
-
-        if (isShotActive)
-        {
-            
-            RshootIcon.SetActive(P1Movement);
-           
-            GshootIcon.SetActive(!P1Movement);
-        }
-        else
-        {
-            
-            RmeleeIcon.SetActive(P1Movement);
-            GmeleeIcon.SetActive(!P1Movement);
+                RdodgeIcon.SetActive(true);
         }
 
-        if (isParryActive)
-        {
-           
-            GparryIcon.SetActive(P1Movement);
-            RparryIcon.SetActive(!P1Movement);
-        }
-
-        else {
-            
-            GdodgeIcon.SetActive(P1Movement);
-            RdodgeIcon.SetActive(!P1Movement);
-        }
-        
-
-    
-
-
-        
     }
     public void SwitchCorners(bool P1Movement)
     {
@@ -347,6 +406,8 @@ public class UIManager : MonoBehaviour
 
         float tempCooldown = greenCD.currentCooldown;
         float tempTime = greenCD.currentTime;
+
+        SwitchSecondaryIcons(P1Movement);
 
         greenCD.SetCooldown(redCD.currentCooldown);
         greenCD.SetCurrentTime(redCD.currentTime);
@@ -373,5 +434,7 @@ public class UIManager : MonoBehaviour
             greenIconAnimator.Play("ProjectileToMovement");
         }
     }
+    
+    
 }
 

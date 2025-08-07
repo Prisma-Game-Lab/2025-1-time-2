@@ -2579,6 +2579,32 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97a36bab022c0c741b81c3dae98f0c43, type: 3}
+--- !u!1 &737981878 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1467192492778408972, guid: ce9b44b3626452142a71bad914a984c0, type: 3}
+  m_PrefabInstance: {fileID: 1446487731}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &737981880
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 737981878}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f4dc505df910cc447b6bf08ae0eb9e1a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &788719090
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2752,6 +2778,14 @@ PrefabInstance:
       propertyPath: GreenBarController
       value: 
       objectReference: {fileID: 1446487735}
+    - target: {fileID: 3815319914325772409, guid: 61c7a8c2d3e26f943817ab1fa2d9e4a7, type: 3}
+      propertyPath: redSecondaryAnimator
+      value: 
+      objectReference: {fileID: 1446487733}
+    - target: {fileID: 3815319914325772409, guid: 61c7a8c2d3e26f943817ab1fa2d9e4a7, type: 3}
+      propertyPath: greenSecondaryAnimator
+      value: 
+      objectReference: {fileID: 737981880}
     - target: {fileID: 5555717249003475958, guid: 61c7a8c2d3e26f943817ab1fa2d9e4a7, type: 3}
       propertyPath: m_Name
       value: UIManager
@@ -25147,11 +25181,19 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1467192492778408972, guid: ce9b44b3626452142a71bad914a984c0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 737981880}
   m_SourcePrefab: {fileID: 100100000, guid: ce9b44b3626452142a71bad914a984c0, type: 3}
 --- !u!224 &1446487732 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5246139990806043015, guid: ce9b44b3626452142a71bad914a984c0, type: 3}
+  m_PrefabInstance: {fileID: 1446487731}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1446487733 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8788333689241619555, guid: ce9b44b3626452142a71bad914a984c0, type: 3}
   m_PrefabInstance: {fileID: 1446487731}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &1446487734 stripped
@@ -25563,11 +25605,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 526859834013453721, guid: 6990a597796a00b42bd663c66e9744c1, type: 3}
       propertyPath: maxVariableTimer
-      value: 55
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 526859834013453721, guid: 6990a597796a00b42bd663c66e9744c1, type: 3}
       propertyPath: onInputChange.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 526859834013453721, guid: 6990a597796a00b42bd663c66e9744c1, type: 3}
       propertyPath: onInputChange.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
