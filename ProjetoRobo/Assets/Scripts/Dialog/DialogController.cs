@@ -47,6 +47,10 @@ public class DialogController : MonoBehaviour
         writeSentenceCoroutine = StartCoroutine(WriteSentence());
     }
 
+    public bool getDialogState()
+    {
+        return onDialog;
+    }
     public void AdvanceDialog() 
     {
         if (writingSentence) 

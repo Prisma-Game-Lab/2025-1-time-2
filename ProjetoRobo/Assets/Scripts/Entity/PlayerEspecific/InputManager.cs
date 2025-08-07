@@ -13,6 +13,7 @@ public class InputManager : MonoBehaviour
     [SerializeField] private UnityEvent OnProjectileAction;
     [SerializeField] private UnityEvent OnDefensiveMorph;
     [SerializeField] private UnityEvent OnOffensiveMorph;
+    [SerializeField] private UnityEvent OnDialogAdvance;
 
     [Header("Input Variables")]
     [SerializeField] public bool P1Movement = true;
@@ -139,6 +140,18 @@ public class InputManager : MonoBehaviour
         if (inputValue.performed)
         {
             pauseMenu.TogglePause();
+        }
+    }
+
+    public void OnDialogButton(InputAction.CallbackContext inputValue)
+    {
+        if (inputValue.performed)
+        {
+            DialogController dialog = FindAnyObjectByType<DialogController>();
+            if (dialog.getDialogState())
+            {
+                dialog.AdvanceDialog();
+            }
         }
     }
 }

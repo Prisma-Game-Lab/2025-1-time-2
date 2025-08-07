@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     public UnityEvent<bool> OnPause;
     [HideInInspector] public int currentCheckpointIndex;
 
+    private float difficulty = 0;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -59,5 +61,15 @@ public class GameManager : MonoBehaviour
         }
 
         OnPause.Invoke(state);
+    }
+
+    public float GetDifficulty()
+    {
+        return difficulty;
+    }
+
+    public void SetDifficulty(float value)
+    {
+        difficulty = value;
     }
 }
