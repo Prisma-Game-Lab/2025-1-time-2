@@ -32,6 +32,7 @@ public class PlayerFiring : MonoBehaviour
     [SerializeField] private GameObject meleeAttackObject;
     [SerializeField] private int meleeAttackDamage;
     [SerializeField] private float meleeAttackDuration;
+    [SerializeField] private float meleeCooldown;
 
     public CrosshairVisual Crosshair { get; private set; }
 
@@ -39,6 +40,7 @@ public class PlayerFiring : MonoBehaviour
     [SerializeField] private UnityEvent<int> OnAmmoAmountChanged;
 
     private bool meleeAtacking;
+    private bool meleeOnCooldown;
 
     private void Start()
     {
@@ -146,8 +148,11 @@ public class PlayerFiring : MonoBehaviour
     {
         if (pc.offensiveActionBlocked || !pc.offensiveActionUnlocked) return;
 
+        if (meleeOnCooldown) return;
+
         AudioManager.Instance.PlaySFX("player_melee_sfx");
         meleeAtacking = true;
+        meleeOnCooldown = true;
         MoveMeleeAttack();
         meleeAttackObject.GetComponentInChildren<MeeleAttackHitbox>().MeleeDamage = meleeAttackDamage;
         meleeAttackObject.SetActive(true);
@@ -165,6 +170,8 @@ public class PlayerFiring : MonoBehaviour
         yield return new WaitForSeconds(meleeAttackDuration);
         meleeAtacking = false;
         meleeAttackObject.SetActive(false);
+        yield return new WaitForSeconds(meleeCooldown);
+        meleeOnCooldown = false;
     }
 
     private void OnDrawGizmosSelected()
