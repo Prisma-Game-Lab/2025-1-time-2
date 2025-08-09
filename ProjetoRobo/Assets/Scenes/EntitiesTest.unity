@@ -25306,6 +25306,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b6425fa1597a9b458733b3a59e49491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1484334337 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 949414056248953496, guid: 806a7e87bb17f5746a06a63b3c9f59a4, type: 3}
+  m_PrefabInstance: {fileID: 9194370941259817480}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da274cb9d31784e4c9ecffd9d1396019, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1507616802
 GameObject:
   m_ObjectHideFlags: 0
@@ -25985,6 +25996,34 @@ PrefabInstance:
       propertyPath: enemysPrefab.Array.data[1]
       value: 
       objectReference: {fileID: 6608917251125156136, guid: d14208bd3ab7a5b41880f5301b6cc0bc, type: 3}
+    - target: {fileID: 2218158192127034295, guid: 806a7e87bb17f5746a06a63b3c9f59a4, type: 3}
+      propertyPath: isEnemiesDead.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2218158192127034295, guid: 806a7e87bb17f5746a06a63b3c9f59a4, type: 3}
+      propertyPath: isEnemiesDead.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2218158192127034295, guid: 806a7e87bb17f5746a06a63b3c9f59a4, type: 3}
+      propertyPath: isEnemiesDead.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1484334335}
+    - target: {fileID: 2218158192127034295, guid: 806a7e87bb17f5746a06a63b3c9f59a4, type: 3}
+      propertyPath: isEnemiesDead.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2218158192127034295, guid: 806a7e87bb17f5746a06a63b3c9f59a4, type: 3}
+      propertyPath: isEnemiesDead.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: NextWave
+      objectReference: {fileID: 0}
+    - target: {fileID: 2218158192127034295, guid: 806a7e87bb17f5746a06a63b3c9f59a4, type: 3}
+      propertyPath: isEnemiesDead.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: WaveController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2218158192127034295, guid: 806a7e87bb17f5746a06a63b3c9f59a4, type: 3}
+      propertyPath: isEnemiesDead.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 3187577197091015187, guid: 806a7e87bb17f5746a06a63b3c9f59a4, type: 3}
       propertyPath: m_Name
       value: WaveManager
@@ -26037,6 +26076,38 @@ PrefabInstance:
       propertyPath: waveInfoText
       value: 
       objectReference: {fileID: 15672236}
+    - target: {fileID: 6770240419264155875, guid: 806a7e87bb17f5746a06a63b3c9f59a4, type: 3}
+      propertyPath: perWaveEnemyCount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6770240419264155875, guid: 806a7e87bb17f5746a06a63b3c9f59a4, type: 3}
+      propertyPath: OnWavePassed.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6770240419264155875, guid: 806a7e87bb17f5746a06a63b3c9f59a4, type: 3}
+      propertyPath: OnWavePassed.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6770240419264155875, guid: 806a7e87bb17f5746a06a63b3c9f59a4, type: 3}
+      propertyPath: OnWavePassed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1484334337}
+    - target: {fileID: 6770240419264155875, guid: 806a7e87bb17f5746a06a63b3c9f59a4, type: 3}
+      propertyPath: OnWavePassed.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6770240419264155875, guid: 806a7e87bb17f5746a06a63b3c9f59a4, type: 3}
+      propertyPath: OnWavePassed.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: HandleWavePassed
+      objectReference: {fileID: 0}
+    - target: {fileID: 6770240419264155875, guid: 806a7e87bb17f5746a06a63b3c9f59a4, type: 3}
+      propertyPath: OnWavePassed.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SpawnManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6770240419264155875, guid: 806a7e87bb17f5746a06a63b3c9f59a4, type: 3}
+      propertyPath: OnWavePassed.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

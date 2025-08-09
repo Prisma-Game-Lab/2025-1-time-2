@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6804610054223036400}
   - component: {fileID: 7678568620058028359}
   - component: {fileID: -2046410773676963319}
+  - component: {fileID: 5555567963867585773}
   - component: {fileID: -5092199362273825470}
   - component: {fileID: -1687229067766044271}
   m_Layer: 7
@@ -120,7 +121,19 @@ MonoBehaviour:
   deathSfx: enemy_death_sfx
   OnDamage:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5555567963867585773}
+        m_TargetAssemblyTypeName: FlashEffectScript, Assembly-CSharp
+        m_MethodName: ActivateFlash
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnHeal:
     m_PersistentCalls:
       m_Calls: []
@@ -152,6 +165,21 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   damage: 0
+--- !u!114 &5555567963867585773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2996449129071535717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bee1aefe5109a5f438bcbcd476a5b68f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  affectedSprite: {fileID: 4141367986370531643}
+  flashMaterial: {fileID: 2100000, guid: 6bdc825488913984182795ec96703d7a, type: 2}
+  flashDuration: 0.2
 --- !u!50 &-5092199362273825470
 Rigidbody2D:
   serializedVersion: 4
