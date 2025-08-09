@@ -17,17 +17,13 @@ public class SpawnManager : MonoBehaviour
     private float spawnPadding = 1f;
 
     // Start is called before the first frame update
-    void Start()
+    public void HandleWavePassed()
     {
-        waveController.OnWavePassed += HandleWavePassed;
-    }
-
-    // Update is called once per frame
-    void Update() { }
-
-    private void HandleWavePassed()
-    {
-        enemyPoolController.AddNewEnemyToPool(GetRandomScreenPosition());
+        int nEnemies = waveController.GetPWEnemyCount();
+        for (int i = 0; i < nEnemies; i++)
+        {
+            enemyPoolController.GetEnemy(GetRandomScreenPosition());
+        }
     }
 
     public Vector2 GetRandomScreenPosition()

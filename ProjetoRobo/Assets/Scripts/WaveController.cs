@@ -1,6 +1,7 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class WaveController : MonoBehaviour
 {
@@ -20,7 +21,7 @@ public class WaveController : MonoBehaviour
     [SerializeField]
     private SpawnManager spawnManager;
 
-    public event Action OnWavePassed;
+    public UnityEvent OnWavePassed;
 
     // Start is called before the first frame update
     void Start()
@@ -47,7 +48,7 @@ public class WaveController : MonoBehaviour
         return perWaveEnemyCount * currentWave;
     }
 
-    void NextWave()
+    public void NextWave()
     {
         Debug.Log("Next Wave!");
         currentWave++;

@@ -1,12 +1,12 @@
-using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Tilemaps;
+using UnityEngine.Events;
 
 public class EnemyPoolController : MonoBehaviour
 {
     [SerializeField]
-    private GameObject enemyPrefab;
+    private GameObject[] enemysPrefab;
 
     [SerializeField]
     private int initialPoolSize = 10;
@@ -15,7 +15,7 @@ public class EnemyPoolController : MonoBehaviour
 
     private List<GameObject> enemyPool;
 
-    public event Action isEnemiesDead;
+    public UnityEvent isEnemiesDead;
 
     void Start()
     {
@@ -44,9 +44,26 @@ public class EnemyPoolController : MonoBehaviour
         isEnemiesDead?.Invoke();
     }
 
-    public GameObject AddNewEnemyToPool(Vector2 spawnPos)
+    public GameObject GetEnemy(Vector2 spawnPos)
     {
-        GameObject newEnemy = Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
+        foreach (GameObject enemy in enemyPool)
+        {
+            if (!enemy.activeInHierarchy) 
+            {
+                enemy.transform.position = spawnPos;
+                enemy.SetActive(true);
+                return enemy;
+            }
+        }
+
+        // If all lasers are in use, expand the pool
+        return AddNewEnemyToPool(spawnPos);
+    }
+
+    private GameObject AddNewEnemyToPool(Vector2 spawnPos)
+    {
+        int randomInt = Random.Range(0, enemysPrefab.Length);
+        GameObject newEnemy = Instantiate(enemysPrefab[randomInt], spawnPos, Quaternion.identity);
 
         newEnemy.SetActive(true);
         enemyPool.Add(newEnemy);

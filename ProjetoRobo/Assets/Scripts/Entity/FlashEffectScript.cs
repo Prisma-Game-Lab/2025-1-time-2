@@ -11,10 +11,13 @@ public class FlashEffectScript : MonoBehaviour
 
     private Material originalMaterial;
 
+    private void Start()
+    {
+        originalMaterial = affectedSprite.material;
+    }
 
     public void ActivateFlash() 
     {
-        originalMaterial = affectedSprite.material;
         affectedSprite.material = flashMaterial;
         if (gameObject.activeInHierarchy) StartCoroutine(WaitForFlash());
     }
