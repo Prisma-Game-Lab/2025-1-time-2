@@ -55,16 +55,16 @@ public class MortarController : MonoBehaviour
         }
     }
 
-    private void HitGround() 
-    {
-        RaycastHit2D[] hitInformation = Physics2D.CircleCastAll(transform.position, hitboxRadius, Vector2.zero, 0, targetMask);
-        foreach (RaycastHit2D hit in hitInformation) 
-        {
-            //For every hit
-            //Do something
-            hit.transform.gameObject.GetComponent<DamageController>().OnDamage(mortarDamage);
-        }
-    }
+    //private void HitGround() 
+    //{
+    //    RaycastHit2D[] hitInformation = Physics2D.CircleCastAll(transform.position, hitboxRadius, Vector2.zero, 0, targetMask);
+    //    foreach (RaycastHit2D hit in hitInformation) 
+    //    {
+    //        //For every hit
+    //        //Do something
+    //        hit.transform.gameObject.GetComponent<DamageController>().OnDamage(mortarDamage);
+    //    }
+    //}
 
     private void DestructionCoroutine() 
     {

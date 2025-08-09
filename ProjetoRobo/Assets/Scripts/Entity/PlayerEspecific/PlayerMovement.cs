@@ -51,7 +51,6 @@ public class PlayerMovement : MonoBehaviour
         ApplyMovement();
         if (endingDash)
         {
-            
             ApplyDashAcceleration();
         }
     }

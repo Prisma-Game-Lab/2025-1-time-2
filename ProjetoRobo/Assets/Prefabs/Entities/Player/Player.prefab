@@ -309,7 +309,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   affectedSprite: {fileID: 6113088735033470544}
   flashMaterial: {fileID: 2100000, guid: a1f7dd861e6933349bcb6a69a8730a11, type: 2}
-  flashDuration: 0.2
+  flashDuration: 0.3
 --- !u!1 &2967703409012459938
 GameObject:
   m_ObjectHideFlags: 0
@@ -631,7 +631,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   affectedSprite: {fileID: 7355359112899911180}
   flashMaterial: {fileID: 2100000, guid: a1f7dd861e6933349bcb6a69a8730a11, type: 2}
-  flashDuration: 0.2
+  flashDuration: 0.3
 --- !u!1 &4345254022706632369
 GameObject:
   m_ObjectHideFlags: 0
@@ -6383,7 +6383,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.4285711, y: 1.4285711, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8417236094251653261}
@@ -6471,8 +6471,8 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 1
-      minScalar: 0.25
+      scalar: 0.9
+      minScalar: 0.35
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -6525,7 +6525,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 3
       scalar: 0.5
-      minScalar: 0
+      minScalar: 0.05
       maxCurve:
         serializedVersion: 2
         m_Curve:
