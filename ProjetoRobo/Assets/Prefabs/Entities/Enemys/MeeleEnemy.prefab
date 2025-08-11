@@ -509,10 +509,12 @@ MonoBehaviour:
   OnHeal:
     m_PersistentCalls:
       m_Calls: []
+  immuneToMelee: 0
+  immuneToShot: 0
   healthDropPrefab: {fileID: 7461689329379917843, guid: 6049f26ddcfb07d4baeba58992c9059d, type: 3}
   ammoDropPrefab: {fileID: 2056062450541606222, guid: 27aed88f837213b4b90397ab54b0ee32, type: 3}
   shieldPrefab: {fileID: 8804341169289725096, guid: 457895746b3da6d4785d5a1e749f0c31, type: 3}
-  dropChance: 1
+  dropChance: 0.25
   score: 1
   onDeathEvent:
     m_PersistentCalls:
@@ -566,8 +568,6 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   lastDamageType: 0
-  immuneToMelee: 0
-  immuneToShot: 0
 --- !u!114 &1601063494858579565
 MonoBehaviour:
   m_ObjectHideFlags: 0
