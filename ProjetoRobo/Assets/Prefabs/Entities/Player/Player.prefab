@@ -226,7 +226,6 @@ GameObject:
   - component: {fileID: 8210114265742509805}
   - component: {fileID: 3040720344294434731}
   - component: {fileID: 8955777776557054868}
-  - component: {fileID: 8247058421977252114}
   m_Layer: 6
   m_Name: UpperBody
   m_TagString: Untagged
@@ -295,21 +294,6 @@ MonoBehaviour:
   affectedSprite: {fileID: 6113088735033470544}
   transparentValue: 0.75
   phaseDuration: 0.5
---- !u!114 &8247058421977252114
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2691189267716915996}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bee1aefe5109a5f438bcbcd476a5b68f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  affectedSprite: {fileID: 6113088735033470544}
-  flashMaterial: {fileID: 2100000, guid: a1f7dd861e6933349bcb6a69a8730a11, type: 2}
-  flashDuration: 0.3
 --- !u!1 &2967703409012459938
 GameObject:
   m_ObjectHideFlags: 0
@@ -550,7 +534,6 @@ GameObject:
   - component: {fileID: 4283560955390411481}
   - component: {fileID: 5237428646857526344}
   - component: {fileID: 1538620659952480709}
-  - component: {fileID: 9198635754875954661}
   m_Layer: 6
   m_Name: LowerBody
   m_TagString: Untagged
@@ -617,21 +600,6 @@ MonoBehaviour:
   affectedSprite: {fileID: 7355359112899911180}
   transparentValue: 0.75
   phaseDuration: 0.5
---- !u!114 &9198635754875954661
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3681974790856330699}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bee1aefe5109a5f438bcbcd476a5b68f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  affectedSprite: {fileID: 7355359112899911180}
-  flashMaterial: {fileID: 2100000, guid: a1f7dd861e6933349bcb6a69a8730a11, type: 2}
-  flashDuration: 0.3
 --- !u!1 &4345254022706632369
 GameObject:
   m_ObjectHideFlags: 0
@@ -5584,6 +5552,7 @@ GameObject:
   - component: {fileID: 8710172705894706232}
   - component: {fileID: 4110095166037054398}
   - component: {fileID: 1602558037607221524}
+  - component: {fileID: 5272861811717617993}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -5873,11 +5842,9 @@ MonoBehaviour:
   playerHealthController: {fileID: 0}
   playerBodyRotation: {fileID: 8210114265742509805}
   playerBodyFlash: {fileID: 3040720344294434731}
-  playerBodyGreenFlash: {fileID: 8247058421977252114}
   playerBodyFlicker: {fileID: 8955777776557054868}
   playerTracksRotation: {fileID: 4283560955390411481}
   playerTracksFlash: {fileID: 5237428646857526344}
-  playerTracksGreenFlash: {fileID: 9198635754875954661}
   playerTracksFlicker: {fileID: 1538620659952480709}
   playerParry: {fileID: 0}
   defensiveActionUnlocked: 1
@@ -6242,33 +6209,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 8247058421977252114}
-        m_TargetAssemblyTypeName: FlashEffectScript, Assembly-CSharp
-        m_MethodName: ActivateFlash
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 9198635754875954661}
-        m_TargetAssemblyTypeName: FlashEffectScript, Assembly-CSharp
-        m_MethodName: ActivateFlash
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 8114761839525446275}
         m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
         m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5272861811717617993}
+        m_TargetAssemblyTypeName: ColorSwapper, Assembly-CSharp
+        m_MethodName: SwapColors
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6355,6 +6310,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad21c903a1e4bdf4bbd43528a17ad2ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5272861811717617993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6608917251125156136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72dc649a0fc60ac4689099a807d7749b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  affectedSpriteRenderers:
+  - {fileID: 6113088735033470544}
+  - {fileID: 7355359112899911180}
+  defaultColor: {r: 0, g: 1, b: 0, a: 1}
+  colorSwapDuration: 0.5
 --- !u!1 &7094110079830006597
 GameObject:
   m_ObjectHideFlags: 0
@@ -6576,9 +6548,9 @@ ParticleSystem:
         m_RotationOrder: 4
     startColor:
       serializedVersion: 2
-      minMaxState: 2
-      minColor: {r: 0.14331998, g: 0.3018868, b: 0, a: 0.78431374}
-      maxColor: {r: 0.5650705, g: 1, b: 0.5613208, a: 0.78431374}
+      minMaxState: 0
+      minColor: {r: 0, g: 1, b: 0, a: 1}
+      maxColor: {r: 0.5176471, g: 1, b: 0.5176471, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -11199,7 +11171,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: ce1c94d39c6737a4fae2b00d0c179126, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

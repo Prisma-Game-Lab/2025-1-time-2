@@ -20,4 +20,9 @@ public class HitboxScript : MonoBehaviour
         hitObjects.Add(collision.gameObject);
         collision.transform.gameObject.GetComponent<DamageController>()?.OnDamage(HurtBoxdamage);
     }
+
+    private void OnDisable()
+    {
+        hitObjects.Clear();
+    }
 }

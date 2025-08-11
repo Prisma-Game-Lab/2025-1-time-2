@@ -12,11 +12,9 @@ public class PlayerController : EntityController
     [HideInInspector] public PlayerHealthController playerHealthController;
     public PlayerBodyRotation playerBodyRotation;
     public FlashEffectScript playerBodyFlash;
-    public FlashEffectScript playerBodyGreenFlash;
     public FlickerEffectScript playerBodyFlicker;
     public PlayerBodyRotation playerTracksRotation;
     public FlashEffectScript playerTracksFlash;
-    public FlashEffectScript playerTracksGreenFlash;
     public FlickerEffectScript playerTracksFlicker;
 
     [HideInInspector] public PlayerParry playerParry;

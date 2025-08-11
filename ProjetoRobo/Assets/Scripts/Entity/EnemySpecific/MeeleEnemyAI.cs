@@ -5,8 +5,8 @@ using UnityEngine;
 public class MeeleEnemyAI : MonoBehaviour
 {
     private EnemyCont enemyController;
-
     private Transform target;
+    [SerializeField] private float minDistanceAttack;
 
     private void Start()
     {
@@ -19,6 +19,13 @@ public class MeeleEnemyAI : MonoBehaviour
         {
             Vector2 dirVector = target.position - transform.position;
             enemyController.enemyRotation.SetDesiredRotation(dirVector);
+
+            float distance = dirVector.magnitude;
+
+            if (distance < minDistanceAttack) 
+            {
+                enemyController.enemyMeele.PerformMeeleAttack();
+            }
         }
     }
 

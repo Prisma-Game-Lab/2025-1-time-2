@@ -11,6 +11,7 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private float maxSpeed;
     [SerializeField] private float accelerationRate;
     [SerializeField] private float dessaccelerationRate;
+    private float currentMaxSpeed;
 
     private Transform targetTransform;
     private Vector2 targetPosition;
@@ -20,6 +21,7 @@ public class EnemyMovement : MonoBehaviour
     private void Start()
     {
         enemyController = GetComponent<EnemyCont>();
+        currentMaxSpeed = maxSpeed;
     }
 
     private void FixedUpdate()
@@ -41,6 +43,15 @@ public class EnemyMovement : MonoBehaviour
         usePosition = true;
     }
 
+    public void SetCurrentMaxSpeed(float desiredSpeed = -1) 
+    {
+        if (Mathf.Approximately(desiredSpeed, -1)) 
+        {
+            desiredSpeed = maxSpeed;
+        }
+        currentMaxSpeed = desiredSpeed;
+    }
+
     private void ApplyForce() 
     {
         Vector2 targetPos;
@@ -50,24 +61,22 @@ public class EnemyMovement : MonoBehaviour
 
         Rigidbody2D rb = enemyController.rb;
 
-        if (Vector2.Distance(targetPos, transform.position) < distanceThreshold)
+        if ( Mathf.Approximately(currentMaxSpeed, 0) || Vector2.Distance(targetPos, transform.position) < distanceThreshold)
         {
             rb.AddForce(-rb.velocity * dessaccelerationRate);
             return;
         }
-            
-
         
         Vector2 direction = targetPos - (Vector2)transform.position;
         direction.Normalize();
 
-        if (rb.velocity.magnitude < maxSpeed)
+        if (rb.velocity.magnitude < currentMaxSpeed)
         {
             rb.AddForce(direction * accelerationRate);
         }
-        if (rb.velocity.magnitude > maxSpeed)
+        if (rb.velocity.magnitude > currentMaxSpeed)
         {
-            rb.velocity = rb.velocity.normalized * maxSpeed;
+            rb.velocity = rb.velocity.normalized * currentMaxSpeed;
         }
     }
 }

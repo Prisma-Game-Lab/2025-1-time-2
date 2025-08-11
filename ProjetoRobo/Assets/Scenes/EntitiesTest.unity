@@ -25568,14 +25568,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3903925717291410796, guid: 6990a597796a00b42bd663c66e9744c1, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3903925717291410796, guid: 6990a597796a00b42bd663c66e9744c1, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4110095166037054398, guid: 6990a597796a00b42bd663c66e9744c1, type: 3}
       propertyPath: ammoDropPrefab
       value: 
@@ -25644,6 +25636,18 @@ PrefabInstance:
       propertyPath: onDeathEvent.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_BoolArgument
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5272861811717617993, guid: 6990a597796a00b42bd663c66e9744c1, type: 3}
+      propertyPath: defaultColor.b
+      value: 0.514151
+      objectReference: {fileID: 0}
+    - target: {fileID: 5272861811717617993, guid: 6990a597796a00b42bd663c66e9744c1, type: 3}
+      propertyPath: defaultColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5272861811717617993, guid: 6990a597796a00b42bd663c66e9744c1, type: 3}
+      propertyPath: defaultColor.r
+      value: 0.514151
+      objectReference: {fileID: 0}
     - target: {fileID: 6366267563213630568, guid: 6990a597796a00b42bd663c66e9744c1, type: 3}
       propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -25663,18 +25667,6 @@ PrefabInstance:
     - target: {fileID: 6608917251125156136, guid: 6990a597796a00b42bd663c66e9744c1, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 8114761839525446275, guid: 6990a597796a00b42bd663c66e9744c1, type: 3}
-      propertyPath: InitialModule.startLifetime.scalar
-      value: 0.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 8114761839525446275, guid: 6990a597796a00b42bd663c66e9744c1, type: 3}
-      propertyPath: InitialModule.startSpeed.minScalar
-      value: 0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 8114761839525446275, guid: 6990a597796a00b42bd663c66e9744c1, type: 3}
-      propertyPath: InitialModule.startLifetime.minScalar
-      value: 0.35
       objectReference: {fileID: 0}
     - target: {fileID: 8247058421977252114, guid: 6990a597796a00b42bd663c66e9744c1, type: 3}
       propertyPath: flashDuration
