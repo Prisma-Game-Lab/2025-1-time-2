@@ -25490,7 +25490,7 @@ PrefabInstance:
       objectReference: {fileID: 2056221029}
     - target: {fileID: 526859834013453721, guid: 6990a597796a00b42bd663c66e9744c1, type: 3}
       propertyPath: timerPaused
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 526859834013453721, guid: 6990a597796a00b42bd663c66e9744c1, type: 3}
       propertyPath: maxFixedTimer
