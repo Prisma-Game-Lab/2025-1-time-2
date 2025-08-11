@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class EntityController : MonoBehaviour
 {
-    [HideInInspector] public DamageController damageController;
+    public DamageController damageController;
     [HideInInspector] public EntityHealthController healthController;
 
     [HideInInspector] public Rigidbody2D rb;
 
     protected virtual void Awake()
     {
-        damageController = GetComponent<DamageController>();
+        DamageController tempdamageController = GetComponent<DamageController>();
+        if (tempdamageController != null) damageController = tempdamageController;
+
         healthController = GetComponent<EntityHealthController>();
 
         rb = GetComponent<Rigidbody2D>();

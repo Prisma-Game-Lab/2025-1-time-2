@@ -9,6 +9,8 @@ TagManager:
   - Laser
   - ReflectedLaser
   - DialogController
+  - Shot
+  - Melee
   layers:
   - Default
   - TransparentFX

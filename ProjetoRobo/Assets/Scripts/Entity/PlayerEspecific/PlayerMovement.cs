@@ -51,7 +51,6 @@ public class PlayerMovement : MonoBehaviour
         ApplyMovement();
         if (endingDash)
         {
-            
             ApplyDashAcceleration();
         }
     }
@@ -186,6 +185,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if (closeCallsOnDash > 0) 
         {
+            //pc.playerBodyGreenFlash.ActivateFlash();
+            //pc.playerTracksGreenFlash.ActivateFlash();
             AudioManager.Instance.PlaySFX("dodge_sucess_sfx");
             pc.healthController.Heal(1);
         }

@@ -5034,7 +5034,7 @@ GameObject:
   - component: {fileID: 5971389787654393568}
   m_Layer: 0
   m_Name: Explosion
-  m_TagString: Untagged
+  m_TagString: Shot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5092,7 +5092,7 @@ MonoBehaviour:
   explosionParticles: {fileID: 314143097693641468}
   explosionCollider: {fileID: 723925495189857579}
   explosionHurtBoxScript: {fileID: 241623048948221776}
-  destructionTime: 1
+  destructionTime: 2
 --- !u!1 &8486245642536421547
 GameObject:
   m_ObjectHideFlags: 0

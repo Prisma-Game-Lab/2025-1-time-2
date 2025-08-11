@@ -209,6 +209,7 @@ MonoBehaviour:
       m_Calls: []
   healthDropPrefab: {fileID: 7461689329379917843, guid: 6049f26ddcfb07d4baeba58992c9059d, type: 3}
   ammoDropPrefab: {fileID: 2056062450541606222, guid: 27aed88f837213b4b90397ab54b0ee32, type: 3}
+  shieldPrefab: {fileID: 8804341169289725096, guid: 457895746b3da6d4785d5a1e749f0c31, type: 3}
   dropChance: 1
   score: 1
   onDeathEvent:
@@ -262,6 +263,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  lastDamageType: 0
+  immuneToMelee: 0
+  immuneToShot: 0
 --- !u!61 &5634761712571093214
 BoxCollider2D:
   m_ObjectHideFlags: 0
