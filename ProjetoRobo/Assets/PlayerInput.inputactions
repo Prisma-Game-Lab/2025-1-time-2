@@ -334,7 +334,7 @@
                     "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Keyboard",
                     "action": "AdvanceText",
                     "isComposite": false,
                     "isPartOfComposite": false
