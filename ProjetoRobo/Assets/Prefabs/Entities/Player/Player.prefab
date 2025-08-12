@@ -5867,9 +5867,9 @@ MonoBehaviour:
   accelerationRate: 8
   desaccelerationRate: 10
   inputMinForRotation: 0.1
-  dashSpeed: 10
+  dashSpeed: 7.5
   dashDuration: 0.1
-  dashCooldown: 3
+  dashCooldown: 1.5
   dashAcceleration: 0
   dashDesacceleration: 0
   dashDesaccelerationDuration: 1.5
