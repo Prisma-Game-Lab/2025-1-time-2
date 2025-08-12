@@ -32,7 +32,7 @@ public class PlayerFiring : MonoBehaviour
     [SerializeField] private GameObject meleeAttackObject;
     [SerializeField] private int meleeAttackDamage;
     [SerializeField] private float meleeAttackDuration;
-    [SerializeField] private float meleeCooldown;
+    [SerializeField] public float meleeCooldown;
 
     public CrosshairVisual Crosshair { get; private set; }
 

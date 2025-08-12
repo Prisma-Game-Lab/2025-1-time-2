@@ -119,7 +119,7 @@ public class UIManager : MonoBehaviour
         dashCooldown = player.GetComponent<PlayerMovement>().dashCooldown;
 
         shotCooldown = 0;
-        meleeCooldown = 0;
+        meleeCooldown = player.GetComponent<PlayerFiring>().meleeCooldown;
 
         greenCD = greenCD.GetComponent<SecondaryCooldown>();
         redCD = redCD.GetComponent<SecondaryCooldown>();
