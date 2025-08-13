@@ -39,7 +39,7 @@ public class CheckpointController : MonoBehaviour
     public void LoadCheckpoint() 
     {
         GameObject player = GameManager.Instance.GetPlayerRef();
-
+        checkpoints[GameManager.Instance.currentCheckpointIndex].onRespawn.Invoke();
         player.transform.position = checkpoints[GameManager.Instance.currentCheckpointIndex].playerRespawnPos.position;
     }
 }
