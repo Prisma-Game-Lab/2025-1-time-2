@@ -14,13 +14,15 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private string menuMusic;
 
     [SerializeField] private string combatMusic;
-   
+
+    
     void Start()
     {
-        Mixer.SetFloat("Volume", Mathf.Log10(0.5f) * 20);
-        Mixer.SetFloat("SFXVolume", Mathf.Log10(0.5f) * 20);
-        Mixer.SetFloat("MusicVolume", Mathf.Log10(0.5f) * 20);
         
+        //Mixer.SetFloat("Volume", Mathf.Log10(0.5f) * 20);
+        // Mixer.SetFloat("SFXVolume", Mathf.Log10(0.5f) * 20);
+        // Mixer.SetFloat("MusicVolume", Mathf.Log10(0.5f) * 20);
+
         if (AudioManager.Instance != null)
         {
             AudioManager.Instance.PlayMusic(menuMusic);
