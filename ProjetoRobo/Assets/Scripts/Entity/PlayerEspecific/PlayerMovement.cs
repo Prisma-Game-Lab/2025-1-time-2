@@ -150,7 +150,7 @@ public class PlayerMovement : MonoBehaviour
         timeAfterDash = 0;
         endingDash = true;
         shouldMove = true;
-        FindObjectOfType<UIManager>()?.TriggerSecondaryCooldown(false);
+        FindObjectOfType<UIManager>()?.TriggerSecondaryCooldown(false,dashCooldown);
         yield return new WaitForSeconds(dashCooldown);
         canDash = true;
     }

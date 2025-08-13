@@ -10,6 +10,8 @@ public class PlayerParry : MonoBehaviour
 
     [SerializeField] public float parryCooldown = 0.5f;
 
+    [SerializeField] public float successfulParryCooldown = 0.5f;
+
     [SerializeField] private float parryInvincibilityDuration = 0.5f;
 
     [Header("Parry Visual")]
@@ -54,8 +56,13 @@ public class PlayerParry : MonoBehaviour
 
         if (!parrySucceeded)
         {
-            FindObjectOfType<UIManager>()?.TriggerSecondaryCooldown(false);
+            FindObjectOfType<UIManager>()?.TriggerSecondaryCooldown(false,parryCooldown);
             yield return new WaitForSeconds(parryCooldown);
+        }
+        else
+        {
+             FindObjectOfType<UIManager>()?.TriggerSecondaryCooldown(false,successfulParryCooldown);
+            yield return new WaitForSeconds(successfulParryCooldown);
         }
         isOnCooldown = false;
     }

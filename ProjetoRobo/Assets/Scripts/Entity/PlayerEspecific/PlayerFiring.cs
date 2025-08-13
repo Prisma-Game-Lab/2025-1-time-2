@@ -174,6 +174,7 @@ public class PlayerFiring : MonoBehaviour
         yield return new WaitForSeconds(meleeAttackDuration);
         meleeAtacking = false;
         meleeAttackObject.SetActive(false);
+        FindObjectOfType<UIManager>()?.TriggerSecondaryCooldown(true,meleeCooldown);
         yield return new WaitForSeconds(meleeCooldown);
         meleeOnCooldown = false;
     }

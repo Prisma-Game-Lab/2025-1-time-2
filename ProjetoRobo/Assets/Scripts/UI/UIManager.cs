@@ -302,7 +302,7 @@ public class UIManager : MonoBehaviour
         greenCD.SyncVisual();
         redCD.SyncVisual();
     }
-    public void TriggerSecondaryCooldown(bool isOffensive)
+    public void TriggerSecondaryCooldown(bool isOffensive, float cooldown)
     {
         bool isP1 = player.GetComponent<InputManager>().P1Movement;
 
@@ -312,17 +312,17 @@ public class UIManager : MonoBehaviour
             {
                 // Currently in shoot mode
                 if (isP1)
-                    redCD.TriggerCooldown(shotCooldown);
+                    redCD.TriggerCooldown(cooldown);
                 else
-                    greenCD.TriggerCooldown(shotCooldown);
+                    greenCD.TriggerCooldown(cooldown);
             }
             else
             {
                 // Currently in melee mode
                 if (isP1)
-                    redCD.TriggerCooldown(meleeCooldown);
+                    redCD.TriggerCooldown(cooldown);
                 else
-                    greenCD.TriggerCooldown(meleeCooldown);
+                    greenCD.TriggerCooldown(cooldown);
             }
         }
         else
@@ -331,9 +331,9 @@ public class UIManager : MonoBehaviour
             {
                 // Currently in parry mode
                 if (isP1)
-                    greenCD.TriggerCooldown(parryCooldown);
+                    greenCD.TriggerCooldown(cooldown);
                 else
-                    redCD.TriggerCooldown(parryCooldown);
+                    redCD.TriggerCooldown(cooldown);
             }
             else
             {
