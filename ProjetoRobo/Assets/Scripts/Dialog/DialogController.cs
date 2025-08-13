@@ -47,10 +47,6 @@ public class DialogController : MonoBehaviour
         writeSentenceCoroutine = StartCoroutine(WriteSentence());
     }
 
-    public bool getDialogState()
-    {
-        return onDialog;
-    }
     public void AdvanceDialog() 
     {
         if (writingSentence) 
@@ -106,6 +102,17 @@ public class DialogController : MonoBehaviour
         else
         {
             imageField.sprite = currentSpeakerSprite;
+        }
+    }
+
+    public void OnDialogButton(InputAction.CallbackContext inputValue)
+    {
+        if (inputValue.performed)
+        {
+            if (onDialog)
+            {
+                AdvanceDialog();
+            }
         }
     }
 }

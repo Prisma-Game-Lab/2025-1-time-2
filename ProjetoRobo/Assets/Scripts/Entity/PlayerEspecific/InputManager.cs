@@ -142,16 +142,4 @@ public class InputManager : MonoBehaviour
             pauseMenu.TogglePause();
         }
     }
-
-    public void OnDialogButton(InputAction.CallbackContext inputValue)
-    {
-        if (inputValue.performed)
-        {
-            DialogController dialog = FindAnyObjectByType<DialogController>();
-            if (dialog.getDialogState())
-            {
-                dialog.AdvanceDialog();
-            }
-        }
-    }
 }

@@ -30,6 +30,7 @@ public class PlayerFiring : MonoBehaviour
 
     [Header("Meele Attack Configuration")]
     [SerializeField] private GameObject meleeAttackObject;
+    [SerializeField] private Animator meleeAttackAnimator;
     [SerializeField] private int meleeAttackDamage;
     [SerializeField] private float meleeAttackDuration;
     [SerializeField] public float meleeCooldown;
@@ -41,6 +42,8 @@ public class PlayerFiring : MonoBehaviour
 
     private bool meleeAtacking;
     private bool meleeOnCooldown;
+
+    
 
     private void Start()
     {
@@ -156,6 +159,7 @@ public class PlayerFiring : MonoBehaviour
         MoveMeleeAttack();
         meleeAttackObject.GetComponentInChildren<MeeleAttackHitbox>().MeleeDamage = meleeAttackDamage;
         meleeAttackObject.SetActive(true);
+        meleeAttackAnimator.SetFloat("AttackSpeed", 1/meleeAttackDuration);
         StartCoroutine(DisableMeleeAttack());
     }
 
