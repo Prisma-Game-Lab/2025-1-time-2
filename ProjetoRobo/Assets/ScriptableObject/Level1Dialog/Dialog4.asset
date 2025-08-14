@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5093f333b4f1734694e32780372ce70, type: 3}
+  m_Name: Dialog4
+  m_EditorClassIdentifier: 
+  dialogueLines:
+  - DialogText: Hmpf...esses lixos realmente se preocuparam em preservar um pouco
+      da natureza
+    SpeakerSprite: {fileID: 21300000, guid: 862b105645f71ac4a96fb02fd4462f32, type: 3}
+  - DialogText: Mesmo com todo esse caos...
+    SpeakerSprite: {fileID: 21300000, guid: 1554e97186f4c8041bfe26f0ea35583c, type: 3}
+  - DialogText: ...
+    SpeakerSprite: {fileID: 21300000, guid: 20f9b2c1d50a7c94ca7cc842af46b0a6, type: 3}
+  - DialogText: "Parece que eles n\xE3o s\xE3o t\xE3o imbec\xEDs afinal.."
+    SpeakerSprite: {fileID: 21300000, guid: 1554e97186f4c8041bfe26f0ea35583c, type: 3}
+  - DialogText: "Mas vermes ainda s\xE3o vermes!"
+    SpeakerSprite: {fileID: 21300000, guid: 862b105645f71ac4a96fb02fd4462f32, type: 3}
+  - DialogText: "N\xE3o podemos abandonar a miss\xE3o."
+    SpeakerSprite: {fileID: 21300000, guid: 862b105645f71ac4a96fb02fd4462f32, type: 3}
+  - DialogText: AVANTE PILOTOS! DESTRUAM TUDO PELO CAMINHO!
+    SpeakerSprite: {fileID: 21300000, guid: 9147db9d56992564a9e3db5ac30ecdb1, type: 3}

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ChooseController : MonoBehaviour
 {
-    public void OnContinue() 
+    public void OnContinue(string sceneName) 
     {
-        LevelManager.LoadSceneByName("EntitiesTest");
+        LevelManager.LoadSceneByName(sceneName);
     }
 }

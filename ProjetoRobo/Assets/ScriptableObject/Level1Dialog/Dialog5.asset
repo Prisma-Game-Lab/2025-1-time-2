@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5093f333b4f1734694e32780372ce70, type: 3}
+  m_Name: Dialog5
+  m_EditorClassIdentifier: 
+  dialogueLines:
+  - DialogText: Chegamos meus lacaios cabeludos!
+    SpeakerSprite: {fileID: 21300000, guid: 862b105645f71ac4a96fb02fd4462f32, type: 3}
+  - DialogText: "Por acaso, fui constru\xEDdo pe\xE7a a pe\xE7a nessa instala\xE7\xE3o..."
+    SpeakerSprite: {fileID: 21300000, guid: 1554e97186f4c8041bfe26f0ea35583c, type: 3}
+  - DialogText: E justamente por isso sei o perigo eminente nos aguardando.
+    SpeakerSprite: {fileID: 21300000, guid: 1554e97186f4c8041bfe26f0ea35583c, type: 3}
+  - DialogText: "Conduzam-me com FOCO e DETERMINA\xC7\xC3O"
+    SpeakerSprite: {fileID: 21300000, guid: 9147db9d56992564a9e3db5ac30ecdb1, type: 3}
+  - DialogText: "E ACABEM COM A \xDALTIMA RESIST\xCANCIA DO MUNDO!"
+    SpeakerSprite: {fileID: 21300000, guid: 9147db9d56992564a9e3db5ac30ecdb1, type: 3}
+  - DialogText: ...
+    SpeakerSprite: {fileID: 21300000, guid: 20f9b2c1d50a7c94ca7cc842af46b0a6, type: 3}
+  - DialogText: "Estamos t\xE3o perto.."
+    SpeakerSprite: {fileID: 21300000, guid: 20f9b2c1d50a7c94ca7cc842af46b0a6, type: 3}
+  - DialogText: "De alcan\xE7ar os c\xE9us..."
+    SpeakerSprite: {fileID: 21300000, guid: 20f9b2c1d50a7c94ca7cc842af46b0a6, type: 3}

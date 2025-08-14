@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5093f333b4f1734694e32780372ce70, type: 3}
+  m_Name: Dialog2
+  m_EditorClassIdentifier: 
+  dialogueLines:
+  - DialogText: "Esse avermelhado na minha lataria...essa sensa\xE7\xE3o..."
+    SpeakerSprite: {fileID: 21300000, guid: 20f9b2c1d50a7c94ca7cc842af46b0a6, type: 3}
+  - DialogText: "N\xC3O ME SINTO BEM ASSIM H\xC1 D\xC9CADAS!!!"
+    SpeakerSprite: {fileID: 21300000, guid: 9147db9d56992564a9e3db5ac30ecdb1, type: 3}

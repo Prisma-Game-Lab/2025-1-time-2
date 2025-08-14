@@ -15,17 +15,17 @@ MonoBehaviour:
   dialogueLines:
   - DialogText: "Hm... Consegui detectar que os vermes \xE0 frente possuem m\xF3dulos
       de defesa avan\xE7ados."
-    SpeakerSprite: {fileID: 0}
+    SpeakerSprite: {fileID: 21300000, guid: 1554e97186f4c8041bfe26f0ea35583c, type: 3}
   - DialogText: "Esses ot\xE1rios possuem escudos que cortam nossas capacidades ofensivas
       pela metade!"
-    SpeakerSprite: {fileID: 0}
+    SpeakerSprite: {fileID: 21300000, guid: 862b105645f71ac4a96fb02fd4462f32, type: 3}
   - DialogText: "Mas n\xE3o se preocupem, pois fui programado pra lidar com lixos
       como esses."
-    SpeakerSprite: {fileID: 0}
-  - DialogText: "Escudos MAGENTA s\xF3 s\xE3o perfur\xE1veis com ATAQUES F\xCDSICOS.
-      (Soco)"
-    SpeakerSprite: {fileID: 0}
-  - DialogText: "Enquanto escudos AZ\xDAIS n\xE3o resistem ATAQUES EXPLOSIVOS. (Tiro)"
-    SpeakerSprite: {fileID: 0}
+    SpeakerSprite: {fileID: 21300000, guid: 1554e97186f4c8041bfe26f0ea35583c, type: 3}
+  - DialogText: "Escudos MAGENTA s\xF3 s\xE3o perfur\xE1veis com ATAQUES F\xCDSICOS
+      (Soco)."
+    SpeakerSprite: {fileID: 21300000, guid: 1554e97186f4c8041bfe26f0ea35583c, type: 3}
+  - DialogText: "Enquanto escudos AZ\xDAIS n\xE3o resistem ATAQUES EXPLOSIVOS (Tiro)."
+    SpeakerSprite: {fileID: 21300000, guid: 1554e97186f4c8041bfe26f0ea35583c, type: 3}
   - DialogText: Agora vamos acabar com essa perda de tempo!
-    SpeakerSprite: {fileID: 0}
+    SpeakerSprite: {fileID: 21300000, guid: 9147db9d56992564a9e3db5ac30ecdb1, type: 3}
