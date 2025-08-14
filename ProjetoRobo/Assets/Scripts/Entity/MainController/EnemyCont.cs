@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EnemyCont : EntityController
 {
@@ -9,6 +10,8 @@ public class EnemyCont : EntityController
     public EnemyFiring enemyFiring { get; private set; }
     public EnemyMeeleAttack enemyMeele { get; private set; }
 
+    [SerializeField] private UnityEvent OnReset;
+
     protected override void Awake()
     {
         base.Awake();
@@ -16,5 +19,10 @@ public class EnemyCont : EntityController
         enemyMovement = GetComponent<EnemyMovement>();
         enemyFiring = GetComponent<EnemyFiring>();
         enemyMeele = GetComponent<EnemyMeeleAttack>();
+    }
+
+    public void ResetEnemy() 
+    {
+        OnReset.Invoke();
     }
 }

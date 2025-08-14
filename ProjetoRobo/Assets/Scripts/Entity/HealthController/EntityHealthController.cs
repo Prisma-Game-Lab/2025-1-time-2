@@ -14,7 +14,7 @@ public class EntityHealthController : MonoBehaviour
     [SerializeField] public int maxHealth;
     [SerializeField] private string deathSfx;
 
-    private int currentHealth;
+    protected int currentHealth;
 
     [Header("Events")]
     [SerializeField] public UnityEvent<int> OnDamage;

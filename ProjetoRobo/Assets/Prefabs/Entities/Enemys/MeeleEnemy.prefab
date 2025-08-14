@@ -640,6 +640,8 @@ GameObject:
   - component: {fileID: 4994432032424867165}
   - component: {fileID: 1601063494858579565}
   - component: {fileID: 8199886508356181154}
+  - component: {fileID: 527311121351788650}
+  - component: {fileID: 4921160546060622024}
   - component: {fileID: 149996210710422976}
   m_Layer: 7
   m_Name: MeeleEnemy
@@ -708,6 +710,9 @@ MonoBehaviour:
   healthController: {fileID: 0}
   rb: {fileID: 0}
   enemyRotation: {fileID: 8328782962209766168}
+  OnReset:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &5261368947191003923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -739,6 +744,30 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 8199886508356181154}
+        m_TargetAssemblyTypeName: FlashEffectScript, Assembly-CSharp
+        m_MethodName: ActivateFlash
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 527311121351788650}
+        m_TargetAssemblyTypeName: FlashEffectScript, Assembly-CSharp
+        m_MethodName: ActivateFlash
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4921160546060622024}
         m_TargetAssemblyTypeName: FlashEffectScript, Assembly-CSharp
         m_MethodName: ActivateFlash
         m_Mode: 1
@@ -841,6 +870,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   affectedSprite: {fileID: 7386719556130690465}
+  flashMaterial: {fileID: 2100000, guid: 6bdc825488913984182795ec96703d7a, type: 2}
+  flashDuration: 0.2
+--- !u!114 &527311121351788650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6608917251125156136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bee1aefe5109a5f438bcbcd476a5b68f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  affectedSprite: {fileID: 480840379610531460}
+  flashMaterial: {fileID: 2100000, guid: 6bdc825488913984182795ec96703d7a, type: 2}
+  flashDuration: 0.2
+--- !u!114 &4921160546060622024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6608917251125156136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bee1aefe5109a5f438bcbcd476a5b68f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  affectedSprite: {fileID: 1670586983007168366}
   flashMaterial: {fileID: 2100000, guid: 6bdc825488913984182795ec96703d7a, type: 2}
   flashDuration: 0.2
 --- !u!114 &149996210710422976

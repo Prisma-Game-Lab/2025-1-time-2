@@ -79,4 +79,9 @@ public class EnemyMovement : MonoBehaviour
             rb.velocity = rb.velocity.normalized * currentMaxSpeed;
         }
     }
+
+    private void OnEnable()
+    {
+        currentMaxSpeed = maxSpeed;
+    }
 }

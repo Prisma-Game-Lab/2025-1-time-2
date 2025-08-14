@@ -11,7 +11,7 @@ public class FlashEffectScript : MonoBehaviour
 
     private Material originalMaterial;
 
-    private void Start()
+    private void Awake()
     {
         originalMaterial = affectedSprite.material;
     }
@@ -27,5 +27,9 @@ public class FlashEffectScript : MonoBehaviour
         yield return new WaitForSeconds(flashDuration);
         affectedSprite.material = originalMaterial;
     }
-    
+
+    public void OnEnable()
+    {
+        affectedSprite.material = originalMaterial;
+    }
 }

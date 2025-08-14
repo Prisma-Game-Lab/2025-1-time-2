@@ -109,6 +109,11 @@ public class EnemyHealthController : EntityHealthController
 
         onDeathEvent?.Invoke();
     }
+
+    private void OnEnable()
+    {
+        currentHealth = maxHealth;
+    }
 }
 
   
