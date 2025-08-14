@@ -10,10 +10,15 @@ public class MeeleAttackHitbox : MonoBehaviour
     {
         DamageController damageController = collision.GetComponent<DamageController>();
        
-
+       
+        var enemyHealth = collision.GetComponentInParent<EnemyHealthController>();
+        if (enemyHealth != null)
+        {
+            enemyHealth.SetPendingDamageType(EnemyHealthController.DamageType.Melee);
+        }
         if (damageController != null)
         {
-
+            
             damageController.OnDamage(MeleeDamage);
         }
         

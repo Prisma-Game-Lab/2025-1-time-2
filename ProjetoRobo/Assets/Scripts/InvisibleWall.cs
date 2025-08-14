@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,7 +11,8 @@ public class InvisibleWall : MonoBehaviour
 
     public UnityEvent OnDestroy;
 
-   
+
+
     void Update()
     {
 
@@ -18,7 +20,7 @@ public class InvisibleWall : MonoBehaviour
         {
             OnDestroy?.Invoke();
             Destroy(gameObject);
-            
+
         }
     }
 
@@ -26,6 +28,10 @@ public class InvisibleWall : MonoBehaviour
     {
         enemiesNeeded--;
     }
-        
-    
+
+    public void LoadCutscene()
+    {
+        LevelManager.LoadSceneByName("EndCutscene");
+    }
+     
 }

@@ -9,9 +9,17 @@ public class TutorialTooltip : MonoBehaviour
     [SerializeField] private TMP_Text text;
     [SerializeField] private InputActionAsset playerInput;
 
+    [SerializeField] private float duration;
+
     private void Start()
     {
+        StartCoroutine(Dissapear());
         SubstituteKeybind();
+    }
+    public IEnumerator Dissapear()
+    {
+        yield return new WaitForSeconds(duration);
+        gameObject.SetActive(false);
     }
     private void SubstituteKeybind()
     {

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3111645625131981897}
   m_Layer: 6
   m_Name: RotationOffset
-  m_TagString: Untagged
+  m_TagString: Melee
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11269,7 +11269,7 @@ GameObject:
   - component: {fileID: 8594483944675609790}
   m_Layer: 6
   m_Name: MeleeAttackPivot
-  m_TagString: Untagged
+  m_TagString: Melee
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11301,7 +11301,7 @@ GameObject:
   - component: {fileID: 2029133967466839060}
   m_Layer: 6
   m_Name: AttackHolder
-  m_TagString: Untagged
+  m_TagString: Melee
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

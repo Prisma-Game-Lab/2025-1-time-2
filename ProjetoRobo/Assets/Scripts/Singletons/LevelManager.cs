@@ -36,7 +36,7 @@ public class LevelManager : MonoBehaviour
             RestartLevel();
             return;
         }
-
+        
         OnSceneChanged.Invoke();
         SceneManager.LoadScene(sceneName);
     }

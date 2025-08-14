@@ -21,8 +21,8 @@ public class EnemyHealthController : EntityHealthController
     [SerializeField] private int score;
     [SerializeField] private UnityEvent onDeathEvent;
 
-    public enum DamageType { Melee, Shot, Other }
-    public DamageType lastDamageType;
+    public enum DamageType { Melee, Shot, Other,Unknown }
+    private DamageType pendingDamageType = DamageType.Shot;
 
     
 
@@ -48,36 +48,42 @@ public class EnemyHealthController : EntityHealthController
         }
 
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    /* private void OnTriggerEnter2D(Collider2D collision)
     {
 
 
-        if (collision.CompareTag("Melee"))
+        if (collision.CompareTag("Melee") || collision.transform.root.CompareTag("Melee"))
         {
             lastDamageType = DamageType.Melee;
-        }
-        else if (collision.CompareTag("ReflectedLaser"))
-        {
-            lastDamageType = DamageType.Other;
+            return;
         }
         else
         {
             lastDamageType = DamageType.Shot;
+            return;
         }
 
     }
+    */
 
     
+    public void SetPendingDamageType(DamageType type)
+    {
+        pendingDamageType = type;
+    }
+
     protected override void TakeDamage()
     {
-        if ((lastDamageType == DamageType.Melee && immuneToMelee) ||
-        (lastDamageType == DamageType.Shot && immuneToShot))
+        if ((pendingDamageType == DamageType.Melee && immuneToMelee) ||
+            (pendingDamageType == DamageType.Shot && immuneToShot))
         {
-        Debug.Log($"Blocked {lastDamageType} damage!");
-        return;
+            Debug.Log($"Blocked {pendingDamageType} damage!");
+            pendingDamageType = DamageType.Shot; 
+            return;
         }
 
         base.TakeDamage();
+        pendingDamageType = DamageType.Shot; 
     }
     public void Drop()
     {
