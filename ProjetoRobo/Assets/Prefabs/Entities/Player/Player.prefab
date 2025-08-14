@@ -6167,6 +6167,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parryWindow: 0.5
   parryCooldown: 0.5
+  successfulParryCooldown: 0.3
   parryInvincibilityDuration: 1
   parryEffectPrefab: {fileID: 2248265322326265532, guid: f888a631dde19ea4496b7af8e9436b5c, type: 3}
   parryEffectDuration: 0.5
