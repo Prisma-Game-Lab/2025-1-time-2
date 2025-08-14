@@ -57,7 +57,7 @@ public class PlayerFiring : MonoBehaviour
     private void FixedUpdate()
     {
         MoveAim();
-        aimRb.transform.Translate(pc.rb.velocity * Time.deltaTime, transform);
+        aimRb.transform.Translate(pc.rb.velocity * Time.deltaTime, aimRb.transform);
         RestrictCenter();
         UpdateRotation();
         if (meleeAtacking) MoveMeleeAttack();
